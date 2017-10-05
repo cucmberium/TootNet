@@ -9,9 +9,9 @@ namespace TootNet.Internal
 {
     public enum MethodType
     {
-        GET = 0,
-        POST = 1,
-        DELETE = 2,
+        Get = 0,
+        Post = 1,
+        Delete = 2,
     }
 
     public class AsyncResponse : IDisposable

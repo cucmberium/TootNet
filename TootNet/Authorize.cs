@@ -46,51 +46,23 @@ namespace TootNet
         public string CreatedAt { get; set; }
     }
 
-    public class Authorize
+    public class Authorize : TokensBase
     {
-        public Authorize()
-        {
-            ConnectionOptions = new Connection();
-        }
-
-        /// <summary>
-        /// Gets or sets the options of the connection.
-        /// </summary>
-        public Connection ConnectionOptions { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Instance.
-        /// </summary>
-        public string Instance { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the client id.
-        /// </summary>
-        public string ClientId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the client secret.
-        /// </summary>
-        public string ClientSecret { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the access key.
-        /// </summary>
-        public string AccessToken { get; private set; }
-
+        public Authorize() { }
+        
         /// <summary>
         /// Gets or sets the scope.
         /// </summary>
         public Scope Scope { get; private set; }
 
         /// <summary>
-        /// Registering an application
+        /// Registering an application.
         /// </summary>
-        /// <param name="instance">Instance to connect</param>
-        /// <param name="appName">Name of your application</param>
-        /// <param name="scope">The rights needed by your application</param>
-        /// <param name="website">URL to the homepage of your app (optional)</param>
-        /// <param name="redirectUri">Redirect url (optional)</param>
+        /// <param name="instance">Instance to connect.</param>
+        /// <param name="appName">Name of your application.</param>
+        /// <param name="scope">The rights needed by your application.</param>
+        /// <param name="website">URL to the homepage of your app.</param>
+        /// <param name="redirectUri">Redirect uri.</param>
         /// <returns></returns>
         public async Task CreateApp(string instance, string appName, Scope scope, string website = null, string redirectUri = "urn:ietf:wg:oauth:2.0:oob")
         {
@@ -115,11 +87,11 @@ namespace TootNet
         }
 
         /// <summary>
-        /// Authorize with email and password
+        /// Authorize with email and password.
         /// </summary>
-        /// <param name="email">Email of account</param>
-        /// <param name="password">Password of account</param>
-        /// <returns>Tokens to access mastodon api</returns>
+        /// <param name="email">Email of account.</param>
+        /// <param name="password">Password of account.</param>
+        /// <returns>Tokens to access mastodon api.</returns>
         public async Task<Tokens> AuthorizeWithEmail(string email, string password)
         {
             var param = new List<KeyValuePair<string, object>>
@@ -141,11 +113,11 @@ namespace TootNet
         }
 
         /// <summary>
-        /// Authorize with code
+        /// Authorize with code.
         /// </summary>
-        /// <param name="code">Code displayed in browser</param>
-        /// <param name="redirectUri">Redirect url (optional)</param>
-        /// <returns>Tokens to access mastodon api</returns>
+        /// <param name="code">Code displayed in browser.</param>
+        /// <param name="redirectUri">Redirect uri.</param>
+        /// <returns>Tokens to access mastodon api.</returns>
         public async Task<Tokens> AuthorizeWithCode(string code, string redirectUri = "urn:ietf:wg:oauth:2.0:oob")
         {
             var param = new List<KeyValuePair<string, object>>
@@ -166,22 +138,17 @@ namespace TootNet
         }
 
         /// <summary>
-        /// Get authorize url need to authorize in browser
+        /// Get authorize uri need to authorize in browser.
         /// </summary>
-        /// <param name="redirectUri">Redirect url (optional)</param>
-        /// <returns>Authorize url</returns>
-        public string GetAuthorizeUrl(string redirectUri = null)
+        /// <param name="redirectUri">Redirect uri.</param>
+        /// <returns>Authorize uri.</returns>
+        public string GetAuthorizeUri(string redirectUri = null)
         {
             return $"https://{Instance}/oauth/authorize?" +
                    $"response_type=code&" +
                    $"client_id={ClientId}&" +
                    $"scope={WebUtility.UrlEncode(ConstructScope(Scope))}&" +
                    $"redirect_uri={redirectUri}";
-        }
-
-        private string ConstructUri(string route)
-        {
-            return "https://" + Instance + route;
         }
 
         private string ConstructScope(Scope scope)
