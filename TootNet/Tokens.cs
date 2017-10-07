@@ -46,6 +46,11 @@ namespace TootNet
         public Blocks Blocks => new Blocks(this);
 
         /// <summary>
+        /// DomainBlocks
+        /// </summary>
+        public DomainBlocks DomainBlocks => new DomainBlocks(this);
+
+        /// <summary>
         /// Favorites
         /// </summary>
         public Favourites Favourites => new Favourites(this);
@@ -166,6 +171,42 @@ namespace TootNet
             return AccessApiAsyncImpl<T>(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers);
         }
 
+        /// <summary>
+        /// <para>Access mastodon api targeted in uri field.</para>
+        /// </summary>
+        /// <param name="type">Method type of request.</param>
+        /// <param name="uri">Uri to access (relative path from API).</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="headers">Headers of request.</param>
+        /// <returns>
+        /// <para>AsyncResponse of request.</para>
+        /// </returns>
+        public Task AccessApiAsync(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
+        {
+            return AccessApiAsyncImpl(type, ConstructUri(uri), param, headers);
+        }
+
+        /// <summary>
+        /// <para>Access mastodon api targeted in uri field.</para>
+        /// </summary>
+        /// <param name="type">Method type of request.</param>
+        /// <param name="uri">Uri to access (relative path from API).</param>
+        /// <param name="reserved">Reserved parameter (relative path from API).</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="headers">Headers of request.</param>
+        /// <returns>
+        /// <para>AsyncResponse of request.</para>
+        /// </returns>
+        public Task AccessParameterReservedApiAsync(MethodType type, string uri, string reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null)
+        {
+            if (param == null)
+                throw new ArgumentNullException(nameof(param));
+            var list = param.ToList();
+            var kvp = Utils.GetReservedParameter(list, reserved);
+            list.Remove(kvp);
+            return AccessApiAsyncImpl(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers);
+        }
+
         private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null) where T : class
         {
             using (var response = await SendRequestAsync(type, uri, FormatParameters(param), headers).ConfigureAwait(false))
@@ -175,6 +216,11 @@ namespace TootNet
 
                 return obj;
             }
+        }
+
+        private async Task AccessApiAsyncImpl(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
+        {
+            await SendRequestAsync(type, uri, FormatParameters(param), headers).ConfigureAwait(false);
         }
 
         private IEnumerable<KeyValuePair<string, object>> FormatParameters(IEnumerable<KeyValuePair<string, object>> param)

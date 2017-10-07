@@ -21,7 +21,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Account> IdAsync(params Expression<Func<string, object>>[] parameters)
         {
             return Tokens.AccessParameterReservedApiAsync<Account>(MethodType.Get, "accounts/{id}", "id", Utils.ExpressionToDictionary(parameters));
         }
@@ -36,7 +36,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> GetAsync(IDictionary<string, object> parameters)
+        public Task<Account> IdAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessParameterReservedApiAsync<Account>(MethodType.Get, "accounts/{id}", "id", parameters);
         }
@@ -44,7 +44,7 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Returns a representation of the requesting user if authentication was successful.</para>
         /// <para>Available parameters:</para>
-        /// <para>- No parameters avaiable in this method.</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Returns a representation of the requesting user if authentication was successful.</para>
         /// <para>Available parameters:</para>
-        /// <para>- No parameters avaiable in this method.</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

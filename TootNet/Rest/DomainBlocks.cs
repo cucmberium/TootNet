@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using TootNet.Internal;
 using TootNet.Objects;
 
 namespace TootNet.Rest
 {
-    public class FollowRequests : ApiBase
+    public class DomainBlocks : ApiBase
     {
-        internal FollowRequests(Tokens e) : base(e) { }
+        internal DomainBlocks(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns current account's follow requests.</para>
+        /// <para>Returns blocked domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -22,15 +21,15 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns list of string.</para>
         /// </returns>
-        public Task<Linked<Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<string>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Account>>(MethodType.Get, "follow_requests", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Linked<string>>(MethodType.Get, "domain_blocks", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Returns current account's follow requests.</para>
+        /// <para>Returns blocked domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -39,71 +38,71 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns list of string.</para>
         /// </returns>
-        public Task<Linked<Account>> GetAsync(IDictionary<string, object> parameters)
+        public Task<Linked<string>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Account>>(MethodType.Get, "follow_requests", parameters);
+            return Tokens.AccessApiAsync<Linked<string>>(MethodType.Get, "domain_blocks", parameters);
         }
 
         /// <summary>
-        /// <para>Authorize follow requests.</para>
+        /// <para>Block target domain.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>string</c> domain (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns empty object.</para>
         /// </returns>
-        public Task AuthorizeAsync(params Expression<Func<string, object>>[] parameters)
+        public Task PostAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/authorize", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync(MethodType.Post, "domain_blocks", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Authorize follow requests.</para>
+        /// <para>Block target domain.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>string</c> domain (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns empty object.</para>
         /// </returns>
-        public Task AuthorizeAsync(IDictionary<string, object> parameters)
+        public Task PostAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/authorize", "id", parameters);
+            return Tokens.AccessApiAsync(MethodType.Post, "domain_blocks", parameters);
         }
 
         /// <summary>
-        /// <para>Reject follow requests.</para>
+        /// <para>Delete blocked target domain.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>string</c> domain (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns empty object.</para>
         /// </returns>
-        public Task RejectAsync(params Expression<Func<string, object>>[] parameters)
+        public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/reject", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync(MethodType.Delete, "domain_blocks", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Reject follow requests.</para>
+        /// <para>Delete blocked target domain.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>string</c> domain (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns empty object.</para>
         /// </returns>
-        public Task RejectAsync(IDictionary<string, object> parameters)
+        public Task DeleteAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/reject", "id", parameters);
+            return Tokens.AccessApiAsync(MethodType.Delete, "domain_blocks", parameters);
         }
     }
 }
