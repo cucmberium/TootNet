@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,9 +8,26 @@ using TootNet.Rest;
 
 namespace TootNet
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Represents a linked message object.
+    /// </summary>
+    public class Linked<T> : List<T>
+    {
+        /// <summary>
+        /// Gets or sets the max id.
+        /// </summary>
+        public long MaxId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the since id.
+        /// </summary>
+        public long SinceId { get; set; }
+    }
+
     public class Tokens : TokensBase
     {
-        public Tokens(string instance, string accessToken, string clientId = null, string clientSecret = null) : base()
+        public Tokens(string instance, string accessToken, string clientId = null, string clientSecret = null)
         {
             Instance = instance;
             AccessToken = accessToken;
@@ -21,12 +39,7 @@ namespace TootNet
         /// Accounts
         /// </summary>
         public Accounts Accounts => new Accounts(this);
-
-        /// <summary>
-        /// Apps
-        /// </summary>
-        public Apps Apps => new Apps(this);
-
+        
         /// <summary>
         /// Blocks
         /// </summary>
@@ -109,6 +122,8 @@ namespace TootNet
                         return await Request.HttpPostAsync(httpClient, uri, param, headers);
                     case MethodType.Delete:
                         return await Request.HttpDeleteAsync(httpClient, uri, param, headers);
+                    case MethodType.Patch:
+                        return await Request.HttpPatchAsync(httpClient, uri, param, headers);
                 }
             }
 
@@ -153,12 +168,28 @@ namespace TootNet
 
         private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null) where T : class
         {
-            using (var response = await SendRequestAsync(type, uri, param, headers).ConfigureAwait(false))
+            using (var response = await SendRequestAsync(type, uri, FormatParameters(param), headers).ConfigureAwait(false))
             {
                 var json = await response.GetResponseStringAsync();
                 var obj = Converter.Convert<T>(json);
 
                 return obj;
+            }
+        }
+
+        private IEnumerable<KeyValuePair<string, object>> FormatParameters(IEnumerable<KeyValuePair<string, object>> param)
+        {
+            foreach (var p in param)
+            {
+                if (p.Value is IEnumerable v)
+                {
+                    foreach (var x in v.Cast<string>())
+                        yield return new KeyValuePair<string, object>(p.Key + "[]", x);
+                }
+                else
+                {
+                    yield return p;
+                }
             }
         }
     }

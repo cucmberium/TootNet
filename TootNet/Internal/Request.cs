@@ -12,6 +12,7 @@ namespace TootNet.Internal
         Get = 0,
         Post = 1,
         Delete = 2,
+        Patch = 3,
     }
 
     public class AsyncResponse : IDisposable
@@ -96,6 +97,41 @@ namespace TootNet.Internal
 
             var uri = param == null ? url : Utils.CreateUrlParameter(url, param);
             var response = await httpClient.DeleteAsync(uri).ConfigureAwait(false);
+            var asyncResponse = new AsyncResponse(response);
+
+            return asyncResponse;
+        }
+
+        internal static async Task<AsyncResponse> HttpPatchAsync(HttpClient httpClient, string url, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
+        {
+            if (headers != null)
+                foreach (var header in headers)
+                    httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+
+            var httpContent = new MultipartFormDataContent();
+            foreach (var x in param)
+            {
+                var valueStream = x.Value as Stream;
+                var valueBytes = x.Value as IEnumerable<byte>;
+
+                var fileName = "file";
+
+                if (valueStream != null)
+                    httpContent.Add(new StreamContent(valueStream), x.Key, fileName);
+                else if (valueBytes != null)
+                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, fileName);
+                else
+                    httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
+            }
+
+            var httpMethod = new HttpMethod("PATCH");
+            var message = new HttpRequestMessage(httpMethod, url)
+            {
+                Content = httpContent
+            };
+
+            var uri = url;
+            var response = await httpClient.SendAsync(message).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
             return asyncResponse;
