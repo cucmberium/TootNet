@@ -1,11 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using TootNet.Internal;
 
 namespace TootNet.Objects
 {
     public class Notification : BaseObject
     {
         [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
         public int Id { get; set; }
 
         [JsonProperty("type")]

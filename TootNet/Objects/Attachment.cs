@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
+using TootNet.Internal;
 
 namespace TootNet.Objects
 {
     public class Attachment : BaseObject
     {
         [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
 
         [JsonProperty("type")]

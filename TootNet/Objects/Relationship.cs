@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
 using Newtonsoft.Json;
+using TootNet.Internal;
 
 namespace TootNet.Objects
 {
     public class Relationship : BaseObject
     {
         [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
 
         [JsonProperty("following")]

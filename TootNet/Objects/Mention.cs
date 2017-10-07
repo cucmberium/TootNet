@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using TootNet.Internal;
 
 namespace TootNet.Objects
 {
@@ -14,6 +15,7 @@ namespace TootNet.Objects
         public string Acct { get; set; }
 
         [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
     }
 }

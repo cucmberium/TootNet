@@ -15,12 +15,12 @@ namespace TootNet
         /// </summary>
         public bool UseProxy { get; set; } = true;
 
-        internal HttpClient GetHttpClient()
+        internal HttpClient GetHttpClient(bool decompression = true)
         {
             var httpClientHandler = new HttpClientHandler
             {
                 UseProxy = UseProxy,
-                AutomaticDecompression = DecompressionMethods.GZip
+                AutomaticDecompression = decompression ? DecompressionMethods.GZip : DecompressionMethods.None
             };
 
             var httpClient = new HttpClient(httpClientHandler);
