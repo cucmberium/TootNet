@@ -49,7 +49,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var statuses = await tokens.Timelines.TagAsync(hashtag => "#pixiv", limit => 10);
+            var statuses = await tokens.Timelines.TagAsync(hashtag => "pixiv", limit => 10);
 
             Assert.Equal(statuses.Count, 10);
             foreach (var status in statuses)
