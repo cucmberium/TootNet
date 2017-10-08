@@ -23,9 +23,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns list of status object.</para>
         /// </returns>
-        public Task<Linked<Statuses>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<Status>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Statuses>>(MethodType.Get, "favourites", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "favourites", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns list of status object.</para>
         /// </returns>
-        public Task<Linked<Statuses>> GetAsync(IDictionary<string, object> parameters)
+        public Task<Linked<Status>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Statuses>>(MethodType.Get, "favourites", parameters);
+            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "favourites", parameters);
         }
     }
 }

@@ -4,27 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TootNet.Internal;
+using TootNet.Objects;
 using TootNet.Rest;
 
 namespace TootNet
 {
-    /// <inheritdoc />
-    /// <summary>
-    /// Represents a linked message object.
-    /// </summary>
-    public class Linked<T> : List<T>
-    {
-        /// <summary>
-        /// Gets or sets the max id.
-        /// </summary>
-        public long MaxId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the since id.
-        /// </summary>
-        public long SinceId { get; set; }
-    }
-
     public class Tokens : TokensBase
     {
         public Tokens(string instance, string accessToken, string clientId = null, string clientSecret = null)
@@ -117,7 +101,7 @@ namespace TootNet
         /// </returns>
         public async Task<AsyncResponse> SendRequestAsync(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
         {
-            using (var httpClient = ConnectionOptions.GetHttpClient())
+            using (var httpClient = ConnectionOptions.GetHttpClient(AccessToken))
             {
                 switch (type)
                 {
@@ -147,7 +131,7 @@ namespace TootNet
         /// </returns>
         public Task<T> AccessApiAsync<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null) where T : class
         {
-            return AccessApiAsyncImpl<T>(type, ConstructUri(uri), param, headers);
+            return AccessApiAsyncImpl<T>(type, uri, param, headers);
         }
 
         /// <summary>
@@ -183,7 +167,7 @@ namespace TootNet
         /// </returns>
         public Task AccessApiAsync(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
         {
-            return AccessApiAsyncImpl(type, ConstructUri(uri), param, headers);
+            return AccessApiAsyncImpl(type, uri, param, headers);
         }
 
         /// <summary>
@@ -209,10 +193,17 @@ namespace TootNet
 
         private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null) where T : class
         {
-            using (var response = await SendRequestAsync(type, uri, FormatParameters(param), headers).ConfigureAwait(false))
+            using (var response = await SendRequestAsync(type, ConstructUri(uri), FormatParameters(param), headers).ConfigureAwait(false))
             {
                 var json = await response.GetResponseStringAsync();
                 var obj = Converter.Convert<T>(json);
+
+                if (obj is IBaseObject baseObject)
+                    baseObject.RawJson = json;
+
+                if (obj is ILinked linked)
+                {
+                }
 
                 return obj;
             }
@@ -220,16 +211,16 @@ namespace TootNet
 
         private async Task AccessApiAsyncImpl(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
         {
-            await SendRequestAsync(type, uri, FormatParameters(param), headers).ConfigureAwait(false);
+            await SendRequestAsync(type, ConstructUri(uri), FormatParameters(param), headers).ConfigureAwait(false);
         }
 
         private IEnumerable<KeyValuePair<string, object>> FormatParameters(IEnumerable<KeyValuePair<string, object>> param)
         {
             foreach (var p in param)
             {
-                if (p.Value is IEnumerable v)
+                if (p.Value is IEnumerable v && !(p.Value is string))
                 {
-                    foreach (var x in v.Cast<string>())
+                    foreach (var x in v.Cast<object>().Select(y => y.ToString()))
                         yield return new KeyValuePair<string, object>(p.Key + "[]", x);
                 }
                 else

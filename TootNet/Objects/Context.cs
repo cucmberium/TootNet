@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TootNet.Objects
 {
-    class Context : BaseObject
+    public class Context : BaseObject
     {
         [JsonProperty("ancestors")]
         public IEnumerable<Status> Ancestors { get; set; }

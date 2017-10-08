@@ -24,9 +24,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the notifications object.</para>
         /// </returns>
-        public Task<Linked<Notifications>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<Notification>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Notifications>>(MethodType.Get, "notifications", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Linked<Notification>>(MethodType.Get, "notifications", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -41,9 +41,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the notifications object.</para>
         /// </returns>
-        public Task<Linked<Notifications>> GetAsync(IDictionary<string, object> parameters)
+        public Task<Linked<Notification>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Notifications>>(MethodType.Get, "notifications", parameters);
+            return Tokens.AccessApiAsync<Linked<Notification>>(MethodType.Get, "notifications", parameters);
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the notifications object.</para>
         /// </returns>
-        public Task<Notifications> IdAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Notification> IdAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Notifications>(MethodType.Get, "notifications/{id}", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<Notification>(MethodType.Get, "notifications/{id}", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the notifications object.</para>
         /// </returns>
-        public Task<Notifications> IdAsync(IDictionary<string, object> parameters)
+        public Task<Notification> IdAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Notifications>(MethodType.Get, "notifications/{id}", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<Notification>(MethodType.Get, "notifications/{id}", "id", parameters);
         }
 
         /// <summary>

@@ -47,6 +47,9 @@ namespace TootNet.Objects
         [JsonProperty("favourited")]
         public bool? Favourited { get; set; }
 
+        [JsonProperty("muted")]
+        public bool? Muted { get; set; }
+
         [JsonProperty("sensitive")]
         public bool? Sensitive { get; set; }
 

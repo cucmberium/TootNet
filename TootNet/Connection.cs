@@ -15,16 +15,18 @@ namespace TootNet
         /// </summary>
         public bool UseProxy { get; set; } = true;
 
-        internal HttpClient GetHttpClient(bool decompression = true)
+        internal HttpClient GetHttpClient(string accessToken = null, bool decompression = true)
         {
             var httpClientHandler = new HttpClientHandler
             {
-                UseProxy = UseProxy,
+                UseProxy = false,
                 AutomaticDecompression = decompression ? DecompressionMethods.GZip : DecompressionMethods.None
             };
 
             var httpClient = new HttpClient(httpClientHandler);
             httpClient.DefaultRequestHeaders.Add("User-Agent", UserAgent);
+            if (!string.IsNullOrWhiteSpace(accessToken))
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
             return httpClient;
         }

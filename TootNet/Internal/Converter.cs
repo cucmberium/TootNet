@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using TootNet.Exception;
+using TootNet.Objects;
 
 namespace TootNet.Internal
 {
@@ -59,6 +62,14 @@ namespace TootNet.Internal
     {
         public static T Convert<T>(string json) where T : class
         {
+            var parsed = JToken.Parse(json);
+            if (parsed.Any(x => x is JProperty jp && jp.Name == "error"))
+            {
+                var error = parsed.ToObject<Error>();
+                error.RawJson = json;
+                throw new MastodonException(error);
+            }
+
             return JToken.Parse(json).ToObject<T>();
         }
     }

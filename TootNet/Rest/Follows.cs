@@ -22,7 +22,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns account object.</para>
         /// </returns>
-        public Task<Account> FollowAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Account> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
             return Tokens.AccessApiAsync<Account>(MethodType.Post, "follows", Utils.ExpressionToDictionary(parameters));
         }
@@ -37,7 +37,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns account object.</para>
         /// </returns>
-        public Task<Account> FollowAsync(IDictionary<string, object> parameters)
+        public Task<Account> PostAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessApiAsync<Account>(MethodType.Post, "follows", parameters);
         }

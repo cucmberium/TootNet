@@ -56,7 +56,7 @@ namespace TootNet.Internal
             var uri = param == null ? url : Utils.CreateUrlParameter(url, param);
             var response = await httpClient.GetAsync(uri).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
-            
+
             return asyncResponse;
         }
 
@@ -129,8 +129,7 @@ namespace TootNet.Internal
             {
                 Content = httpContent
             };
-
-            var uri = url;
+            
             var response = await httpClient.SendAsync(message).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 

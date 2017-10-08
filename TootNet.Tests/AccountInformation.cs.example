@@ -1,0 +1,11 @@
+﻿
+namespace TootNet.Tests
+{
+    public static class AccountInformation
+    {
+        private const string Instance = "mstdn.jp";
+        private const string ClientId = "";
+        private const string ClientSecret = "";
+        private const string AccessToken = "";
+    }
+}
