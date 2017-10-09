@@ -305,3 +305,4 @@ __pycache__/
 OpenCover/
 
 AccountInformation.cs
+nuget.exe
