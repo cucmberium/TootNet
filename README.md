@@ -83,6 +83,7 @@ This library uses part of the codes of the following libraries.
 
 #### Mastonet
 
+```
 MIT License
 
 Copyright (c) 2017 Guillaume Lacasa
@@ -104,9 +105,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+[https://github.com/glacasa/Mastonet/blob/master/LICENSE](https://github.com/glacasa/Mastonet/blob/master/LICENSE)
 
 #### CoreTweet
 
+```
 The MIT License (MIT)
 
 CoreTweet - A .NET Twitter Library supporting Twitter API 1.1
@@ -129,6 +134,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+```
+
+[https://github.com/CoreTweet/CoreTweet/blob/master/LICENSE](https://github.com/CoreTweet/CoreTweet/blob/master/LICENSE)
 
 ### Other
 
