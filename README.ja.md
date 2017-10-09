@@ -1,5 +1,7 @@
 ﻿# TootNet
 
+ [![NuGetBadge](https://img.shields.io/nuget/v/TootNet.svg)](https://www.nuget.org/packages/TootNet)
+
 TootNet は.NET Standard向けのマストドンライブラリです。
 
 ### Sample

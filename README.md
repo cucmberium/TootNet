@@ -1,5 +1,7 @@
 ﻿# TootNet
 
+ [![NuGetBadge](https://img.shields.io/nuget/v/TootNet.svg)](https://www.nuget.org/packages/TootNet)
+
 日本語のREADMEは[こちら](https://github.com/cucmberium/TootNet/tree/master/README.ja.md)
 
 TootNet is Mastodon library for .NET Standard.
