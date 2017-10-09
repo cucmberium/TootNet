@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 using TootNet.Internal;
 using TootNet.Objects;
 using TootNet.Rest;
+using TootNet.Streaming;
 
 namespace TootNet
 {
@@ -88,6 +91,11 @@ namespace TootNet
         /// Timelines
         /// </summary>
         public Timelines Timelines => new Timelines(this);
+
+        /// <summary>
+        /// Streaming
+        /// </summary>
+        public StreamingApi Streaming => new StreamingApi(this);
 
         /// <summary>
         /// <para>Send request to target uri.</para>
@@ -203,6 +211,18 @@ namespace TootNet
 
                 if (obj is ILinked linked)
                 {
+                    if (response.Source.Headers.Any(x => x.Key == "Link"))
+                    {
+                        var linkInfo = response.Source.Headers.First(x => x.Key == "Link").Value.First();
+                        foreach (var match in linkInfo.Split(',').Select(x =>
+                            Regex.Match(x, "<http.+[?&](max_id|since_id)=(\\d+).*>;\\s*rel=\".{4}\"")))
+                        {
+                            if (match.Groups[1].ToString() == "max_id")
+                                linked.MaxId = long.Parse(match.Groups[2].ToString());
+                            else if (match.Groups[1].ToString() == "since_id")
+                                linked.SinceId = long.Parse(match.Groups[2].ToString());
+                        }
+                    }
                 }
 
                 return obj;

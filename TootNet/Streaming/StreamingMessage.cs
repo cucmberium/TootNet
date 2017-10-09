@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TootNet.Objects;
+﻿using TootNet.Objects;
 
 namespace TootNet.Streaming
 {

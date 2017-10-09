@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace TootNet.Internal
 {
     public class TokensBase
@@ -42,8 +39,11 @@ namespace TootNet.Internal
         /// </summary>
         public string AccessToken { get; set; }
 
-        protected string ConstructUri(string route)
+        protected string ConstructUri(string route, bool useApiPath = true)
         {
+            if (!useApiPath)
+                return "https://" + Instance + "/" + route;
+
             return "https://" + Instance + ApiPath + route;
         }
     }

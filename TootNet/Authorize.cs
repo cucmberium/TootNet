@@ -48,8 +48,6 @@ namespace TootNet
 
     public class Authorize : TokensBase
     {
-        public Authorize() { }
-        
         /// <summary>
         /// Gets or sets the scope.
         /// </summary>
@@ -79,7 +77,7 @@ namespace TootNet
                 param.Add(new KeyValuePair<string, object>("website", website));
             
             var httpClient = ConnectionOptions.GetHttpClient();
-            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/api/v1/apps"), param).ConfigureAwait(false);
+            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("apps"), param).ConfigureAwait(false);
             var app = Converter.Convert<RegistApp>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             ClientId = app.ClientId;
@@ -105,7 +103,7 @@ namespace TootNet
             };
 
             var httpClient = ConnectionOptions.GetHttpClient();
-            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token"), param).ConfigureAwait(false);
+            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
             var auth = Converter.Convert<Auth>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             AccessToken = auth.AccessToken;
@@ -130,7 +128,7 @@ namespace TootNet
             };
 
             var httpClient = ConnectionOptions.GetHttpClient();
-            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token"), param).ConfigureAwait(false);
+            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
             var auth = Converter.Convert<Auth>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             AccessToken = auth.AccessToken;
@@ -142,7 +140,7 @@ namespace TootNet
         /// </summary>
         /// <param name="redirectUri">Redirect uri.</param>
         /// <returns>Authorize uri.</returns>
-        public string GetAuthorizeUri(string redirectUri = null)
+        public string GetAuthorizeUri(string redirectUri = "urn:ietf:wg:oauth:2.0:oob")
         {
             return $"https://{Instance}/oauth/authorize?" +
                    $"response_type=code&" +

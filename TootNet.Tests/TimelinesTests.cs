@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using TootNet.Exception;
+﻿using System.Threading.Tasks;
 using Xunit;
 
 namespace TootNet.Tests

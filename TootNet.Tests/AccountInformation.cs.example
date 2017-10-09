@@ -3,9 +3,16 @@ namespace TootNet.Tests
 {
     public static class AccountInformation
     {
-        private const string Instance = "mstdn.jp";
-        private const string ClientId = "";
-        private const string ClientSecret = "";
-        private const string AccessToken = "";
+        public const string Instance = "mstdn.jp";
+        public const string Username = "";
+        public const string Password = "";
+        public const string ClientId = "";
+        public const string ClientSecret = "";
+        public const string AccessToken = "";
+
+		public static Tokens GetTokens()
+        {
+            return new Tokens(Instance, AccessToken, ClientId, ClientSecret);
+        }
     }
 }

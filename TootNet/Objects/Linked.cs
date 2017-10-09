@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace TootNet.Objects
@@ -14,13 +12,13 @@ namespace TootNet.Objects
         /// Gets or sets the max id.
         /// </summary>
         [JsonIgnore]
-        public long MaxId { get; set; }
+        public long? MaxId { get; set; }
 
         /// <summary>
         /// Gets or sets the since id.
         /// </summary>
         [JsonIgnore]
-        public long SinceId { get; set; }
+        public long? SinceId { get; set; }
 
         /// <summary>
         /// Gets or sets the raw json.
@@ -31,8 +29,8 @@ namespace TootNet.Objects
 
     interface ILinked
     {
-        long MaxId { get; set; }
+        long? MaxId { get; set; }
         
-        long SinceId { get; set; }
+        long? SinceId { get; set; }
     }
 }

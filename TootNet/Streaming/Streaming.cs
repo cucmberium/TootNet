@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Text;
+using System.Linq.Expressions;
 using System.Threading;
 using Newtonsoft.Json;
+using TootNet.Internal;
 using TootNet.Objects;
 
 namespace TootNet.Streaming
@@ -12,18 +12,95 @@ namespace TootNet.Streaming
     public enum StreamingType
     {
         User = 0,
-        Tag = 1,
+        Hashtag = 1,
         Public = 2
     }
 
-    public class StreamingObservable : IObservable<StreamingMessage>
+    public class StreamingApi : ApiBase
+    {
+        internal StreamingApi(Tokens e) : base(e) { }
+
+        /// <summary>
+        /// Streams messages for a hashtag timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> tag (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> HashtagAsObservable(params Expression<Func<string, object>>[] parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.Hashtag, Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// Streams messages for a hashtag timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> tag (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> HashtagAsObservable(IDictionary<string, object> parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.Hashtag, parameters);
+        }
+
+        /// <summary>
+        /// Streams messages for a hashtag timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> tag (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> PublicAsObservable(params Expression<Func<string, object>>[] parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.Public, Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// Streams messages for a public timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> PublicAsObservable(IDictionary<string, object> parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.Public, parameters);
+        }
+
+        /// <summary>
+        /// Streams messages for a single user.
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> UserAsObservable(params Expression<Func<string, object>>[] parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.User, Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// Streams messages for a single user.
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> UserAsObservable(IDictionary<string, object> parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.User, parameters);
+        }
+    }
+
+    internal class StreamingObservable : IObservable<StreamingMessage>
     {
         public StreamingObservable(Tokens tokens, StreamingType type,
             IDictionary<string, object> parameters = null)
         {
-            this._tokens = tokens;
-            this._type = type;
-            this._parameters = parameters;
+            _tokens = tokens;
+            _type = type;
+            _parameters = parameters;
         }
 
         private readonly Tokens _tokens;
@@ -39,10 +116,8 @@ namespace TootNet.Streaming
                 case StreamingType.User:
                     conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/user");
                     break;
-                case StreamingType.Tag:
-                    conn.Start(observer, _tokens,
-                        "https://" + streamingUrl + "/api/v1/streaming/hashtag" + "?tag=" +
-                        _parameters["track"]);
+                case StreamingType.Hashtag:
+                    conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/hashtag" + "?tag=" + _parameters["tag"]);
                     break;
                 case StreamingType.Public:
                     var publicStreamingUrl = "https://" + streamingUrl + "/api/v1/streaming/public";
@@ -56,19 +131,18 @@ namespace TootNet.Streaming
         }
     }
 
-    public class StreamingConnection : IDisposable
+    internal class StreamingConnection : IDisposable
     {
         private readonly CancellationTokenSource _cancel = new CancellationTokenSource();
 
         public async void Start(IObserver<StreamingMessage> observer, Tokens tokens, string url)
         {
-            var token = this._cancel.Token;
+            var token = _cancel.Token;
             try
             {
-                using (var client = new HttpClient())
+                using (var client = tokens.ConnectionOptions.GetHttpClient(tokens.AccessToken, false))
                 using (token.Register(client.Dispose))
                 {
-                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokens.AccessToken);
                     using (var stream = await client.GetStreamAsync(url))
                     using (token.Register(stream.Dispose))
                     using (var reader = new StreamReader(stream))
@@ -123,13 +197,7 @@ namespace TootNet.Streaming
 
         public void Dispose()
         {
-            try
-            {
-                _cancel.Cancel();
-            }
-            catch
-            {
-            }
+            _cancel.Cancel();
         }
     }
 }

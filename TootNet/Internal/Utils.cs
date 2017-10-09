@@ -11,7 +11,7 @@ namespace TootNet.Internal
         internal static string CreateUrlParameter(string url, IEnumerable<KeyValuePair<string, object>> param)
         {
             var uri = url;
-            if (param.Count() > 0)
+            if (param.Any())
             {
                 uri += "?" + string.Join("&",
                     param.Select(
