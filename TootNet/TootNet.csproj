@@ -1,7 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <Description>TootNet is Mastodon library for .NET Standard.
+See also: https://github.com/cucmberium/TootNet
+
+This software is licensed under the MIT License.
+This library uses part of the codes of the following libraries.
+- Mastonet
+- CoreTweet</Description>
+    <Company />
+    <Authors>cucmberium</Authors>
+    <PackageProjectUrl>https://github.com/cucmberium/TootNet</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/cucmberium/TootNet/blob/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>(c) 2017 cucmberium</Copyright>
+    <RepositoryUrl>https://github.com/cucmberium/TootNet</RepositoryUrl>
+    <PackageTags>Mastodon</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
