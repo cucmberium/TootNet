@@ -1,5 +1,4 @@
 ﻿# TootNet
---
 
 TootNet は.NET Standard向けのマストドンライブラリです。
 
