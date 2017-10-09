@@ -1,16 +1,14 @@
 ﻿# TootNet
 --
 
-日本語のREADMEは[こちら](https://github.com/cucmberium/TootNet/tree/master/README.ja.md)
-
-TootNet is Mastodon library for .NET Standard.
+TootNet は.NET Standard向けのマストドンライブラリです。
 
 ### Sample
 
-You can see example at [TootNet test code](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests).
-Official api list is available [here](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md).
+[テストコード](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests)を参照することでTootNetで使えるすべてのAPIが参照できます。
+公式のAPIドキュメントと対応が取れているので[こちら](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md)もご参照ください。
 
-Authorizing:
+認証:
 ```cs
 // Create new app
 var authorize = new Authorize();
@@ -26,7 +24,7 @@ var tokens = await authorize.AuthorizeWithCode(code);
 var tokens = await authorize.AuthorizeWithEmail("username", "password");
 ```
 
-Tooting:
+トゥート:
 ```cs
 using (var fs = new FileStream(@"./picture.png", FileMode.Open, FileAccess.Read))
 {
@@ -36,7 +34,7 @@ using (var fs = new FileStream(@"./picture.png", FileMode.Open, FileAccess.Read)
 }
 ```
 
-Getting timelines:
+タイムラインの取得:
 ```cs
 var statuses = await tokens.Timelines.HomeAsync(limit => 10);
 
@@ -45,7 +43,7 @@ foreach (var status in statuses)
 ```
 
 
-Streaming using reactive extensions:
+ReactiveExtensionsを用いたストリーミング:
 ```cs
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -64,7 +62,8 @@ await Task.Delay(TimeSpan.FromSeconds(30));
 disposable.Dispose();
 ```
 
-You can easily use API by official documentation and parameter suggestion by VisualStudio.
+VisualStudioによるドキュメントのサジェストと公式のドキュメントを組み合わせることで、
+すべてのAPIにアクセスすることが可能です。
 
 ### Platforms
 
@@ -74,10 +73,10 @@ You can easily use API by official documentation and parameter suggestion by Vis
 
 This software is licensed under the MIT License.
 
-This library uses part of the codes of the following libraries.
+このライブラリでは以下のライブラリの一部のコードを使用しています。
 * Mastonet
 * CoreTweet
 
 ### Other
 
-Pull requests are welcome!
+プルリクエストはいつでも歓迎してます
