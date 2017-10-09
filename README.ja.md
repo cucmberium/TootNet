@@ -4,9 +4,12 @@
 
 TootNet は.NET Standard向けのマストドンライブラリです。
 
+このライブラリはTwitterライブラリの[CoreTweet](https://github.com/CoreTweet/CoreTweet)と同じようにAPIにアクセスできるように設計されています。
+
 ### Sample
 
 [テストコード](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests)を参照することでTootNetで使えるすべてのAPIが参照できます。
+
 公式のAPIドキュメントと対応が取れているので[こちら](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md)もご参照ください。
 
 認証:
@@ -63,8 +66,7 @@ await Task.Delay(TimeSpan.FromSeconds(30));
 disposable.Dispose();
 ```
 
-VisualStudioによるドキュメントのサジェストと公式のドキュメントを組み合わせることで、
-すべてのAPIにアクセスすることが可能です。
+VisualStudioによるドキュメントのサジェストと公式のドキュメントを組み合わせることですべてのAPIにアクセスすることが可能です。
 
 ### Platforms
 
@@ -75,9 +77,9 @@ VisualStudioによるドキュメントのサジェストと公式のドキュ�
 This software is licensed under the MIT License.
 
 このライブラリでは以下のライブラリの一部のコードを使用しています。
-* Mastonet
-* CoreTweet
+* [Mastonet](https://github.com/glacasa/Mastonet)
+* [CoreTweet](https://github.com/CoreTweet/CoreTweet)
 
 ### Other
 
-プルリクエストはいつでも歓迎してます
+プルリクエストはいつでも歓迎です！

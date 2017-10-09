@@ -6,6 +6,8 @@
 
 TootNet is Mastodon library for .NET Standard.
 
+This library is designed to access the API just like the Twitter library [CoreTweet](https://github.com/CoreTweet/CoreTweet).
+
 ### Sample
 
 You can see example at [TootNet test code](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests).
@@ -76,8 +78,8 @@ You can easily use API by official documentation and parameter suggestion by Vis
 This software is licensed under the MIT License.
 
 This library uses part of the codes of the following libraries.
-* Mastonet
-* CoreTweet
+* [Mastonet](https://github.com/glacasa/Mastonet)
+* [CoreTweet](https://github.com/CoreTweet/CoreTweet)
 
 ### Other
 
