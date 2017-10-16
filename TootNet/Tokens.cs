@@ -238,6 +238,9 @@ namespace TootNet
         {
             foreach (var p in param)
             {
+                if (p.Value == null)
+                    continue;
+
                 if (p.Value is IEnumerable v && !(p.Value is string))
                 {
                     foreach (var x in v.Cast<object>().Select(y => y.ToString()))
