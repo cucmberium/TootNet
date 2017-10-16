@@ -17,7 +17,12 @@ This library uses part of the codes of the following libraries.
     <Copyright>(c) 2017 cucmberium</Copyright>
     <RepositoryUrl>https://github.com/cucmberium/TootNet</RepositoryUrl>
     <PackageTags>Mastodon</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="nuget.exe" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
