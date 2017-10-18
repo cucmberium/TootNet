@@ -31,19 +31,17 @@ namespace TootNet.Internal
         /// <returns>The object value.</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            long value;
             switch (reader.TokenType)
             {
                 case JsonToken.String:
-                    value = long.Parse(reader.Value.ToString());
-                    break;
+                    return long.Parse(reader.Value.ToString());
                 case JsonToken.Integer:
-                    value = (long)reader.Value;
-                    break;
+                    return (long)reader.Value;
+                case JsonToken.Null:
+                    return null;
                 default:
                     throw new InvalidOperationException("This object is not a timestamp");
             }
-            return value;
         }
 
         /// <summary>
