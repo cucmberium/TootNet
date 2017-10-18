@@ -21,10 +21,12 @@ namespace TootNet.Objects
         public Account Account { get; set; }
 
         [JsonProperty("in_reply_to_id")]
-        public int? InReplyToId { get; set; }
+        [JsonConverter(typeof(IdConverter))]
+        public long? InReplyToId { get; set; }
 
         [JsonProperty("in_reply_to_account_id")]
-        public int? InReplyToAccountId { get; set; }
+        [JsonConverter(typeof(IdConverter))]
+        public long? InReplyToAccountId { get; set; }
 
         [JsonProperty("reblog")]
         public Status Reblog { get; set; }
