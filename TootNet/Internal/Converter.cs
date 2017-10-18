@@ -40,7 +40,7 @@ namespace TootNet.Internal
                 case JsonToken.Null:
                     return null;
                 default:
-                    throw new InvalidOperationException("This object is not a timestamp");
+                    throw new InvalidOperationException("This object is not convertable");
             }
         }
 
