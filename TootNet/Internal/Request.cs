@@ -71,13 +71,11 @@ namespace TootNet.Internal
             {
                 var valueStream = x.Value as Stream;
                 var valueBytes = x.Value as IEnumerable<byte>;
-
-                var fileName = "file";
                 
                 if (valueStream != null)
-                    httpContent.Add(new StreamContent(valueStream), x.Key, fileName);
+                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
                 else if (valueBytes != null)
-                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, fileName);
+                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
                 else
                     httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
             }
@@ -113,13 +111,11 @@ namespace TootNet.Internal
             {
                 var valueStream = x.Value as Stream;
                 var valueBytes = x.Value as IEnumerable<byte>;
-
-                var fileName = "file";
-
+                
                 if (valueStream != null)
-                    httpContent.Add(new StreamContent(valueStream), x.Key, fileName);
+                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
                 else if (valueBytes != null)
-                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, fileName);
+                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
                 else
                     httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
             }
