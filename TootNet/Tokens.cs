@@ -211,9 +211,9 @@ namespace TootNet
 
                 if (obj is ILinked linked)
                 {
-                    if (response.Source.Headers.Any(x => x.Key == "Link"))
+                    if (response.Source.Headers.Any(x => x.Key.ToLower() == "link"))
                     {
-                        var linkInfo = response.Source.Headers.First(x => x.Key == "Link").Value.First();
+                        var linkInfo = response.Source.Headers.First(x => x.Key.ToLower() == "link").Value.First();
                         foreach (var match in linkInfo.Split(',').Select(x =>
                             Regex.Match(x, "<http.+[?&](max_id|since_id)=(\\d+).*>;\\s*rel=\".{4}\"")))
                         {
