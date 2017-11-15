@@ -22,11 +22,15 @@ namespace TootNet.Objects
         [JsonProperty("muting")]
         public bool Muting { get; set; }
 
-        [JsonProperty("muting_boosts", DefaultValueHandling = DefaultValueHandling.Populate)]
+        [JsonProperty("muting_boosts")]
         [DefaultValue(false)]
         public bool MutingBoosts { get; set; }
 
         [JsonProperty("requested")]
         public bool Requested { get; set; }
+
+        [JsonProperty("domain_blocking")]
+        [DefaultValue(false)]
+        public bool DomainBlocking { get; set; }
     }
 }

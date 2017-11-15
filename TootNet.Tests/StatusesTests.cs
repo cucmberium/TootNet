@@ -188,6 +188,31 @@ namespace TootNet.Tests
             Assert.False(reblogedStatus.Favourited);
         }
 
+
+        [Fact]
+        public async Task PinAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            await tokens.Statuses.PinAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            await tokens.Statuses.UnpinAsync(id => 45720257);
+        }
+
+        [Fact]
+        public async Task UnpinAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            await tokens.Statuses.PinAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            await tokens.Statuses.UnpinAsync(id => 45720257);
+        }
+
         [Fact]
         public async Task MuteAsyncTest()
         {

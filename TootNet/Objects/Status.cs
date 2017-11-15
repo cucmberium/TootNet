@@ -37,6 +37,9 @@ namespace TootNet.Objects
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
 
+        [JsonProperty("emojis")]
+        public IEnumerable<Emoji> Emojis { get; set; }
+
         [JsonProperty("reblogs_count")]
         public int ReblogsCount { get; set; }
 
@@ -72,5 +75,8 @@ namespace TootNet.Objects
 
         [JsonProperty("application")]
         public Application Application { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
     }
 }

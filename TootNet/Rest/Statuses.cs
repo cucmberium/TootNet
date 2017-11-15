@@ -363,6 +363,67 @@ namespace TootNet.Rest
             return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unfavourite", "id", parameters);
         }
 
+
+        /// <summary>
+        /// <para>Pin an status.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns status object.</para>
+        /// </returns>
+        public Task<Status> PinAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/pin", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Pin an status.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns status object.</para>
+        /// </returns>
+        public Task<Status> PinAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/pin", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Unpin an status.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns status object.</para>
+        /// </returns>
+        public Task<Status> UnpinAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unpin", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Unpin an status.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns status object.</para>
+        /// </returns>
+        public Task<Status> UnpinAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unpin", "id", parameters);
+        }
+
         /// <summary>
         /// <para>Mute an status.</para>
         /// <para>Available parameters:</para>

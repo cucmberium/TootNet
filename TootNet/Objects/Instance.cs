@@ -17,8 +17,10 @@ namespace TootNet.Objects
         [JsonProperty("email")]
         public string Email { get; set; }
         
-        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Populate)]
-        [DefaultValue(null)]
+        [JsonProperty("version")]
         public string Version { get; set; }
+        
+        [JsonProperty("urls")]
+        public StreamingApiInfo Urls { get; set; }
     }
 }

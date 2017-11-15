@@ -184,6 +184,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
+        /// <para>- <c>bool</c> pinned (optional)</para>
         /// <para>- <c>bool</c> exclude_replies (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -204,6 +205,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
+        /// <para>- <c>bool</c> pinned (optional)</para>
         /// <para>- <c>bool</c> exclude_replies (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
