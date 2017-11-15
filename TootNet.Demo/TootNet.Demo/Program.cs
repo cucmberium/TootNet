@@ -39,7 +39,7 @@ namespace TootNet.Demo
             while (true)
             {
                 Console.Write("command: ");
-                var command = Console.ReadLine().Trim().Split(' ');
+                var command = Console.ReadLine().Trim().Split(' ', 2);
                 switch (command.First().ToLower())
                 {
                     case "help":
@@ -61,8 +61,8 @@ namespace TootNet.Demo
                     case "toot":
                         if (command.Length <= 1)
                             break;
-
-                        var text = string.Join("", command.Skip(1)).Trim();
+                        
+                        var text = string.Join("", command[1]).Trim();
                         var post = await tokens.Statuses.PostAsync(status => text);
 
                         Console.WriteLine("--------------------");
