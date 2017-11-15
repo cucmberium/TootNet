@@ -10,7 +10,10 @@ This library is designed to access the API just like the Twitter library [CoreTw
 
 ### Sample
 
-You can see example at [TootNet test code](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests).
+The demo is available in [here](https://github.com/cucmberium/TootNet/tree/master/TootNet.Demo).
+
+You can also see example at [TootNet test code](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests).
+
 Official api list is available [here](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md).
 
 Authorizing:

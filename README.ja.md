@@ -8,7 +8,9 @@ TootNet は.NET Standard向けのマストドンライブラリです。
 
 ### Sample
 
-[テストコード](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests)を参照することでTootNetで使えるすべてのAPIが参照できます。
+[Demo](https://github.com/cucmberium/TootNet/tree/master/TootNet.Demo)が公開されているので基本的なAPIの使い方が学べます。
+
+また、[テストコード](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests)を参照することでTootNetで使えるすべてのAPIが参照できます。
 
 公式のAPIドキュメントと対応が取れているので[こちら](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md)もご参照ください。
 
