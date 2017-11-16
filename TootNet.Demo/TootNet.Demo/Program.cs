@@ -62,7 +62,8 @@ namespace TootNet.Demo
                         if (command.Length <= 1)
                             break;
                         
-                        var post = await tokens.Statuses.PostAsync(status => command[1].Trim());
+                        var text = command[1].Trim();
+                        var post = await tokens.Statuses.PostAsync(status => text);
 
                         Console.WriteLine("--------------------");
                         Console.WriteLine(post.Account.DisplayName + "\t\t" + post.Account.Acct);
