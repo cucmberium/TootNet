@@ -62,9 +62,7 @@ namespace TootNet.Demo
                         if (command.Length <= 1)
                             break;
                         
-                        var text = string.Join("", command[1]).Trim();
-                        var post = await tokens.Statuses.PostAsync(status => text);
-
+                        var post = await tokens.Statuses.PostAsync(status => command[1].Trim());
                         Console.WriteLine("--------------------");
                         Console.WriteLine(post.Account.DisplayName + "\t\t" + post.Account.Acct);
                         Console.WriteLine(TagRegex.Replace(post.Content.Replace("<br />", "\n"), "").Trim());
