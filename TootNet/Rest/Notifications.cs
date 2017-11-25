@@ -17,6 +17,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -34,6 +35,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
