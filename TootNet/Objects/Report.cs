@@ -7,7 +7,7 @@ namespace TootNet.Objects
     {
         [JsonProperty("id")]
         [JsonConverter(typeof(IdConverter))]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("action_taken")]
         public string ActionTaken { get; set; }
