@@ -176,7 +176,7 @@ namespace TootNet.Streaming
                                         observer.OnNext(new StreamingMessage(notification));
                                         break;
                                     case "delete":
-                                        var statusId = int.Parse(data);
+                                        var statusId = long.Parse(data);
                                         observer.OnNext(new StreamingMessage(statusId));
                                         break;
                                 }
