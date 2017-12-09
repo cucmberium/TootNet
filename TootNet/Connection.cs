@@ -15,7 +15,10 @@ namespace TootNet
         /// </summary>
         public bool UseProxy { get; set; } = true;
 
-        internal HttpClient GetHttpClient(string accessToken = null, bool decompression = true)
+        /// <summary>
+        /// Gets http client with user agent and access tokens.
+        /// </summary>
+        public HttpClient GetHttpClient(string accessToken = null, bool decompression = true)
         {
             var httpClientHandler = new HttpClientHandler
             {
