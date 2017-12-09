@@ -19,7 +19,7 @@ namespace TootNet
         {
             var httpClientHandler = new HttpClientHandler
             {
-                UseProxy = false,
+                UseProxy = UseProxy,
                 AutomaticDecompression = decompression ? DecompressionMethods.GZip : DecompressionMethods.None
             };
 

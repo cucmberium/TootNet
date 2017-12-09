@@ -15,7 +15,13 @@ namespace TootNet.Internal
             {
                 uri += "?" + string.Join("&",
                     param.Select(
-                        kvp => string.Format("{0}={1}", kvp.Key, WebUtility.UrlEncode(kvp.Value.ToString()))));
+                        kvp =>
+                        {
+                            if (kvp.Value is bool)
+                                return string.Format("{0}={1}", kvp.Key, kvp.Value.ToString().ToLower());
+
+                            return string.Format("{0}={1}", kvp.Key, WebUtility.UrlEncode(kvp.Value.ToString()));
+                        }));
             }
             return uri;
         }
