@@ -117,6 +117,9 @@ namespace TootNet.Streaming
                     conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/user");
                     break;
                 case StreamingType.Hashtag:
+                    if (!_parameters.ContainsKey("tag") || string.IsNullOrEmpty(_parameters["tag"].ToString()))
+                        throw new ArgumentException("You must specify a hashtag");
+
                     conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/hashtag" + "?tag=" + _parameters["tag"]);
                     break;
                 case StreamingType.Public:
