@@ -121,6 +121,8 @@ namespace TootNet
                         return await Request.HttpDeleteAsync(httpClient, uri, param, headers);
                     case MethodType.Patch:
                         return await Request.HttpPatchAsync(httpClient, uri, param, headers);
+                    case MethodType.Put:
+                        return await Request.HttpPutAsync(httpClient, uri, param, headers);
                 }
             }
 

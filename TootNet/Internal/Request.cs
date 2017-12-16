@@ -13,6 +13,7 @@ namespace TootNet.Internal
         Post = 1,
         Delete = 2,
         Patch = 3,
+        Put = 4,
     }
 
     public class AsyncResponse : IDisposable
@@ -127,6 +128,33 @@ namespace TootNet.Internal
             };
             
             var response = await httpClient.SendAsync(message).ConfigureAwait(false);
+            var asyncResponse = new AsyncResponse(response);
+
+            return asyncResponse;
+        }
+
+        internal static async Task<AsyncResponse> HttpPutAsync(HttpClient httpClient, string url, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
+        {
+            if (headers != null)
+                foreach (var header in headers)
+                    httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+
+            var httpContent = new MultipartFormDataContent();
+            foreach (var x in param)
+            {
+                var valueStream = x.Value as Stream;
+                var valueBytes = x.Value as IEnumerable<byte>;
+
+                if (valueStream != null)
+                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
+                else if (valueBytes != null)
+                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
+                else
+                    httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
+            }
+
+            var uri = url;
+            var response = await httpClient.PutAsync(uri, httpContent).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
             return asyncResponse;
