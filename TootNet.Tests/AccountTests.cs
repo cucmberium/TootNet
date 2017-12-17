@@ -235,5 +235,15 @@ namespace TootNet.Tests
             Assert.NotNull(searches);
             Assert.True(searches.Count > 0);
         }
+        
+        [Fact]
+        public async Task ListsTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var lists = await tokens.Accounts.ListsAsync(id => 157355);
+
+            Assert.NotNull(lists);
+        }
     }
 }

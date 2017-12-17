@@ -54,7 +54,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Linked<Account>> AccountsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
         }
 
 
@@ -71,7 +71,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Linked<Account>> AccountsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", parameters);
         }
 
         /// <summary>
@@ -207,9 +207,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns empty object.</para>
         /// </returns>
-        public Task<List> AddAccountAsync(params Expression<Func<string, object>>[] parameters)
+        public Task AddAccountAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<List>(MethodType.Post, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -223,9 +223,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns list object.</para>
         /// </returns>
-        public Task<List> AddAccountAsync(IDictionary<string, object> parameters)
+        public Task AddAccountAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<List>(MethodType.Post, "lists/{id}/accounts", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "lists/{id}/accounts", "id", parameters);
         }
 
         /// <summary>
@@ -239,9 +239,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns list object.</para>
         /// </returns>
-        public Task<List> DeleteAccountAsync(params Expression<Func<string, object>>[] parameters)
+        public Task DeleteAccountAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<List>(MethodType.Delete, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Delete, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -255,9 +255,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns list object.</para>
         /// </returns>
-        public Task<List> DeleteAccountAsync(IDictionary<string, object> parameters)
+        public Task DeleteAccountAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<List>(MethodType.Delete, "lists/{id}/accounts", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Delete, "lists/{id}/accounts", "id", parameters);
         }
     }
 }

@@ -93,6 +93,11 @@ namespace TootNet
         public Timelines Timelines => new Timelines(this);
 
         /// <summary>
+        /// Lists
+        /// </summary>
+        public Lists Lists => new Lists(this);
+
+        /// <summary>
         /// Streaming
         /// </summary>
         public StreamingApi Streaming => new StreamingApi(this);
@@ -233,7 +238,12 @@ namespace TootNet
 
         private async Task AccessApiAsyncImpl(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null)
         {
-            await SendRequestAsync(type, ConstructUri(uri), FormatParameters(param), headers).ConfigureAwait(false);
+            using (var response = await SendRequestAsync(type, ConstructUri(uri), FormatParameters(param), headers).ConfigureAwait(false))
+            {
+                var json = await response.GetResponseStringAsync();
+                if (!string.IsNullOrWhiteSpace(json))
+                    Converter.ConvertError(json);
+            }
         }
 
         private IEnumerable<KeyValuePair<string, object>> FormatParameters(IEnumerable<KeyValuePair<string, object>> param)

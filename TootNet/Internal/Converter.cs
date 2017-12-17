@@ -70,5 +70,16 @@ namespace TootNet.Internal
 
             return JToken.Parse(json).ToObject<T>();
         }
+
+        public static void ConvertError(string json)
+        {
+            var parsed = JToken.Parse(json);
+            if (parsed.Any(x => x is JProperty jp && jp.Name == "error"))
+            {
+                var error = parsed.ToObject<Error>();
+                error.RawJson = json;
+                throw new MastodonException(error);
+            }
+        }
     }
 }
