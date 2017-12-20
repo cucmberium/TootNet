@@ -13,7 +13,8 @@ namespace TootNet.Streaming
     {
         User = 0,
         Hashtag = 1,
-        Public = 2
+        Public = 2,
+        List = 3
     }
 
     public class StreamingApi : ApiBase
@@ -91,6 +92,30 @@ namespace TootNet.Streaming
         {
             return new StreamingObservable(Tokens, StreamingType.User, parameters);
         }
+
+        /// <summary>
+        /// Streams messages for a list timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> list (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> ListAsObservable(params Expression<Func<string, object>>[] parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.List, Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// Streams messages for a list timeline.
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> list (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>The stream messages.</returns>
+        public IObservable<StreamingMessage> ListAsObservable(IDictionary<string, object> parameters)
+        {
+            return new StreamingObservable(Tokens, StreamingType.List, parameters);
+        }
     }
 
     internal class StreamingObservable : IObservable<StreamingMessage>
@@ -128,6 +153,12 @@ namespace TootNet.Streaming
                         publicStreamingUrl += "/local";
 
                     conn.Start(observer, _tokens, publicStreamingUrl);
+                    break;
+                case StreamingType.List:
+                    if (!_parameters.ContainsKey("list") || string.IsNullOrEmpty(_parameters["list"].ToString()))
+                        throw new ArgumentException("You must specify a hashtag");
+
+                    conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/list" + "?list=" + _parameters["list"]);
                     break;
             }
             return conn;

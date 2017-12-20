@@ -73,5 +73,27 @@ namespace TootNet.Tests
             await Task.Delay(TimeSpan.FromSeconds(30));
             disposable.Dispose();
         }
+
+        [Fact]
+        public async Task ListAsObservableTest()
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+
+            var tokens = AccountInformation.GetTokens();
+
+            var observable = tokens.Streaming.ListAsObservable(list => 208);
+            var disposable = observable.Subscribe(x =>
+            {
+                switch (x.Type)
+                {
+                    case StreamingMessage.MessageType.Status:
+                        Console.WriteLine(x.Status.Account.Acct + x.Status.Content);
+                        break;
+                }
+            });
+
+            await Task.Delay(TimeSpan.FromSeconds(30));
+            disposable.Dispose();
+        }
     }
 }

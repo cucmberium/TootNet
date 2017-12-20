@@ -120,5 +120,43 @@ namespace TootNet.Rest
         {
             return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/tag/{hashtag}", "hashtag", parameters);
         }
+
+        /// <summary>
+        /// <para>Retrieve list timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> list_id (required)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> ListAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/list/{list_id}", "list_id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Retrieve list timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> list_id (required)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> ListAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/list/{list_id}", "list_id", parameters);
+        }
     }
 }

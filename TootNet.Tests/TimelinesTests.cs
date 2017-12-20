@@ -55,5 +55,22 @@ namespace TootNet.Tests
                 Assert.NotNull(status.Content);
             }
         }
+
+        [Fact]
+        public async Task ListAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var statuses = await tokens.Timelines.ListAsync(list_id => 208, limit => 10);
+
+            Assert.Equal(statuses.Count, 10);
+            foreach (var status in statuses)
+            {
+                Assert.NotNull(status.Account.Acct);
+                Assert.NotNull(status.Account.UserName);
+                Assert.NotNull(status.Account.Url);
+                Assert.NotNull(status.Content);
+            }
+        }
     }
 }
