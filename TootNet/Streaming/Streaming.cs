@@ -156,7 +156,7 @@ namespace TootNet.Streaming
                     break;
                 case StreamingType.List:
                     if (!_parameters.ContainsKey("list") || string.IsNullOrEmpty(_parameters["list"].ToString()))
-                        throw new ArgumentException("You must specify a hashtag");
+                        throw new ArgumentException("You must specify a list id");
 
                     conn.Start(observer, _tokens, "https://" + streamingUrl + "/api/v1/streaming/list" + "?list=" + _parameters["list"]);
                     break;
