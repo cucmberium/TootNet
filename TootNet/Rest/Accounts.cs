@@ -436,6 +436,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> following (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -452,6 +453,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> following (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
