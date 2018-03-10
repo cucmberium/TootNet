@@ -18,6 +18,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -36,6 +37,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -54,6 +56,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -72,6 +75,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -91,6 +95,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -110,6 +115,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -129,6 +135,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -148,6 +155,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

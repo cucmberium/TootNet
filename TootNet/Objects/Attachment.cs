@@ -29,5 +29,8 @@ namespace TootNet.Objects
         
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

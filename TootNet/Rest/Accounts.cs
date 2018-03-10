@@ -78,6 +78,7 @@ namespace TootNet.Rest
         /// <para>- <c>string</c> note (optional)</para>
         /// <para>- <c>string</c> avatar (base64Encoded image string) (optional)</para>
         /// <para>- <c>string</c> header (base64Encoded image string) (optional)</para>
+        /// <para>- <c>bool</c> locked (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -96,6 +97,7 @@ namespace TootNet.Rest
         /// <para>- <c>string</c> note (optional)</para>
         /// <para>- <c>string</c> avatar (base64Encoded image string) (optional)</para>
         /// <para>- <c>string</c> header (base64Encoded image string) (optional)</para>
+        /// <para>- <c>bool</c> locked (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

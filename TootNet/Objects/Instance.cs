@@ -22,5 +22,11 @@ namespace TootNet.Objects
         
         [JsonProperty("urls")]
         public StreamingApiInfo Urls { get; set; }
+
+        [JsonProperty("languages")]
+        public string Languages { get; set; }
+
+        [JsonProperty("contact_account")]
+        public Account ContactAccount { get; set; }
     }
 }

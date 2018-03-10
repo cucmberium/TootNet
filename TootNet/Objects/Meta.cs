@@ -12,6 +12,9 @@ namespace TootNet.Objects
 
         [JsonProperty("small")]
         public MetaInfo Small { get; set; }
+
+        [JsonProperty("focus")]
+        public MetaInfo Focus { get; set; }
     }
 
     public class MetaInfo : BaseObject
@@ -27,5 +30,14 @@ namespace TootNet.Objects
 
         [JsonProperty("aspect")]
         public double Aspect { get; set; }
+    }
+
+    public class Focus : BaseObject
+    {
+        [JsonProperty("x")]
+        public double X { get; set; }
+
+        [JsonProperty("y")]
+        public double Y { get; set; }
     }
 }
