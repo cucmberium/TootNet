@@ -48,7 +48,7 @@ namespace TootNet.Tests
 
             Console.WriteLine(authorizeUrl);
 
-            var code = Console.ReadLine().Trim();
+            var code = Console.ReadLine()?.Trim();
             var tokens = await authorize.AuthorizeWithCode(code);
 
             Assert.NotNull(tokens);

@@ -34,7 +34,7 @@ namespace TootNet.Tests
                 Assert.NotNull(updatedAttachment);
                 Assert.NotNull(updatedAttachment.PreviewUrl);
                 Assert.NotNull(updatedAttachment.Url);
-                Assert.Equal(updatedAttachment.Description, "flanchan");
+                Assert.Equal("flanchan", updatedAttachment.Description);
             }
         }
     }

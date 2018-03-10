@@ -15,11 +15,11 @@ namespace TootNet.Tests
             var status = await tokens.Statuses.IdAsync(id => 4450025);
 
             Assert.NotNull(status);
-            Assert.Equal(status.Content, "<p>a</p>");
-            Assert.Equal(status.Url, "https://mstdn.jp/@cucmberium/4450025");
-            Assert.Equal(status.Account.Acct, "cucmberium");
-            Assert.Equal(status.Account.UserName, "cucmberium");
-            Assert.Equal(status.Account.Url, "https://mstdn.jp/@cucmberium");
+            Assert.Equal("<p>a</p>", status.Content);
+            Assert.Equal("https://mstdn.jp/@cucmberium/4450025", status.Url);
+            Assert.Equal("cucmberium", status.Account.Acct);
+            Assert.Equal("cucmberium", status.Account.UserName);
+            Assert.Equal("https://mstdn.jp/@cucmberium", status.Account.Url);
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace TootNet.Tests
             var toot = await tokens.Statuses.PostAsync(status => "test toot", visibility => "private");
 
             Assert.NotNull(toot);
-            Assert.Equal(toot.Content, "<p>test toot</p>");
+            Assert.Equal("<p>test toot</p>", toot.Content);
         }
 
         [Fact]

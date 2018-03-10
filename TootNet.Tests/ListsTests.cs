@@ -16,7 +16,7 @@ namespace TootNet.Tests
             var list = await tokens.Lists.IdAsync(id => createdlist.Id);
 
             Assert.NotNull(list);
-            Assert.Equal(list.Title, "TootNetTest");
+            Assert.Equal("TootNetTest", list.Title);
 
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
         }
@@ -53,7 +53,7 @@ namespace TootNet.Tests
             var tokens = AccountInformation.GetTokens();
 
             var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
-            Assert.Equal(createdlist.Title, "TootNetTest");
+            Assert.Equal("TootNetTest", createdlist.Title);
 
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
         }
@@ -65,8 +65,8 @@ namespace TootNet.Tests
 
             var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
             var updatedlist = await tokens.Lists.UpdateAsync(id => createdlist.Id, title => "TootNetTest2");
-            Assert.Equal(createdlist.Title, "TootNetTest");
-            Assert.Equal(updatedlist.Title, "TootNetTest2");
+            Assert.Equal("TootNetTest", createdlist.Title);
+            Assert.Equal("TootNetTest2", updatedlist.Title);
 
             await tokens.Lists.DeleteAsync(id => updatedlist.Id);
         }
@@ -82,7 +82,7 @@ namespace TootNet.Tests
 
             Assert.NotNull(listAccounts);
             Assert.True(listAccounts.Count > 0);
-            Assert.Equal(listAccounts[0].Id, 157355);
+            Assert.Equal(157355, listAccounts[0].Id);
 
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
         }
@@ -98,7 +98,7 @@ namespace TootNet.Tests
 
             Assert.NotNull(listAccounts);
             Assert.True(listAccounts.Count > 0);
-            Assert.Equal(listAccounts[0].Id, 157355);
+            Assert.Equal(157355, listAccounts[0].Id);
 
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
         }

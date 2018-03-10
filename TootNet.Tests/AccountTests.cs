@@ -45,7 +45,7 @@ namespace TootNet.Tests
             Assert.NotNull(newaccount.Acct);
             Assert.NotNull(newaccount.UserName);
             Assert.NotNull(newaccount.Url);
-            Assert.Equal(newaccount.DisplayName, "test");
+            Assert.Equal("test", newaccount.DisplayName);
 
             await Task.Delay(1000);
 
@@ -59,7 +59,7 @@ namespace TootNet.Tests
 
             var accounts = await tokens.Accounts.FollowersAsync(id => 12447, limit => 10);
 
-            Assert.Equal(accounts.Count, 10);
+            Assert.Equal(10, accounts.Count);
             foreach (var account in accounts)
             {
                 Assert.NotNull(account.Acct);
@@ -75,7 +75,7 @@ namespace TootNet.Tests
 
             var accounts = await tokens.Accounts.FollowingAsync(id => 12447, limit => 10);
 
-            Assert.Equal(accounts.Count, 10);
+            Assert.Equal(10, accounts.Count);
             foreach (var account in accounts)
             {
                 Assert.NotNull(account.Acct);
@@ -91,7 +91,7 @@ namespace TootNet.Tests
 
             var statuses = await tokens.Accounts.StatusesAsync(id => 12447, limit => 10);
 
-            Assert.Equal(statuses.Count, 10);
+            Assert.Equal(10, statuses.Count);
             foreach (var status in statuses)
             {
                 Assert.NotNull(status.Account.Acct);
@@ -222,7 +222,7 @@ namespace TootNet.Tests
 
             var relationships = await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 });
 
-            Assert.Equal(relationships.Count, 1);
+            Assert.Single(relationships);
         }
 
         [Fact]

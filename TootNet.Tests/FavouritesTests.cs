@@ -12,7 +12,7 @@ namespace TootNet.Tests
 
             var statuses = await tokens.Favourites.GetAsync(limit => 10);
 
-            Assert.Equal(statuses.Count, 10);
+            Assert.Equal(10, statuses.Count);
             foreach (var status in statuses)
             {
                 Assert.NotNull(status.Account.Acct);

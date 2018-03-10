@@ -25,7 +25,7 @@ namespace TootNet.Tests
 
             Assert.NotNull(accounts);
             Assert.True(accounts.Count > 0);
-            Assert.True(accounts.Any(x => x.Id == 32641));
+            Assert.Contains(accounts, x => x.Id == 32641);
 
             await Task.Delay(1000);
 

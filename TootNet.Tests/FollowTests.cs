@@ -12,8 +12,8 @@ namespace TootNet.Tests
 
             var account = await tokens.Follows.PostAsync(uri => "cucmberium@pawoo.net");
 
-            Assert.Equal(account.Acct, "cucmberium@pawoo.net");
-            Assert.Equal(account.UserName, "cucmberium");
+            Assert.Equal("cucmberium@pawoo.net", account.Acct);
+            Assert.Equal("cucmberium", account.UserName);
             Assert.NotNull(account.Url);
 
             await tokens.Accounts.UnfollowAsync(id => account.Id);

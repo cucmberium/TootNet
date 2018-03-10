@@ -62,7 +62,7 @@ namespace TootNet.Tests
 
             var dismissedNotifications = await tokens.Notifications.GetAsync();
 
-            Assert.False(dismissedNotifications.Any(x => x.Id == targetNotification.Id));
+            Assert.DoesNotContain(dismissedNotifications, x => x.Id == targetNotification.Id);
         }
     }
 }
