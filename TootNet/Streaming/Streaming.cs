@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 using TootNet.Internal;
@@ -179,7 +180,7 @@ namespace TootNet.Streaming
                 {
                     using (var stream = await client.GetStreamAsync(url))
                     using (token.Register(stream.Dispose))
-                    using (var reader = new StreamReader(stream))
+                    using (var reader = new StreamReader(stream, Encoding.UTF8, true, 16384))
                     using (token.Register(reader.Dispose))
                     {
                         string eventName = null;
