@@ -14,11 +14,9 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Retrieve home timeline.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -33,11 +31,9 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Retrieve home timeline.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -131,11 +127,9 @@ namespace TootNet.Rest
         /// <para>Retrieve list timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> list_id (required)</para>
-        /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -151,11 +145,9 @@ namespace TootNet.Rest
         /// <para>Retrieve list timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> list_id (required)</para>
-        /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
