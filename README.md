@@ -70,7 +70,7 @@ await Task.Delay(TimeSpan.FromSeconds(30));
 disposable.Dispose();
 ```
 
-You can easily use API by official documentation and parameter suggestion by VisualStudio.
+You can easily use TootNet by using official documentation and suggestion by VisualStudio.
 
 ### Platforms
 
