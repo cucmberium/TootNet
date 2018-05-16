@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using TootNet.Internal;
 
@@ -51,5 +52,14 @@ namespace TootNet.Objects
 
         [JsonProperty("header_static")]
         public string HeaderStatic { get; set; }
+
+        [JsonProperty("fields")]
+        public IEnumerable<Field> Fields { get; set; }
+
+        /// <summary>
+        /// Only returns if you use accounts/verify_credentials
+        /// </summary>
+        [JsonProperty("source")]
+        public Source Source { get; set; }
     }
 }

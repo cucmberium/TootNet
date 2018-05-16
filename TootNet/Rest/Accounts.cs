@@ -44,7 +44,7 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Returns a representation of the requesting user if authentication was successful.</para>
         /// <para>Available parameters:</para>
-        /// <para>- No parameters available in this method.</para>
+        /// <para>- <c>long</c> id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -79,6 +79,8 @@ namespace TootNet.Rest
         /// <para>- <c>string</c> avatar (base64Encoded image string) (optional)</para>
         /// <para>- <c>string</c> header (base64Encoded image string) (optional)</para>
         /// <para>- <c>bool</c> locked (optional)</para>
+        /// <para>- <c>string</c> fields_attributes[0][name] ([0]-[3] is allowed) (optional)</para>
+        /// <para>- <c>string</c> fields_attributes[0][value] ([0]-[3] is allowed) (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
