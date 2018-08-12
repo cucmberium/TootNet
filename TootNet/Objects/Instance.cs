@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Newtonsoft.Json;
 
 namespace TootNet.Objects
@@ -24,7 +25,7 @@ namespace TootNet.Objects
         public StreamingApiInfo Urls { get; set; }
 
         [JsonProperty("languages")]
-        public string Languages { get; set; }
+        public IEnumerable<string> Languages { get; set; }
 
         [JsonProperty("contact_account")]
         public Account ContactAccount { get; set; }

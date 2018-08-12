@@ -19,7 +19,7 @@ namespace TootNet.Objects
         public IEnumerable<string> Context { get; set; }
 
         [JsonProperty("expires_at")]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         [JsonProperty("irreversible")]
         public bool Irreversible { get; set; }

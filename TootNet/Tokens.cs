@@ -43,6 +43,11 @@ namespace TootNet
         public Favourites Favourites => new Favourites(this);
 
         /// <summary>
+        /// Filters
+        /// </summary>
+        public Filters Filters => new Filters(this);
+
+        /// <summary>
         /// FollowRequests
         /// </summary>
         public FollowRequests FollowRequests => new FollowRequests(this);
@@ -56,6 +61,11 @@ namespace TootNet
         /// Instances
         /// </summary>
         public Instances Instances => new Instances(this);
+
+        /// <summary>
+        /// Lists
+        /// </summary>
+        public Lists Lists => new Lists(this);
 
         /// <summary>
         /// Media
@@ -73,6 +83,11 @@ namespace TootNet
         public Notifications Notifications => new Notifications(this);
 
         /// <summary>
+        /// Push
+        /// </summary>
+        public Push Push => new Push(this);
+
+        /// <summary>
         /// Reports
         /// </summary>
         public Reports Reports => new Reports(this);
@@ -88,14 +103,19 @@ namespace TootNet
         public Statuses Statuses => new Statuses(this);
 
         /// <summary>
+        /// Suggestions
+        /// </summary>
+        public Suggestions Suggestions => new Suggestions(this);
+
+        /// <summary>
         /// Timelines
         /// </summary>
         public Timelines Timelines => new Timelines(this);
 
         /// <summary>
-        /// Lists
+        /// Trends
         /// </summary>
-        public Lists Lists => new Lists(this);
+        public Trends Trends => new Trends(this);
 
         /// <summary>
         /// Streaming
