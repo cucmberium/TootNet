@@ -32,5 +32,8 @@ namespace TootNet.Objects
         [JsonProperty("domain_blocking")]
         [DefaultValue(false)]
         public bool DomainBlocking { get; set; }
+
+        [JsonProperty("showing_reblogs")]
+        public bool ShowingReblogs { get; set; }
     }
 }

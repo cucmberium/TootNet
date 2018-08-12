@@ -214,6 +214,9 @@ namespace TootNet.Streaming
                                         var statusId = long.Parse(data);
                                         observer.OnNext(new StreamingMessage(statusId));
                                         break;
+                                    case "filters_changed":
+                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.FiltersChanged));
+                                        break;
                                 }
                             }
                         }

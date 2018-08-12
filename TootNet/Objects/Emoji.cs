@@ -12,5 +12,8 @@ namespace TootNet.Objects
 
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("visible_in_picker")]
+        public bool VisibleInPicker { get; set; }
     }
 }

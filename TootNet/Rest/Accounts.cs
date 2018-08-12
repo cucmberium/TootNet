@@ -229,6 +229,7 @@ namespace TootNet.Rest
         /// <para>Follow an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>bool</c> reblogs (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -244,6 +245,7 @@ namespace TootNet.Rest
         /// <para>Follow an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>bool</c> reblogs (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

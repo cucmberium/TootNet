@@ -53,8 +53,17 @@ namespace TootNet.Objects
         [JsonProperty("header_static")]
         public string HeaderStatic { get; set; }
 
+        [JsonProperty("emojis")]
+        public IEnumerable<Emoji> Emojis { get; set; }
+
+        [JsonProperty("moved")]
+        public string Moved { get; set; }
+
         [JsonProperty("fields")]
         public IEnumerable<Field> Fields { get; set; }
+
+        [JsonProperty("bot")]
+        public bool? Bot { get; set; }
 
         /// <summary>
         /// Only returns if you use accounts/verify_credentials

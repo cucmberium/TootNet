@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TootNet.Objects
 {
@@ -9,5 +10,8 @@ namespace TootNet.Objects
 
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("history")]
+        public IEnumerable<History> History { get; set; }
     }
 }

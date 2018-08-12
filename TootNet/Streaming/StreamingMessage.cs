@@ -8,7 +8,8 @@ namespace TootNet.Streaming
         {
             DeleteStatus = 0,
             Status = 1,
-            Notification = 2
+            Notification = 2,
+            FiltersChanged = 3
         }
         
         public StreamingMessage(Status status)
@@ -27,6 +28,11 @@ namespace TootNet.Streaming
         {
             Type = MessageType.DeleteStatus;
             DeletedId = id;
+        }
+
+        public StreamingMessage(MessageType msgType)
+        {
+            Type = msgType;
         }
 
         public MessageType Type { get; set; }
