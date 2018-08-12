@@ -223,7 +223,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -238,7 +238,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(IDictionary<string, object> parameters)
         {
@@ -253,7 +253,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> ReblogAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -268,7 +268,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> ReblogAsync(IDictionary<string, object> parameters)
         {
@@ -283,7 +283,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnreblogAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -298,7 +298,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnreblogAsync(IDictionary<string, object> parameters)
         {
@@ -313,7 +313,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> FavouriteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -328,7 +328,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> FavouriteAsync(IDictionary<string, object> parameters)
         {
@@ -343,7 +343,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnfavouriteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -358,7 +358,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnfavouriteAsync(IDictionary<string, object> parameters)
         {
@@ -374,7 +374,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> PinAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -389,7 +389,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> PinAsync(IDictionary<string, object> parameters)
         {
@@ -404,7 +404,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnpinAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -419,7 +419,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnpinAsync(IDictionary<string, object> parameters)
         {
@@ -434,7 +434,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> MuteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -449,7 +449,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> MuteAsync(IDictionary<string, object> parameters)
         {
@@ -464,7 +464,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnmuteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -479,7 +479,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns status object.</para>
+        /// <para>The Result property on the task object returns the status object.</para>
         /// </returns>
         public Task<Status> UnmuteAsync(IDictionary<string, object> parameters)
         {

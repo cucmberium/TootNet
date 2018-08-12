@@ -122,7 +122,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> FollowersAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -140,7 +140,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> FollowersAsync(IDictionary<string, object> parameters)
         {
@@ -158,7 +158,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> FollowingAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -176,7 +176,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> FollowingAsync(IDictionary<string, object> parameters)
         {
@@ -197,7 +197,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> StatusesAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -218,7 +218,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> StatusesAsync(IDictionary<string, object> parameters)
         {
@@ -234,7 +234,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> FollowAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -250,7 +250,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> FollowAsync(IDictionary<string, object> parameters)
         {
@@ -265,7 +265,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnfollowAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -280,7 +280,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnfollowAsync(IDictionary<string, object> parameters)
         {
@@ -295,7 +295,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> BlockAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -310,7 +310,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> BlockAsync(IDictionary<string, object> parameters)
         {
@@ -325,7 +325,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnblockAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -340,7 +340,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnblockAsync(IDictionary<string, object> parameters)
         {
@@ -355,7 +355,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> MuteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -370,7 +370,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> MuteAsync(IDictionary<string, object> parameters)
         {
@@ -385,7 +385,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnmuteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -400,7 +400,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns relationship object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
         public Task<Relationship> UnmuteAsync(IDictionary<string, object> parameters)
         {
@@ -415,7 +415,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of relationship object.</para>
+        /// <para>The Result property on the task object returns the list of relationship object.</para>
         /// </returns>
         public Task<Linked<Relationship>> RelationshipsAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -430,7 +430,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of relationship object.</para>
+        /// <para>The Result property on the task object returns the list of relationship object.</para>
         /// </returns>
         public Task<Linked<Relationship>> RelationshipsAsync(IDictionary<string, object> parameters)
         {
@@ -447,7 +447,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> SearchAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -464,7 +464,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> SearchAsync(IDictionary<string, object> parameters)
         {
@@ -479,7 +479,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of list object.</para>
+        /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
         public Task<Linked<List>> ListsAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -494,7 +494,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of list object.</para>
+        /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
         public Task<Linked<List>> ListsAsync(IDictionary<string, object> parameters)
         {

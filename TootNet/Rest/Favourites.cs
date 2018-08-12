@@ -10,7 +10,7 @@ namespace TootNet.Rest
     public class Favourites : ApiBase
     {
         internal Favourites(Tokens e) : base(e) { }
-        
+
         /// <summary>
         /// <para>Returns current account's favorites.</para>
         /// <para>Available parameters:</para>
@@ -21,7 +21,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> GetAsync(IDictionary<string, object> parameters)
         {

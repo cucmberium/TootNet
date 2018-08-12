@@ -21,7 +21,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of account object.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
         public Task<Linked<Account>> GetAsync(IDictionary<string, object> parameters)
         {
@@ -53,7 +53,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task AuthorizeAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -68,7 +68,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task AuthorizeAsync(IDictionary<string, object> parameters)
         {
@@ -83,7 +83,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task RejectAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -98,7 +98,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task RejectAsync(IDictionary<string, object> parameters)
         {

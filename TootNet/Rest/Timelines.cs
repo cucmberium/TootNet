@@ -21,7 +21,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> HomeAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> HomeAsync(IDictionary<string, object> parameters)
         {
@@ -57,7 +57,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> PublicAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -76,7 +76,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> PublicAsync(IDictionary<string, object> parameters)
         {
@@ -96,7 +96,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> TagAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -116,7 +116,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> TagAsync(IDictionary<string, object> parameters)
         {
@@ -134,7 +134,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> ListAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -152,7 +152,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of status object.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
         public Task<Linked<Status>> ListAsync(IDictionary<string, object> parameters)
         {

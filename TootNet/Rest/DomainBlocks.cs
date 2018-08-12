@@ -21,7 +21,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of string.</para>
+        /// <para>The Result property on the task object returns the list of string.</para>
         /// </returns>
         public Task<Linked<string>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns list of string.</para>
+        /// <para>The Result property on the task object returns the list of string.</para>
         /// </returns>
         public Task<Linked<string>> GetAsync(IDictionary<string, object> parameters)
         {
@@ -53,7 +53,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task PostAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -68,7 +68,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task PostAsync(IDictionary<string, object> parameters)
         {
@@ -83,7 +83,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -98,7 +98,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(IDictionary<string, object> parameters)
         {

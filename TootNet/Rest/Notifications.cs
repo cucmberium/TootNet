@@ -12,7 +12,7 @@ namespace TootNet.Rest
         internal Notifications(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns notification objects related current account</para>
+        /// <para>Returns notification objects related current account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -22,7 +22,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the notifications object.</para>
+        /// <para>The Result property on the task object returns the list of notification object.</para>
         /// </returns>
         public Task<Linked<Notification>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -30,7 +30,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns notification objects related current account</para>
+        /// <para>Returns notification objects related current account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -40,7 +40,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the notifications object.</para>
+        /// <para>The Result property on the task object returns the list of notification object.</para>
         /// </returns>
         public Task<Linked<Notification>> GetAsync(IDictionary<string, object> parameters)
         {
@@ -55,7 +55,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the notifications object.</para>
+        /// <para>The Result property on the task object returns the notification object.</para>
         /// </returns>
         public Task<Notification> IdAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -70,7 +70,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the notifications object.</para>
+        /// <para>The Result property on the task object returns the notification object.</para>
         /// </returns>
         public Task<Notification> IdAsync(IDictionary<string, object> parameters)
         {
@@ -85,7 +85,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task ClearAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -100,7 +100,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task ClearAsync(IDictionary<string, object> parameters)
         {
@@ -115,7 +115,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DismissAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -130,7 +130,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns an empty object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DismissAsync(IDictionary<string, object> parameters)
         {

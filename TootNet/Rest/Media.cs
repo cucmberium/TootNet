@@ -46,7 +46,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Upload a media attachment.</para>
+        /// <para>Update a media attachment.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> description (optional)</para>
@@ -63,7 +63,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Upload a media attachment.</para>
+        /// <para>Update a media attachment.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> description (optional)</para>

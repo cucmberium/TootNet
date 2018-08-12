@@ -19,7 +19,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns account object.</para>
+        /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
         public Task<Account> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -34,7 +34,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns account object.</para>
+        /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
         public Task<Account> PostAsync(IDictionary<string, object> parameters)
         {

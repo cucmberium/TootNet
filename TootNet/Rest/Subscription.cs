@@ -25,7 +25,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -46,7 +46,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> PostAsync(IDictionary<string, object> parameters)
         {
@@ -61,7 +61,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -76,7 +76,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> GetAsync(IDictionary<string, object> parameters)
         {
@@ -97,7 +97,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> UpdateAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -118,7 +118,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
         /// </returns>
         public Task<PushSubscription> UpdateAsync(IDictionary<string, object> parameters)
         {
@@ -133,11 +133,11 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
-        public Task<PushSubscription> DeleteAsync(params Expression<Func<string, object>>[] parameters)
+        public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Delete, "push/subscription", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync(MethodType.Delete, "push/subscription", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -148,11 +148,11 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
-        public Task<PushSubscription> DeleteAsync(IDictionary<string, object> parameters)
+        public Task DeleteAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Delete, "push/subscription", parameters);
+            return Tokens.AccessApiAsync(MethodType.Delete, "push/subscription", parameters);
         }
     }
 }
