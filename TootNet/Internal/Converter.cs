@@ -68,7 +68,7 @@ namespace TootNet.Internal
                 throw new MastodonException(error);
             }
 
-            return JToken.Parse(json).ToObject<T>();
+            return parsed.ToObject<T>();
         }
 
         public static void ConvertError(string json)

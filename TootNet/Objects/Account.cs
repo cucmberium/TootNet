@@ -57,7 +57,7 @@ namespace TootNet.Objects
         public IEnumerable<Emoji> Emojis { get; set; }
 
         [JsonProperty("moved")]
-        public string Moved { get; set; }
+        public Account Moved { get; set; }
 
         [JsonProperty("fields")]
         public IEnumerable<Field> Fields { get; set; }
