@@ -44,7 +44,7 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Returns a representation of the requesting user if authentication was successful.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
