@@ -17,10 +17,10 @@ This library uses part of the codes of the following libraries.
     <Copyright>(c) 2017-2018 cucmberium</Copyright>
     <RepositoryUrl>https://github.com/cucmberium/TootNet</RepositoryUrl>
     <PackageTags>Mastodon</PackageTags>
-    <Version>1.1.3</Version>
+    <Version>1.1.4</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.1.3.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <AssemblyVersion>1.1.4.0</AssemblyVersion>
+    <FileVersion>1.1.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
