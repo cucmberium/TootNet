@@ -12,8 +12,7 @@ namespace TootNet.Rest
         internal Search(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>If q is a URL, Mastodon will attempt to fetch the provided account or status.</para>
-        /// <para>Otherwise, it will do a local account and hashtag search.</para>
+        /// <para>Search for content in accounts, statuses and hashtags.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>bool</c> resolve (required)</para>
@@ -25,12 +24,11 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Results> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Results>(MethodType.Get, "search", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Results>(MethodType.Get, "api/v2/search", Utils.ExpressionToDictionary(parameters), useApiPath: false);
         }
 
         /// <summary>
-        /// <para>If q is a URL, Mastodon will attempt to fetch the provided account or status.</para>
-        /// <para>Otherwise, it will do a local account and hashtag search.</para>
+        /// <para>Search for content in accounts, statuses and hashtags.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>bool</c> resolve (required)</para>
@@ -42,7 +40,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Results> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Results>(MethodType.Get, "search", parameters);
+            return Tokens.AccessApiAsync<Results>(MethodType.Get, "api/v2/search", parameters, useApiPath: false);
         }
     }
 }

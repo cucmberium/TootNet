@@ -7,9 +7,9 @@ using TootNet.Objects;
 
 namespace TootNet.Rest
 {
-    public class Suggestions : ApiBase
+    public class FollowSuggestions : ApiBase
     {
-        internal Suggestions(Tokens e) : base(e) { }
+        internal FollowSuggestions(Tokens e) : base(e) { }
 
         /// <summary>
         /// <para>Returns a list of follow suggestions.</para>

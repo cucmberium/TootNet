@@ -35,5 +35,8 @@ namespace TootNet.Objects
 
         [JsonProperty("showing_reblogs")]
         public bool ShowingReblogs { get; set; }
+        
+        [JsonProperty("endorsed")]
+        public bool Endorsed { get; set; }
     }
 }

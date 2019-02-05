@@ -16,6 +16,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -33,6 +34,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -46,11 +48,48 @@ namespace TootNet.Rest
         }
 
         /// <summary>
+        /// <para>Retrieve home timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Conversation>> ConversationsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Conversation>>(MethodType.Get, "conversations", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Retrieve home timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Conversation>> ConversationsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Conversation>>(MethodType.Get, "conversations", parameters);
+        }
+
+        /// <summary>
         /// <para>Retrieve public timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -70,6 +109,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -90,6 +130,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -110,6 +151,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -129,6 +171,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> list_id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -147,6 +190,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> list_id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>

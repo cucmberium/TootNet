@@ -306,67 +306,6 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Favourite an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> FavouriteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/favourite", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Favourite an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> FavouriteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/favourite", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Unfavourite an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> UnfavouriteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unfavourite", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Unfavourite an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> UnfavouriteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unfavourite", "id", parameters);
-        }
-
-
-        /// <summary>
         /// <para>Pin an status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
@@ -424,66 +363,6 @@ namespace TootNet.Rest
         public Task<Status> UnpinAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unpin", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Mute an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> MuteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/mute", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Mute an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> MuteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/mute", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Unmute an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> UnmuteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unmute", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Unmute an status.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the status object.</para>
-        /// </returns>
-        public Task<Status> UnmuteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Status>(MethodType.Post, "statuses/{id}/unmute", "id", parameters);
         }
     }
 }

@@ -136,5 +136,151 @@ namespace TootNet.Rest
         {
             return Tokens.AccessApiAsync(MethodType.Post, "notifications/dismiss", parameters);
         }
+
+
+
+        /// <summary>
+        /// <para>Adds push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> subscription[endpoint] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][p256dh] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][auth] (required)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][favourite] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][reblog] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (mention)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> AddPushSubscriptionAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Post, "push/subscription", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Adds push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> subscription[endpoint] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][p256dh] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][auth] (required)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][favourite] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][reblog] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (mention)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> AddPushSubscriptionAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Post, "push/subscription", parameters);
+        }
+
+        /// <summary>
+        /// <para>Returns current push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> GetPushSubscriptionAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Get, "push/subscription", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Returns current push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> GetPushSubscriptionAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Get, "push/subscription", parameters);
+        }
+
+        /// <summary>
+        /// <para>Updates push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> subscription[endpoint] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][p256dh] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][auth] (required)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][favourite] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][reblog] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (mention)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> UpdatePushSubscriptionAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Put, "push/subscription", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Updates push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> subscription[endpoint] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][p256dh] (required)</para>
+        /// <para>- <c>string</c> subscription[keys][auth] (required)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][favourite] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][reblog] (optional)</para>
+        /// <para>- <c>bool</c> data[alerts][follow] (mention)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the pushsubscription object.</para>
+        /// </returns>
+        public Task<PushSubscription> UpdatePushSubscriptionAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<PushSubscription>(MethodType.Put, "push/subscription", parameters);
+        }
+
+        /// <summary>
+        /// <para>Removes current push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task DeletePushSubscriptionAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Delete, "push/subscription", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Removes current push subscription.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task DeletePushSubscriptionAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Delete, "push/subscription", parameters);
+        }
     }
 }

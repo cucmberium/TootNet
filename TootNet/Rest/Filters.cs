@@ -12,7 +12,7 @@ namespace TootNet.Rest
         internal Filters(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns a list of filters.</para>
+        /// <para>Text filters the user has configured that potentially must be applied client-side.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -27,7 +27,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns a list of filters.</para>
+        /// <para>Text filters the user has configured that potentially must be applied client-side.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -42,7 +42,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Creates a filter.</para>
+        /// <para>Create a new filter.</para>
         /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> phrase (required)</para>
@@ -62,7 +62,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Creates a filter.</para>
+        /// <para>Create a new filter.</para>
         /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> phrase (required)</para>

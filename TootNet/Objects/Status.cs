@@ -40,6 +40,9 @@ namespace TootNet.Objects
         [JsonProperty("emojis")]
         public IEnumerable<Emoji> Emojis { get; set; }
 
+        [JsonProperty("replies_count")]
+        public int RepliesCount { get; set; }
+
         [JsonProperty("reblogs_count")]
         public int ReblogsCount { get; set; }
 
@@ -72,6 +75,9 @@ namespace TootNet.Objects
 
         [JsonProperty("tags")]
         public IEnumerable<Tag> Tags { get; set; }
+        
+        [JsonProperty("card")]
+        public Card Card { get; set; }
 
         [JsonProperty("application")]
         public Application Application { get; set; }

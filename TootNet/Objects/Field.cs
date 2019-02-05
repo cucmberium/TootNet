@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace TootNet.Objects
 {
@@ -9,5 +10,8 @@ namespace TootNet.Objects
 
         [JsonProperty("value")]
         public string Value { get; set; }
+
+        [JsonProperty("verified_at")]
+        public DateTime VerifiedAt { get; set; }
     }
 }

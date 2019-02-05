@@ -7,38 +7,38 @@ using TootNet.Objects;
 
 namespace TootNet.Rest
 {
-    public class Follows : ApiBase
+    public class CustomEmoji : ApiBase
     {
-        internal Follows(Tokens e) : base(e) { }
+        internal CustomEmoji(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Follow a remote user.</para>
+        /// <para>Custom emojis that are available on the server.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> uri ("username@domain" formatted string) (required)</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> PostAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Emoji> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Account>(MethodType.Post, "follows", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Emoji>(MethodType.Get, "custom_emojis", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Follow a remote user.</para>
+        /// <para>Custom emojis that are available on the server.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> uri ("username@domain" formatted string) (required)</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> PostAsync(IDictionary<string, object> parameters)
+        public Task<Emoji> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Account>(MethodType.Post, "follows", parameters);
+            return Tokens.AccessApiAsync<Emoji>(MethodType.Get, "custom_emojis", parameters);
         }
     }
 }

@@ -42,6 +42,44 @@ namespace TootNet.Rest
         }
 
         /// <summary>
+        /// <para>Returns a variety of information about the user specified by the required id parameter.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> username (required)</para>
+        /// <para>- <c>string</c> email (required)</para>
+        /// <para>- <c>string</c> password (required)</para>
+        /// <para>- <c>bool</c> agreement (required)</para>
+        /// <para>- <c>string</c> locale (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the account object.</para>
+        /// </returns>
+        public Task<Token> PostAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Token>(MethodType.Post, "accounts", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Returns a variety of information about the user specified by the required id parameter.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> username (required)</para>
+        /// <para>- <c>string</c> email (required)</para>
+        /// <para>- <c>string</c> password (required)</para>
+        /// <para>- <c>bool</c> agreement (required)</para>
+        /// <para>- <c>string</c> locale (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the account object.</para>
+        /// </returns>
+        public Task<Token> PostAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Token>(MethodType.Post, "accounts", parameters);
+        }
+
+        /// <summary>
         /// <para>Returns a representation of the requesting user if authentication was successful.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
@@ -79,6 +117,9 @@ namespace TootNet.Rest
         /// <para>- <c>string</c> avatar (base64Encoded image string) (optional)</para>
         /// <para>- <c>string</c> header (base64Encoded image string) (optional)</para>
         /// <para>- <c>bool</c> locked (optional)</para>
+        /// <para>- <c>string</c> source[privacy] (optional)</para>
+        /// <para>- <c>string</c> source[sensitive] (optional)</para>
+        /// <para>- <c>string</c> source[language] (optional)</para>
         /// <para>- <c>string</c> fields_attributes[0][name] ([0]-[3] is allowed) (optional)</para>
         /// <para>- <c>string</c> fields_attributes[0][value] ([0]-[3] is allowed) (optional)</para>
         /// </summary>
@@ -100,6 +141,11 @@ namespace TootNet.Rest
         /// <para>- <c>string</c> avatar (base64Encoded image string) (optional)</para>
         /// <para>- <c>string</c> header (base64Encoded image string) (optional)</para>
         /// <para>- <c>bool</c> locked (optional)</para>
+        /// <para>- <c>string</c> source[privacy] (optional)</para>
+        /// <para>- <c>string</c> source[sensitive] (optional)</para>
+        /// <para>- <c>string</c> source[language] (optional)</para>
+        /// <para>- <c>string</c> fields_attributes[0][name] ([0]-[3] is allowed) (optional)</para>
+        /// <para>- <c>string</c> fields_attributes[0][value] ([0]-[3] is allowed) (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -190,8 +236,10 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// <para>- <c>bool</c> pinned (optional)</para>
         /// <para>- <c>bool</c> exclude_replies (optional)</para>
+        /// <para>- <c>bool</c> exclude_reblogs (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -211,8 +259,10 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// <para>- <c>bool</c> pinned (optional)</para>
         /// <para>- <c>bool</c> exclude_replies (optional)</para>
+        /// <para>- <c>bool</c> exclude_reblogs (optional)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -229,7 +279,7 @@ namespace TootNet.Rest
         /// <para>Follow an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
-        /// <para>- <c>bool</c> reblogs (required)</para>
+        /// <para>- <c>bool</c> reblogs (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -245,7 +295,7 @@ namespace TootNet.Rest
         /// <para>Follow an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
-        /// <para>- <c>bool</c> reblogs (required)</para>
+        /// <para>- <c>bool</c> reblogs (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -286,127 +336,7 @@ namespace TootNet.Rest
         {
             return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unfollow", "id", parameters);
         }
-
-        /// <summary>
-        /// <para>Block an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> BlockAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/block", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Block an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> BlockAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/block", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Unblock an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> UnblockAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unblock", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Unblock an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> UnblockAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unblock", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Mute an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> MuteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/mute", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Mute an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> MuteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/mute", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Unmute an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> UnmuteAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unmute", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Unmute an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the relationship object.</para>
-        /// </returns>
-        public Task<Relationship> UnmuteAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unmute", "id", parameters);
-        }
-
+        
         /// <summary>
         /// <para>Returns relationship between current user and user specified by the required id parameter.</para>
         /// <para>Available parameters:</para>
@@ -442,6 +372,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> resolve (optional)</para>
         /// <para>- <c>bool</c> following (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -459,6 +390,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> resolve (optional)</para>
         /// <para>- <c>bool</c> following (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -469,36 +401,6 @@ namespace TootNet.Rest
         public Task<Linked<Account>> SearchAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessApiAsync<Linked<Account>>(MethodType.Get, "accounts/search", parameters);
-        }
-
-        /// <summary>
-        /// <para>Retrieving lists by membership.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of list object.</para>
-        /// </returns>
-        public Task<Linked<List>> ListsAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Retrieving lists by membership.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of list object.</para>
-        /// </returns>
-        public Task<Linked<List>> ListsAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
         }
     }
 }

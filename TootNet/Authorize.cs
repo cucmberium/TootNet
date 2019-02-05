@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TootNet.Internal;
+using TootNet.Objects;
 
 namespace TootNet
 {
@@ -15,37 +16,7 @@ namespace TootNet
         Write = 2,
         Follow = 4
     }
-
-    public class RegistApp
-    {
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
-        [JsonProperty("redirect_uri")]
-        public string RedirectUri { get; set; }
-
-        [JsonProperty("client_id")]
-        public string ClientId { get; set; }
-
-        [JsonProperty("client_secret")]
-        public string ClientSecret { get; set; }
-    }
-
-    public class Auth
-    {
-        [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
-
-        [JsonProperty("token_type")]
-        public string TokenType { get; set; }
-
-        [JsonProperty("scope")]
-        public string Scope { get; set; }
-
-        [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
-    }
-
+    
     public class Authorize : TokensBase
     {
         /// <summary>
@@ -78,7 +49,7 @@ namespace TootNet
             
             var httpClient = ConnectionOptions.GetHttpClient();
             var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("apps"), param).ConfigureAwait(false);
-            var app = Converter.Convert<RegistApp>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
+            var app = Converter.Convert<App>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             ClientId = app.ClientId;
             ClientSecret = app.ClientSecret;
@@ -104,7 +75,7 @@ namespace TootNet
 
             var httpClient = ConnectionOptions.GetHttpClient();
             var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
-            var auth = Converter.Convert<Auth>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
+            var auth = Converter.Convert<Token>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             AccessToken = auth.AccessToken;
             return new Tokens(Instance, AccessToken, ClientId, ClientSecret);
@@ -129,7 +100,7 @@ namespace TootNet
 
             var httpClient = ConnectionOptions.GetHttpClient();
             var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
-            var auth = Converter.Convert<Auth>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
+            var auth = Converter.Convert<Token>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
 
             AccessToken = auth.AccessToken;
             return new Tokens(Instance, AccessToken, ClientId, ClientSecret);

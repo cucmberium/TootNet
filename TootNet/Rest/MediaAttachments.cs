@@ -7,9 +7,9 @@ using TootNet.Objects;
 
 namespace TootNet.Rest
 {
-    public class Media : ApiBase
+    public class MediaAttachments : ApiBase
     {
-        internal Media(Tokens e) : base(e) { }
+        internal MediaAttachments(Tokens e) : base(e) { }
 
         /// <summary>
         /// <para>Upload a media attachment.</para>

@@ -12,7 +12,7 @@ TootNet は.NET Standard向けのマストドンライブラリです。
 
 また、[テストコード](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests)を参照することでTootNetで使えるすべてのAPIが参照できます。
 
-公式のAPIドキュメントと対応が取れているので[こちら](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md)もご参照ください。
+公式のAPIドキュメントと対応が取れているので[こちら](https://docs.joinmastodon.org/api/)もご参照ください。
 
 認証:
 ```cs

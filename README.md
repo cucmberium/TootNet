@@ -14,7 +14,7 @@ The demo is available in [here](https://github.com/cucmberium/TootNet/tree/maste
 
 You can also see example at [TootNet test code](https://github.com/cucmberium/TootNet/tree/master/TootNet.Tests).
 
-Official api list is available [here](https://github.com/tootsuite/documentation/blob/master/Using-the-API/API.md).
+Official api list is available [here](https://docs.joinmastodon.org/api/).
 
 Authorizing:
 ```cs
