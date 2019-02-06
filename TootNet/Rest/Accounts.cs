@@ -42,7 +42,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns a variety of information about the user specified by the required id parameter.</para>
+        /// <para>Create new account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> username (required)</para>
         /// <para>- <c>string</c> email (required)</para>
@@ -53,7 +53,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the token object.</para>
         /// </returns>
         public Task<Token> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -61,7 +61,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns a variety of information about the user specified by the required id parameter.</para>
+        /// <para>Create new account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> username (required)</para>
         /// <para>- <c>string</c> email (required)</para>
@@ -72,7 +72,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the token object.</para>
         /// </returns>
         public Task<Token> PostAsync(IDictionary<string, object> parameters)
         {

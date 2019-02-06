@@ -13,6 +13,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Returns notification objects related current account.</para>
+        /// <para>allowed values of exclude_types: "follow", "favourite", "reblog", "mention"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -31,6 +32,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Returns notification objects related current account.</para>
+        /// <para>allowed values of exclude_types: "follow", "favourite", "reblog", "mention"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -136,8 +138,6 @@ namespace TootNet.Rest
         {
             return Tokens.AccessApiAsync(MethodType.Post, "notifications/dismiss", parameters);
         }
-
-
 
         /// <summary>
         /// <para>Adds push subscription.</para>

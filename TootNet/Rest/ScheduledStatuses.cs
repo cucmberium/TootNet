@@ -19,7 +19,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of report object.</para>
+        /// <para>The Result property on the task object returns the list of scheduledstatus object.</para>
         /// </returns>
         public Task<IEnumerable<ScheduledStatus>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -34,7 +34,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of report object.</para>
+        /// <para>The Result property on the task object returns the list of scheduledstatus object.</para>
         /// </returns>
         public Task<IEnumerable<ScheduledStatus>> GetAsync(IDictionary<string, object> parameters)
         {
@@ -49,7 +49,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
         /// </returns>
         public Task<ScheduledStatus> IdAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -64,7 +64,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
         /// </returns>
         public Task<ScheduledStatus> IdAsync(IDictionary<string, object> parameters)
         {
@@ -73,6 +73,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Update Scheduled status.</para>
+        /// <para>format of scheduled_at: "2019-01-01 12:00:00"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> scheduled_at (optional)</para>
@@ -80,7 +81,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
         /// </returns>
         public Task<ScheduledStatus> UpdateAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -89,6 +90,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Update Scheduled status.</para>
+        /// <para>format of scheduled_at: "2019-01-01 12:00:00"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> scheduled_at (optional)</para>
@@ -96,7 +98,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
         /// </returns>
         public Task<ScheduledStatus> UpdateAsync(IDictionary<string, object> parameters)
         {
@@ -111,7 +113,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -126,7 +128,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
         /// </returns>
         public Task DeleteAsync(IDictionary<string, object> parameters)
         {

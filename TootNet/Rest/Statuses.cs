@@ -175,6 +175,8 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Post a new status.</para>
+        /// <para>format of scheduled_at: "2019-01-01 12:00:00" (ISO 8601)</para>
+        /// <para>format of language: "jpn" (ISO 639-2)"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> status (required)</para>
         /// <para>- <c>long</c> in_reply_to_id (optional)</para>
@@ -197,6 +199,8 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Post a new status.</para>
+        /// <para>format of scheduled_at: "2019-01-01 12:00:00" (ISO 8601)</para>
+        /// <para>format of language: "jpn" (ISO 639-2)"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> status (required)</para>
         /// <para>- <c>long</c> in_reply_to_id (optional)</para>

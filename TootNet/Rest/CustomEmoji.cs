@@ -12,14 +12,14 @@ namespace TootNet.Rest
         internal CustomEmoji(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Custom emojis that are available on the server.</para>
+        /// <para>Returns custom emojis that are available on the server.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the list of emoji object.</para>
         /// </returns>
         public Task<IEnumerable<Emoji>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -27,14 +27,14 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Custom emojis that are available on the server.</para>
+        /// <para>Returns custom emojis that are available on the server.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the list of emoji object.</para>
         /// </returns>
         public Task<IEnumerable<Emoji>> GetAsync(IDictionary<string, object> parameters)
         {

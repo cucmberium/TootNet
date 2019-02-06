@@ -48,7 +48,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Retrieve home timeline.</para>
+        /// <para>Retrieve conversations for an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -58,7 +58,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// <para>The Result property on the task object returns the list of conversation object.</para>
         /// </returns>
         public Task<Linked<Conversation>> ConversationsAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -66,7 +66,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Retrieve home timeline.</para>
+        /// <para>Retrieve conversations for an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -76,7 +76,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// <para>The Result property on the task object returns the list of conversation object.</para>
         /// </returns>
         public Task<Linked<Conversation>> ConversationsAsync(IDictionary<string, object> parameters)
         {
