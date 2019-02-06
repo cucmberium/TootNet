@@ -35,8 +35,8 @@ var tokens = await authorize.AuthorizeWithEmail("username", "password");
 using (var fs = new FileStream(@"./picture.png", FileMode.Open, FileAccess.Read))
 {
     // toot with picture
-    var attachment = await tokens.Media.PostAsync(file => fs);
-    await tokens.Statuses.PostAsync(status => "test toot", visibility => "private", media_ids => new List() { attachment.Id });
+    var attachment = await tokens.MediaAttachments.PostAsync(file => fs);
+    await tokens.Statuses.PostAsync(status => "test toot", visibility => "private", media_ids => new List<long>() { attachment.Id });
 }
 ```
 
