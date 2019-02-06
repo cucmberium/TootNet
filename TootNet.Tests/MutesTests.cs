@@ -17,7 +17,7 @@ namespace TootNet.Tests
             await Task.Delay(1000);
 
             if (!relationship.Muting)
-                await tokens.Accounts.MuteAsync(id => 32641);
+                await tokens.Mutes.MuteAccountAsync(id => 32641);
 
             await Task.Delay(1000);
 
@@ -29,7 +29,89 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            await tokens.Accounts.UnmuteAsync(id => 32641);
+            await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+        }
+
+        [Fact]
+        public async Task MuteAccountAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+
+            await Task.Delay(1000);
+
+            if (oldRelationship.Muting)
+                await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+
+            await Task.Delay(1000);
+
+            var relationship = await tokens.Mutes.MuteAccountAsync(id => 32641);
+
+            Assert.True(relationship.Muting);
+
+            await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+        }
+
+        [Fact]
+        public async Task UnmuteAccountAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+
+            await Task.Delay(1000);
+
+            if (!oldRelationship.Muting)
+                await tokens.Mutes.MuteAccountAsync(id => 32641);
+
+            await Task.Delay(1000);
+
+            var relationship = await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+
+            Assert.False(relationship.Muting);
+        }
+
+        [Fact]
+        public async Task MuteStatusAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var status = await tokens.Statuses.IdAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            if (status.Muted == true)
+                await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            var mutedStatus = await tokens.Mutes.MuteStatusAsync(id => 45720257);
+
+            Assert.True(mutedStatus.Muted);
+
+            await Task.Delay(1000);
+
+            await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
+        }
+
+        [Fact]
+        public async Task UnmuteStatusAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var status = await tokens.Statuses.IdAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            if (status.Muted == false || status.Muted == null)
+                await tokens.Mutes.MuteStatusAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            var mutedStatus = await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
+
+            Assert.False(mutedStatus.Muted);
         }
     }
 }

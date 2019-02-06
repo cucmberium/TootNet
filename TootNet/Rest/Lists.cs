@@ -51,7 +51,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
-        public Task<Linked<List>> ListsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<List>> AccountsListsAsync(params Expression<Func<string, object>>[] parameters)
         {
             return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
         }
@@ -66,7 +66,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
-        public Task<Linked<List>> ListsAsync(IDictionary<string, object> parameters)
+        public Task<Linked<List>> AccountsListsAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
         }
@@ -144,7 +144,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list object.</para>
         /// </returns>
-        public Task<List> CreateAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<List> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
             return Tokens.AccessApiAsync<List>(MethodType.Post, "lists", Utils.ExpressionToDictionary(parameters));
         }
@@ -159,7 +159,7 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list object.</para>
         /// </returns>
-        public Task<List> CreateAsync(IDictionary<string, object> parameters)
+        public Task<List> PostAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessApiAsync<List>(MethodType.Post, "lists", parameters);
         }

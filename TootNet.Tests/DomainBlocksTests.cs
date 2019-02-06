@@ -3,7 +3,7 @@ using Xunit;
 
 namespace TootNet.Tests
 {
-    public class DomainBlocks
+    public class DomainBlocksTests
     {
         [Fact]
         public async Task GetAsyncTest()
@@ -14,10 +14,10 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            var domainblocks = await tokens.DomainBlocks.GetAsync();
+            var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
-            Assert.True(domainblocks.Count > 0);
-            Assert.Contains("pawoo.net", domainblocks);
+            Assert.True(domainBlocks.Count > 0);
+            Assert.Contains("pawoo.net", domainBlocks);
 
             await Task.Delay(1000);
 
@@ -33,10 +33,10 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            var domainblocks = await tokens.DomainBlocks.GetAsync();
+            var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
-            Assert.True(domainblocks.Count > 0);
-            Assert.Contains("pawoo.net", domainblocks);
+            Assert.True(domainBlocks.Count > 0);
+            Assert.Contains("pawoo.net", domainBlocks);
 
             await Task.Delay(1000);
 
@@ -56,9 +56,9 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            var domainblocks = await tokens.DomainBlocks.GetAsync();
+            var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
-            Assert.DoesNotContain("pawoo.net", domainblocks);
+            Assert.DoesNotContain("pawoo.net", domainBlocks);
         }
     }
 }

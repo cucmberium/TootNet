@@ -48,6 +48,25 @@ namespace TootNet.Tests
 
             await tokens.Filters.DeleteAsync(id => filter.Id);
         }
+        [Fact]
+        public async Task IdAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filter = await tokens.Filters.PostAsync(phrase => "test6", context => new List<string> { "home" });
+
+            await Task.Delay(1000);
+
+            var filter2 = await tokens.Filters.IdAsync(id => filter.Id);
+
+            Assert.NotNull(filter2);
+            Assert.True(filter.Id == filter2.Id);
+            Assert.True(filter.Phrase == filter2.Phrase);
+
+            await Task.Delay(1000);
+
+            await tokens.Filters.DeleteAsync(id => filter.Id);
+        }
 
         [Fact]
         public async Task UpdateAsyncTest()

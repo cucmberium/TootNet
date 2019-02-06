@@ -21,5 +21,49 @@ namespace TootNet.Tests
                 Assert.NotNull(status.Content);
             }
         }
+
+        [Fact]
+        public async Task FavouriteAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var status = await tokens.Statuses.IdAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            if (status.Favourited == true)
+                await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            var reblogedStatus = await tokens.Favourites.FavouriteAsync(id => 45720257);
+
+            Assert.True(reblogedStatus.Favourited);
+
+
+            await Task.Delay(1000);
+
+            await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+        }
+
+        [Fact]
+        public async Task UnfavouriteAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var status = await tokens.Statuses.IdAsync(id => 45720257);
+
+            await Task.Delay(1000);
+
+            if (status.Favourited == false || status.Favourited == null)
+                await tokens.Favourites.FavouriteAsync(id => 45720257);
+
+
+            await Task.Delay(1000);
+
+            var reblogedStatus = await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+
+            Assert.False(reblogedStatus.Favourited);
+        }
     }
 }

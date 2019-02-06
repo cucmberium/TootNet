@@ -39,8 +39,6 @@ namespace TootNet.Tests
         public async Task ClearAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
-
-            // await tokens.Notifications.ClearAsync();
         }
 
         [Fact]
@@ -63,6 +61,30 @@ namespace TootNet.Tests
             var dismissedNotifications = await tokens.Notifications.GetAsync();
 
             Assert.DoesNotContain(dismissedNotifications, x => x.Id == targetNotification.Id);
+        }
+
+        [Fact]
+        public async Task AddPushSubscriptionAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+        }
+
+        [Fact]
+        public async Task GetPushSubscriptionAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+        }
+
+        [Fact]
+        public async Task UpdatePushSubscriptionAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+        }
+
+        [Fact]
+        public async Task DeletePushSubscriptionAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
         }
     }
 }

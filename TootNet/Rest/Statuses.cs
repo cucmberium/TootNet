@@ -182,6 +182,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> sensitive (optional)</para>
         /// <para>- <c>bool</c> spoiler_text (optional)</para>
         /// <para>- <c>string</c> visibility (optional)</para>
+        /// <para>- <c>string</c> scheduled_at (optional)</para>
         /// <para>- <c>string</c> language (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -203,6 +204,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> sensitive (optional)</para>
         /// <para>- <c>bool</c> spoiler_text (optional)</para>
         /// <para>- <c>string</c> visibility (optional)</para>
+        /// <para>- <c>string</c> scheduled_at (optional)</para>
         /// <para>- <c>string</c> language (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>

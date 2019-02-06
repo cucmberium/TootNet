@@ -21,9 +21,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<IEnumerable<Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Account>(MethodType.Get, "endorsements", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<IEnumerable<Account>>(MethodType.Get, "endorsements", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the account object.</para>
         /// </returns>
-        public Task<Account> GetAsync(IDictionary<string, object> parameters)
+        public Task<IEnumerable<Account>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Account>(MethodType.Get, "endorsements", parameters);
+            return Tokens.AccessApiAsync<IEnumerable<Account>>(MethodType.Get, "endorsements", parameters);
         }
 
         /// <summary>

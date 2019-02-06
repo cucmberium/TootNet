@@ -143,52 +143,7 @@ namespace TootNet.Tests
 
             Assert.False(reblogedStatus.Reblogged);
         }
-
-        [Fact]
-        public async Task FavouriteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            if (status.Favourited == true)
-                await tokens.Statuses.UnfavouriteAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            var reblogedStatus = await tokens.Statuses.FavouriteAsync(id => 45720257);
-
-            Assert.True(reblogedStatus.Favourited);
-
-
-            await Task.Delay(1000);
-
-            await tokens.Statuses.UnfavouriteAsync(id => 45720257);
-        }
-
-        [Fact]
-        public async Task UnfavouriteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            if (status.Favourited == false || status.Favourited == null)
-                await tokens.Statuses.FavouriteAsync(id => 45720257);
-
-
-            await Task.Delay(1000);
-
-            var reblogedStatus = await tokens.Statuses.UnfavouriteAsync(id => 45720257);
-
-            Assert.False(reblogedStatus.Favourited);
-        }
-
-
+        
         [Fact]
         public async Task PinAsyncTest()
         {
@@ -211,48 +166,6 @@ namespace TootNet.Tests
             await Task.Delay(1000);
 
             await tokens.Statuses.UnpinAsync(id => 45720257);
-        }
-
-        [Fact]
-        public async Task MuteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-            
-            await Task.Delay(1000);
-
-            if (status.Muted == true)
-                await tokens.Statuses.UnmuteAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            var reblogedStatus = await tokens.Statuses.MuteAsync(id => 45720257);
-
-            Assert.True(reblogedStatus.Muted);
-
-            await Task.Delay(1000);
-
-            await tokens.Statuses.UnmuteAsync(id => 45720257);
-        }
-
-        [Fact]
-        public async Task UnmuteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            if (status.Muted == false || status.Muted == null)
-                await tokens.Statuses.MuteAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            var reblogedStatus = await tokens.Statuses.UnmuteAsync(id => 45720257);
-
-            Assert.False(reblogedStatus.Muted);
         }
     }
 }

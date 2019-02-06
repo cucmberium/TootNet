@@ -23,6 +23,16 @@ namespace TootNet.Tests
         }
 
         [Fact]
+        public async Task ConversationAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var conversations = await tokens.Timelines.ConversationsAsync(limit => 10);
+
+            Assert.NotNull(conversations);
+        }
+
+        [Fact]
         public async Task PublicAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();

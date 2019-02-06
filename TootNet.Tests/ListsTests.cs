@@ -8,11 +8,51 @@ namespace TootNet.Tests
     public class ListsTests
     {
         [Fact]
+        public async Task GetAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
+            var lists = await tokens.Lists.GetAsync();
+
+            Assert.NotNull(lists);
+            Assert.True(lists.Count > 0);
+
+            await tokens.Lists.DeleteAsync(id => createdlist.Id);
+        }
+
+        [Fact]
+        public async Task ListsAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var lists = await tokens.Lists.AccountsListsAsync(id => 157355);
+
+            Assert.NotNull(lists);
+        }
+        
+        [Fact]
+        public async Task AccountsAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
+            await tokens.Lists.AddAccountAsync(id => createdlist.Id, account_ids => new List<long> { 157355 });
+            var listAccounts = await tokens.Lists.AccountsAsync(id => createdlist.Id);
+
+            Assert.NotNull(listAccounts);
+            Assert.True(listAccounts.Count > 0);
+            Assert.Equal(157355, listAccounts[0].Id);
+
+            await tokens.Lists.DeleteAsync(id => createdlist.Id);
+        }
+
+        [Fact]
         public async Task IdAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
             
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             var list = await tokens.Lists.IdAsync(id => createdlist.Id);
 
             Assert.NotNull(list);
@@ -22,37 +62,11 @@ namespace TootNet.Tests
         }
 
         [Fact]
-        public async Task GetAsyncTest()
+        public async Task PostAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
 
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
-            var lists = await tokens.Lists.GetAsync();
-
-            Assert.NotNull(lists);
-            Assert.True(lists.Count > 0);
-
-            await tokens.Lists.DeleteAsync(id => createdlist.Id);
-        }
-        
-        [Fact]
-        public async Task DeleteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
-            await tokens.Lists.DeleteAsync(id => createdlist.Id);
-
-            var lists = await tokens.Lists.GetAsync();
-            Assert.True(lists.All(x => x.Id != createdlist.Id));
-        }
-
-        [Fact]
-        public async Task CreateAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             Assert.Equal("TootNetTest", createdlist.Title);
 
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
@@ -63,7 +77,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             var updatedlist = await tokens.Lists.UpdateAsync(id => createdlist.Id, title => "TootNetTest2");
             Assert.Equal("TootNetTest", createdlist.Title);
             Assert.Equal("TootNetTest2", updatedlist.Title);
@@ -72,27 +86,23 @@ namespace TootNet.Tests
         }
 
         [Fact]
-        public async Task AccountsAsyncTest()
+        public async Task DeleteAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
 
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
-            await tokens.Lists.AddAccountAsync(id => createdlist.Id, account_ids => new List<long> { 157355 });
-            var listAccounts = await tokens.Lists.AccountsAsync(id => createdlist.Id);
-
-            Assert.NotNull(listAccounts);
-            Assert.True(listAccounts.Count > 0);
-            Assert.Equal(157355, listAccounts[0].Id);
-
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             await tokens.Lists.DeleteAsync(id => createdlist.Id);
+
+            var lists = await tokens.Lists.GetAsync();
+            Assert.True(lists.All(x => x.Id != createdlist.Id));
         }
-        
+
         [Fact]
         public async Task AddAccountAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
             
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             await tokens.Lists.AddAccountAsync(id => createdlist.Id, account_ids => new List<long> { 157355 });
             var listAccounts = await tokens.Lists.AccountsAsync(id => createdlist.Id);
 
@@ -108,7 +118,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var createdlist = await tokens.Lists.CreateAsync(title => "TootNetTest");
+            var createdlist = await tokens.Lists.PostAsync(title => "TootNetTest");
             await tokens.Lists.AddAccountAsync(id => createdlist.Id, account_ids => new List<long> { 157355 });
             await tokens.Lists.DeleteAccountAsync(id => createdlist.Id, account_ids => new List<long> { 157355 });
             var listAccounts = await tokens.Lists.AccountsAsync(id => createdlist.Id);

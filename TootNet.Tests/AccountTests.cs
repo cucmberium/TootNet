@@ -20,6 +20,12 @@ namespace TootNet.Tests
         }
 
         [Fact]
+        public async Task PostAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+        }
+
+        [Fact]
         public async Task VerifyCredentialsAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
@@ -136,85 +142,7 @@ namespace TootNet.Tests
 
             Assert.False(relationship.Following);
         }
-
-        [Fact]
-        public async Task BlockAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var oldrelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
-            await Task.Delay(1000);
-
-            if (oldrelationship.Blocking)
-                await tokens.Accounts.UnblockAsync(id => 32641);
-
-            await Task.Delay(1000);
-
-            var relationship = await tokens.Accounts.BlockAsync(id => 32641);
-
-            Assert.True(relationship.Blocking);
-
-            await tokens.Accounts.UnblockAsync(id => 32641);
-        }
-
-        [Fact]
-        public async Task UnblockAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var oldrelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
-            await Task.Delay(1000);
-
-            if (!oldrelationship.Blocking)
-                await tokens.Accounts.BlockAsync(id => 32641);
-
-            await Task.Delay(1000);
-
-            var relationship = await tokens.Accounts.UnblockAsync(id => 32641);
-
-            Assert.False(relationship.Blocking);
-        }
-
-        [Fact]
-        public async Task MuteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var oldrelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
-
-            await Task.Delay(1000);
-
-            if (oldrelationship.Muting)
-                await tokens.Accounts.UnmuteAsync(id => 32641);
-
-            await Task.Delay(1000);
-
-            var relationship = await tokens.Accounts.MuteAsync(id => 32641);
-
-            Assert.True(relationship.Muting);
-
-            await tokens.Accounts.UnmuteAsync(id => 32641);
-        }
-
-        [Fact]
-        public async Task UnmuteAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var oldrelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
-
-            await Task.Delay(1000);
-
-            if (!oldrelationship.Muting)
-                await tokens.Accounts.MuteAsync(id => 32641);
-
-            await Task.Delay(1000);
-
-            var relationship = await tokens.Accounts.UnmuteAsync(id => 32641);
-
-            Assert.False(relationship.Muting);
-        }
-
+        
         [Fact]
         public async Task RelationshipsTest()
         {
@@ -234,16 +162,6 @@ namespace TootNet.Tests
 
             Assert.NotNull(searches);
             Assert.True(searches.Count > 0);
-        }
-        
-        [Fact]
-        public async Task ListsTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var lists = await tokens.Accounts.ListsAsync(id => 157355);
-
-            Assert.NotNull(lists);
         }
     }
 }
