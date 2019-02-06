@@ -57,9 +57,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the app object.</para>
         /// </returns>
-        public Task<App> VerifyCredentialsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Application> VerifyCredentialsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<App>(MethodType.Get, "apps/verify_credentials", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Application>(MethodType.Get, "apps/verify_credentials", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the app object.</para>
         /// </returns>
-        public Task<App> VerifyCredentialsAsync(IDictionary<string, object> parameters)
+        public Task<Application> VerifyCredentialsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<App>(MethodType.Get, "apps/verify_credentials", parameters);
+            return Tokens.AccessApiAsync<Application>(MethodType.Get, "apps/verify_credentials", parameters);
         }
     }
 }

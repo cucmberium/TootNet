@@ -6,7 +6,7 @@ using TootNet.Internal;
 
 namespace TootNet.Objects
 {
-    public class StatusParam
+    public class StatusParam : BaseObject
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -16,7 +16,6 @@ namespace TootNet.Objects
         public long? InReplyToId { get; set; }
 
         [JsonProperty("media_ids")]
-        [JsonConverter(typeof(MediaIdsConverter))]
         public IEnumerable<long> MediaIds { get; set; }
 
         [JsonProperty("sensitive")]
@@ -29,7 +28,7 @@ namespace TootNet.Objects
         public string Visibility { get; set; }
 
         [JsonProperty("scheduled_at")]
-        public DateTime ScheduledAt { get; set; }
+        public DateTime? ScheduledAt { get; set; }
         
         [JsonProperty("application_id")]
         [JsonConverter(typeof(IdConverter))]

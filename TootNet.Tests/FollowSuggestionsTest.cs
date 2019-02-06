@@ -15,7 +15,6 @@ namespace TootNet.Tests
             var accounts = await tokens.FollowSuggestions.GetAsync();
 
             Assert.NotNull(accounts);
-            Assert.True(accounts.Count() > 0);
         }
 
         [Fact]

@@ -21,9 +21,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
-        public Task<IEnumerable<Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Account>>(MethodType.Get, "endorsements", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Linked<Account>>(MethodType.Get, "endorsements", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
-        public Task<IEnumerable<Account>> GetAsync(IDictionary<string, object> parameters)
+        public Task<Linked<Account>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Account>>(MethodType.Get, "endorsements", parameters);
+            return Tokens.AccessApiAsync<Linked<Account>>(MethodType.Get, "endorsements", parameters);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Relationship> UnpinAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "endorsements/{id}/unpin", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unpin", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Relationship> UnpinAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "endorsements/{id}/unpin", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "accounts/{id}/unpin", "id", parameters);
         }
     }
 }

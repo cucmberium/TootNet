@@ -20,8 +20,7 @@ namespace TootNet.Tests
 
             var app = await tokens.Apps.VerifyCredentialsAsync();
 
-            Assert.NotNull(app.ClientId);
-            Assert.NotNull(app.ClientSecret);
+            Assert.NotNull(app.Name);
         }
     }
 }

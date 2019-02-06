@@ -92,7 +92,7 @@ namespace TootNet.Tests
 
             try
             {
-                await tokens.Statuses.IdAsync(id => toot.Id);
+                var status = await tokens.Statuses.IdAsync(id => toot.Id);
             }
             catch (MastodonException e)
             {

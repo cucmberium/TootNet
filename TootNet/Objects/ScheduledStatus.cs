@@ -5,7 +5,7 @@ using TootNet.Internal;
 
 namespace TootNet.Objects
 {
-    public class ScheduledStatus
+    public class ScheduledStatus : BaseObject
     {
         [JsonProperty("id")]
         [JsonConverter(typeof(IdConverter))]
@@ -15,7 +15,7 @@ namespace TootNet.Objects
         public DateTime ScheduledAt { get; set; }
 
         [JsonProperty("params")]
-        public IEnumerable<StatusParam> Params { get; set; }
+        public StatusParam Params { get; set; }
 
         [JsonProperty("media_attachments")]
         public IEnumerable<Attachment> MediaAttachments { get; set; }

@@ -2,7 +2,7 @@
 
 namespace TootNet.Objects
 {
-    public class Token
+    public class Token : BaseObject
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

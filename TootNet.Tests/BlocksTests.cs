@@ -17,7 +17,7 @@ namespace TootNet.Tests
             await Task.Delay(1000);
 
             if (!relationship.Blocking)
-                await tokens.Blocks.GetAsync(id => 32641);
+                await tokens.Blocks.BlockAsync(id => 32641);
 
             await Task.Delay(1000);
 

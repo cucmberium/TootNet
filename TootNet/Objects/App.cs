@@ -2,7 +2,7 @@
 
 namespace TootNet.Objects
 {
-    public class App
+    public class App : BaseObject
     {
         [JsonProperty("id")]
         public long Id { get; set; }
