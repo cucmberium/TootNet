@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TootNet" Version="1.0.5" />
+    <PackageReference Include="TootNet" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
