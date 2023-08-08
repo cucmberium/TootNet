@@ -1,5 +1,4 @@
-﻿
-namespace TootNet.Tests
+﻿namespace TootNet.Tests
 {
     public static class AccountInformation
     {

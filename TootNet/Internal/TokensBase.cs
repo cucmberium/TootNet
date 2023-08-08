@@ -6,7 +6,7 @@ namespace TootNet.Internal
         internal TokensBase()
         {
             ConnectionOptions = new Connection();
-            ApiPath = "/api/v1/";
+            ApiPath = "/api/";
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace TootNet.Internal
         /// </summary>
         public string AccessToken { get; set; }
 
-        protected string ConstructUri(string route, bool useApiPath = true)
+        protected string ConstructUri(string route, bool useApiPath = true, string apiVersion = "v1")
         {
             if (!useApiPath)
                 return "https://" + Instance + "/" + route;
 
-            return "https://" + Instance + ApiPath + route;
+            return "https://" + Instance + ApiPath + apiVersion + "/" + route;
         }
     }
 }

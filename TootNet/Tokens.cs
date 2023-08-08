@@ -39,12 +39,17 @@ namespace TootNet
         /// <summary>
         /// CustomEmoji
         /// </summary>
-        public CustomEmoji CustomEmoji => new CustomEmoji(this);
+        public CustomEmojis CustomEmoji => new CustomEmojis(this);
 
         /// <summary>
         /// DomainBlocks
         /// </summary>
         public DomainBlocks DomainBlocks => new DomainBlocks(this);
+
+        /// <summary>
+        /// Emails
+        /// </summary>
+        public Emails Emails => new Emails(this);
 
         /// <summary>
         /// Endorsements
@@ -70,7 +75,7 @@ namespace TootNet
         /// <summary>
         /// FollowSuggestions
         /// </summary>
-        public FollowSuggestions FollowSuggestions => new FollowSuggestions(this);
+        public Suggestions FollowSuggestions => new Suggestions(this);
         
         /// <summary>
         /// Instances
@@ -85,7 +90,7 @@ namespace TootNet
         /// <summary>
         /// Media
         /// </summary>
-        public MediaAttachments MediaAttachments => new MediaAttachments(this);
+        public Media MediaAttachments => new Media(this);
 
         /// <summary>
         /// Mutes
@@ -105,7 +110,7 @@ namespace TootNet
         /// <summary>
         /// Search
         /// </summary>
-        public Search Search => new Search(this);
+        public Rest.Search Search => new Rest.Search(this);
 
         /// <summary>
         /// ScheduledStatuses
@@ -170,9 +175,9 @@ namespace TootNet
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
-        public Task<T> AccessApiAsync<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true) where T : class
+        public Task<T> AccessApiAsync<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1") where T : class
         {
-            return AccessApiAsyncImpl<T>(type, uri, param, headers, useApiPath);
+            return AccessApiAsyncImpl<T>(type, uri, param, headers, useApiPath, apiVersion);
         }
 
         /// <summary>
@@ -187,14 +192,14 @@ namespace TootNet
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
-        public Task<T> AccessParameterReservedApiAsync<T>(MethodType type, string uri, string reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true) where T : class
+        public Task<T> AccessParameterReservedApiAsync<T>(MethodType type, string uri, string reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1") where T : class
         {
             if (param == null)
                 throw new ArgumentNullException(nameof(param));
             var list = param.ToList();
             var kvp = Utils.GetReservedParameter(list, reserved);
             list.Remove(kvp);
-            return AccessApiAsyncImpl<T>(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath);
+            return AccessApiAsyncImpl<T>(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
         }
 
         /// <summary>
@@ -208,9 +213,9 @@ namespace TootNet
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
-        public Task AccessApiAsync(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true)
+        public Task AccessApiAsync(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1")
         {
-            return AccessApiAsyncImpl(type, uri, param, headers, useApiPath);
+            return AccessApiAsyncImpl(type, uri, param, headers, useApiPath, apiVersion);
         }
 
         /// <summary>
@@ -225,19 +230,19 @@ namespace TootNet
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
-        public Task AccessParameterReservedApiAsync(MethodType type, string uri, string reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true)
+        public Task AccessParameterReservedApiAsync(MethodType type, string uri, string reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1")
         {
             if (param == null)
                 throw new ArgumentNullException(nameof(param));
             var list = param.ToList();
             var kvp = Utils.GetReservedParameter(list, reserved);
             list.Remove(kvp);
-            return AccessApiAsyncImpl(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath);
+            return AccessApiAsyncImpl(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
         }
 
-        private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true) where T : class
+        private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1") where T : class
         {
-            using (var response = await SendRequestAsync(type, ConstructUri(uri, useApiPath), FormatParameters(param), headers).ConfigureAwait(false))
+            using (var response = await SendRequestAsync(type, ConstructUri(uri, useApiPath, apiVersion), FormatParameters(param), headers).ConfigureAwait(false))
             {
                 var json = await response.GetResponseStringAsync();
                 var obj = Converter.Convert<T>(json);
@@ -265,9 +270,9 @@ namespace TootNet
             }
         }
 
-        private async Task AccessApiAsyncImpl(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true)
+        private async Task AccessApiAsyncImpl(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1")
         {
-            using (var response = await SendRequestAsync(type, ConstructUri(uri, useApiPath), FormatParameters(param), headers).ConfigureAwait(false))
+            using (var response = await SendRequestAsync(type, ConstructUri(uri, useApiPath, apiVersion), FormatParameters(param), headers).ConfigureAwait(false))
             {
                 var json = await response.GetResponseStringAsync();
                 if (!string.IsNullOrWhiteSpace(json))

@@ -12,10 +12,11 @@ namespace TootNet.Rest
         internal Favourites(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns current account's favorites.</para>
+        /// <para>Return current account's favorites.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -29,10 +30,11 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns current account's favorites.</para>
+        /// <para>Return current account's favorites.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -46,7 +48,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Favourite an status.</para>
+        /// <para>Favorite an status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -61,7 +63,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Favourite an status.</para>
+        /// <para>Favorite an status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -76,7 +78,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unfavourite an status.</para>
+        /// <para>Unfavorite an status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -91,7 +93,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unfavourite an status.</para>
+        /// <para>Unfavorite an status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

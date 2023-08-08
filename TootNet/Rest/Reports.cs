@@ -10,13 +10,16 @@ namespace TootNet.Rest
     public class Reports : ApiBase
     {
         internal Reports(Tokens e) : base(e) { }
-        
+
         /// <summary>
-        /// <para>Returns a list of reports made by the authenticated user.</para>
+        /// <para>Return a list of reports made by the authenticated user.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
-        /// <para>- <c>IEnumerable&lt;long&gt;</c> status_ids (required)</para>
-        /// <para>- <c>string</c> comment (required)</para>
+        /// <para>- <c>IEnumerable&lt;long&gt;</c> status_ids (optional)</para>
+        /// <para>- <c>string</c> comment (optional)</para>
+        /// <para>- <c>bool</c> forward (optional)</para>
+        /// <para>- <c>string</c> category (optional)</para>
+        /// <para>- <c>IEnumerable&lt;int&gt;</c> rule_ids (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -29,11 +32,14 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns a list of reports made by the authenticated user.</para>
+        /// <para>Return a list of reports made by the authenticated user.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
-        /// <para>- <c>IEnumerable&lt;long&gt;</c> status_ids (required)</para>
-        /// <para>- <c>string</c> comment (required)</para>
+        /// <para>- <c>IEnumerable&lt;long&gt;</c> status_ids (optional)</para>
+        /// <para>- <c>string</c> comment (optional)</para>
+        /// <para>- <c>bool</c> forward (optional)</para>
+        /// <para>- <c>string</c> category (optional)</para>
+        /// <para>- <c>IEnumerable&lt;int&gt;</c> rule_ids (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

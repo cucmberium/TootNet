@@ -5,7 +5,7 @@ namespace TootNet.Exception
     public class MastodonException : System.Exception
     {
         public MastodonException(Error error)
-            : base(error.Description)
+            : base(error.ErrorMessage)
         {
             Error = error;
         }

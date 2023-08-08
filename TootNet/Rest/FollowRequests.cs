@@ -12,10 +12,11 @@ namespace TootNet.Rest
         internal FollowRequests(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns current account's follow requests.</para>
+        /// <para>Return current account's follow requests.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -29,10 +30,11 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns current account's follow requests.</para>
+        /// <para>Return current account's follow requests.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -46,63 +48,63 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Authorize follow requests.</para>
+        /// <para>Accept follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the empty object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
-        public Task AuthorizeAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Relationship> AuthorizeAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/authorize", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "follow_requests/{id}/authorize", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Authorize follow requests.</para>
+        /// <para>Accept follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the empty object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
-        public Task AuthorizeAsync(IDictionary<string, object> parameters)
+        public Task<Relationship> AuthorizeAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/authorize", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "follow_requests/{id}/authorize", "id", parameters);
         }
 
         /// <summary>
-        /// <para>Reject follow requests.</para>
+        /// <para>Reject follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the empty object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
-        public Task RejectAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Relationship> RejectAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/reject", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "follow_requests/{id}/reject", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
-        /// <para>Reject follow requests.</para>
+        /// <para>Reject follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the empty object.</para>
+        /// <para>The Result property on the task object returns the relationship object.</para>
         /// </returns>
-        public Task RejectAsync(IDictionary<string, object> parameters)
+        public Task<Relationship> RejectAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "follow_requests/{id}/reject", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<Relationship>(MethodType.Post, "follow_requests/{id}/reject", "id", parameters);
         }
     }
 }

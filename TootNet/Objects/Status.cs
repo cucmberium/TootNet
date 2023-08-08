@@ -38,7 +38,7 @@ namespace TootNet.Objects
         public DateTime CreatedAt { get; set; }
 
         [JsonProperty("emojis")]
-        public IEnumerable<Emoji> Emojis { get; set; }
+        public IEnumerable<CustomEmoji> Emojis { get; set; }
 
         [JsonProperty("replies_count")]
         public int RepliesCount { get; set; }
@@ -68,16 +68,16 @@ namespace TootNet.Objects
         public string Visibility { get; set; }
 
         [JsonProperty("media_attachments")]
-        public IEnumerable<Attachment> MediaAttachments { get; set; }
+        public IEnumerable<MediaAttachment> MediaAttachments { get; set; }
 
         [JsonProperty("mentions")]
         public IEnumerable<Mention> Mentions { get; set; }
 
         [JsonProperty("tags")]
-        public IEnumerable<Tag> Tags { get; set; }
+        public IEnumerable<StatusTag> Tags { get; set; }
         
         [JsonProperty("card")]
-        public Card Card { get; set; }
+        public PreviewCard Card { get; set; }
 
         [JsonProperty("application")]
         public Application Application { get; set; }

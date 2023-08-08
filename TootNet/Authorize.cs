@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using TootNet.Internal;
 using TootNet.Objects;
 
@@ -14,7 +14,30 @@ namespace TootNet
     {
         Read = 1,
         Write = 2,
-        Follow = 4
+        Read_Accounts = 4,
+        Read_Blocks = 8,
+        Read_Bookmarks = 16,
+        Read_Favourites = 32,
+        Read_Filters = 64,
+        Read_Follows = 128,
+        Read_Lists = 256,
+        Read_Mutes = 512,
+        Read_Notifications = 1024,
+        Read_Search = 2048,
+        Read_Statuses = 4096,
+        Write_Accounts = 8192,
+        Write_Blocks = 16384,
+        Write_Bookmarks = 32768,
+        Write_Conversations = 65536,
+        Write_Favourites = 131072,
+        Write_Filters = 262144,
+        Write_Follows = 524288,
+        Write_Lists = 1048576,
+        Write_Media = 2097152,
+        Write_Mutes = 4194304,
+        Write_Notifications = 8388608,
+        Write_Reports = 16777216,
+        Write_Statuses = 33554432,
     }
     
     public class Authorize : TokensBase
@@ -56,32 +79,6 @@ namespace TootNet
         }
 
         /// <summary>
-        /// Authorize with email and password.
-        /// </summary>
-        /// <param name="email">Email of account.</param>
-        /// <param name="password">Password of account.</param>
-        /// <returns>Tokens to access mastodon api.</returns>
-        public async Task<Tokens> AuthorizeWithEmail(string email, string password)
-        {
-            var param = new List<KeyValuePair<string, object>>
-            {
-                new KeyValuePair<string, object>("client_id", ClientId),
-                new KeyValuePair<string, object>("client_secret", ClientSecret),
-                new KeyValuePair<string, object>("grant_type", "password"),
-                new KeyValuePair<string, object>("username", email),
-                new KeyValuePair<string, object>("password", password),
-                new KeyValuePair<string, object>("scope", ConstructScope(Scope)),
-            };
-
-            var httpClient = ConnectionOptions.GetHttpClient();
-            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
-            var auth = Converter.Convert<Token>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
-
-            AccessToken = auth.AccessToken;
-            return new Tokens(Instance, AccessToken, ClientId, ClientSecret);
-        }
-
-        /// <summary>
         /// Authorize with code.
         /// </summary>
         /// <param name="code">Code displayed in browser.</param>
@@ -107,6 +104,47 @@ namespace TootNet
         }
 
         /// <summary>
+        /// Authorize with app-level access.
+        /// </summary>
+        /// <param name="redirectUri">Redirect uri.</param>
+        /// <returns>Tokens to access mastodon api.</returns>
+        public async Task<Tokens> AuthorizeWithClientCredentials(string redirectUri = "urn:ietf:wg:oauth:2.0:oob")
+        {
+            var param = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("client_id", ClientId),
+                new KeyValuePair<string, object>("client_secret", ClientSecret),
+                new KeyValuePair<string, object>("grant_type", "client_credentials"),
+                new KeyValuePair<string, object>("redirect_uri", redirectUri),
+            };
+
+            var httpClient = ConnectionOptions.GetHttpClient();
+            var asyncResponse = await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/token", false), param).ConfigureAwait(false);
+            var auth = Converter.Convert<Token>(await asyncResponse.GetResponseStringAsync().ConfigureAwait(false));
+
+            AccessToken = auth.AccessToken;
+            return new Tokens(Instance, AccessToken, ClientId, ClientSecret);
+        }
+
+        /// <summary>
+        /// Revoke token.
+        /// </summary>
+        /// <param name="token">Token to acess mastodon api.</param>
+        /// <returns></returns>
+        public async Task RevokeToken(string token)
+        {
+            var param = new List<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("client_id", ClientId),
+                new KeyValuePair<string, object>("client_secret", ClientSecret),
+                new KeyValuePair<string, object>("token", token),
+            };
+
+            var httpClient = ConnectionOptions.GetHttpClient();
+            await Request.HttpPostAsync(httpClient, ConstructUri("/oauth/revoke", false), param).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Get authorize uri need to authorize in browser.
         /// </summary>
         /// <param name="redirectUri">Redirect uri.</param>
@@ -122,7 +160,32 @@ namespace TootNet
 
         private string ConstructScope(Scope scope)
         {
-            return string.Join(" ", Enum.GetValues(typeof(Scope)).Cast<Scope>().Where(x => (scope & x) == x).Select(x => x.ToString().ToLower()));
+            return string.Join(" ", Enum.GetValues(typeof(Scope)).Cast<Scope>().Where(x => (scope & x) == x).Select(x => x.ToString().ToLower().Replace("_", ":")));
         }
+    }
+
+    internal class App : BaseObject
+    {
+        [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
+        public long Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("website")]
+        public string Website { get; set; }
+
+        [JsonProperty("redirect_uri")]
+        public string RedirectUri { get; set; }
+
+        [JsonProperty("client_id")]
+        public string ClientId { get; set; }
+
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
+
+        [JsonProperty("vapid_key")]
+        public string VapidKey { get; set; }
     }
 }

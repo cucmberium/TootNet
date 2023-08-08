@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TootNet.Objects
 {
-    public class Results : BaseObject
+    public class Search : BaseObject
     {
         [JsonProperty("accounts")]
         public IEnumerable<Account> Accounts { get; set; }
@@ -12,6 +12,6 @@ namespace TootNet.Objects
         public IEnumerable<Status> Statuses { get; set; }
 
         [JsonProperty("hashtags")]
-        public IEnumerable<string> Hashtags { get; set; }
+        public IEnumerable<Tag> Hashtags { get; set; }
     }
 }

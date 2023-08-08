@@ -12,10 +12,11 @@ namespace TootNet.Rest
         internal DomainBlocks(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns blocked domain.</para>
+        /// <para>Return blocked domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
@@ -29,10 +30,11 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns blocked domain.</para>
+        /// <para>Return blocked domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>

@@ -12,13 +12,11 @@ namespace TootNet.Rest
         internal Mutes(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Returns current account's mutes.</para>
-        /// <para>allowed values of exclude_types: "follow", "favourite", "reblog", "mention"</para>
+        /// <para>Return current account's mutes.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -31,13 +29,11 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns current account's mutes.</para>
-        /// <para>allowed values of exclude_types: "follow", "favourite", "reblog", "mention"</para>
+        /// <para>Return current account's mutes.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -53,6 +49,8 @@ namespace TootNet.Rest
         /// <para>Mute an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>bool</c> notifications (optional)</para>
+        /// <para>- <c>int</c> duration (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -68,6 +66,8 @@ namespace TootNet.Rest
         /// <para>Mute an account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>bool</c> notifications (optional)</para>
+        /// <para>- <c>int</c> duration (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

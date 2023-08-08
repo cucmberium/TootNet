@@ -12,6 +12,98 @@ namespace TootNet.Rest
         internal Timelines(Tokens e) : base(e) { }
 
         /// <summary>
+        /// <para>Retrieve public timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>bool</c> remote (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> PublicAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "timelines/public", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Retrieve public timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>bool</c> remote (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> PublicAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "timelines/public", parameters);
+        }
+
+        /// <summary>
+        /// <para>Retrieve tag timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> hashtag (required)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> any (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> all (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> none (optional)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>bool</c> remote (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> TagAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/tag/{hashtag}", "hashtag", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Retrieve tag timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> hashtag (required)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> any (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> all (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> none (optional)</para>
+        /// <para>- <c>bool</c> local (optional)</para>
+        /// <para>- <c>bool</c> remote (optional)</para>
+        /// <para>- <c>bool</c> only_media (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Status>> TagAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/tag/{hashtag}", "hashtag", parameters);
+        }
+
+        /// <summary>
         /// <para>Retrieve home timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -45,124 +137,6 @@ namespace TootNet.Rest
         public Task<Linked<Status>> HomeAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "timelines/home", parameters);
-        }
-
-        /// <summary>
-        /// <para>Retrieve conversations for an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of conversation object.</para>
-        /// </returns>
-        public Task<Linked<Conversation>> ConversationsAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessApiAsync<Linked<Conversation>>(MethodType.Get, "conversations", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Retrieve conversations for an account.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of conversation object.</para>
-        /// </returns>
-        public Task<Linked<Conversation>> ConversationsAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessApiAsync<Linked<Conversation>>(MethodType.Get, "conversations", parameters);
-        }
-
-        /// <summary>
-        /// <para>Retrieve public timeline.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>bool</c> local (optional)</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
-        /// </returns>
-        public Task<Linked<Status>> PublicAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "timelines/public", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Retrieve public timeline.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>bool</c> local (optional)</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
-        /// </returns>
-        public Task<Linked<Status>> PublicAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessApiAsync<Linked<Status>>(MethodType.Get, "timelines/public", parameters);
-        }
-
-        /// <summary>
-        /// <para>Retrieve tag timeline.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> hashtag (required)</para>
-        /// <para>- <c>bool</c> local (optional)</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
-        /// </returns>
-        public Task<Linked<Status>> TagAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/tag/{hashtag}", "hashtag", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Retrieve tag timeline.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> hashtag (required)</para>
-        /// <para>- <c>bool</c> local (optional)</para>
-        /// <para>- <c>long</c> max_id (optional)</para>
-        /// <para>- <c>long</c> since_id (optional)</para>
-        /// <para>- <c>long</c> min_id (optional)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// <para>- <c>bool</c> only_media (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of status object.</para>
-        /// </returns>
-        public Task<Linked<Status>> TagAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Status>>(MethodType.Get, "timelines/tag/{hashtag}", "hashtag", parameters);
         }
 
         /// <summary>

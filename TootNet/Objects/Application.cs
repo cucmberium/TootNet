@@ -9,5 +9,8 @@ namespace TootNet.Objects
 
         [JsonProperty("website")]
         public string Website { get; set; }
+
+        [JsonProperty("vapid_key")]
+        public string VapidKey { get; set; }
     }
 }

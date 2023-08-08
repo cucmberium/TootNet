@@ -18,6 +18,6 @@ namespace TootNet.Objects
         public StatusParam Params { get; set; }
 
         [JsonProperty("media_attachments")]
-        public IEnumerable<Attachment> MediaAttachments { get; set; }
+        public IEnumerable<MediaAttachment> MediaAttachments { get; set; }
     }
 }

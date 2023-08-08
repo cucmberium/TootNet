@@ -40,69 +40,6 @@ namespace TootNet.Rest
         {
             return Tokens.AccessApiAsync<Linked<List>>(MethodType.Get, "lists", parameters);
         }
-        
-        /// <summary>
-        /// <para>Retrieving lists by membership.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of list object.</para>
-        /// </returns>
-        public Task<Linked<List>> AccountsListsAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Retrieving lists by membership.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of list object.</para>
-        /// </returns>
-        public Task<Linked<List>> AccountsListsAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
-        }
-
-        /// <summary>
-        /// <para>Retrieving accounts in a list.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of account object.</para>
-        /// </returns>
-        public Task<Linked<Account>> AccountsAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-
-        /// <summary>
-        /// <para>Retrieving accounts in a list.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// <para>- <c>int</c> limit (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of account object.</para>
-        /// </returns>
-        public Task<Linked<Account>> AccountsAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", parameters);
-        }
 
         /// <summary>
         /// <para>Retrieving a list.</para>
@@ -135,7 +72,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Creating a list.</para>
+        /// <para>Create a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> title (required)</para>
         /// </summary>
@@ -150,7 +87,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Creating a list.</para>
+        /// <para>Create a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> title (required)</para>
         /// </summary>
@@ -165,7 +102,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Updating a list.</para>
+        /// <para>Update a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> title (required)</para>
@@ -181,7 +118,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Updating a list.</para>
+        /// <para>Update a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> title (required)</para>
@@ -197,7 +134,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Deleting a list.</para>
+        /// <para>Delete a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -212,7 +149,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Deleting a list.</para>
+        /// <para>Delete a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -227,7 +164,46 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Adding accounts to a list.</para>
+        /// <para>Retrieving accounts in a list.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
+        /// </returns>
+        public Task<Linked<Account>> AccountsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+
+        /// <summary>
+        /// <para>Retrieving accounts in a list.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
+        /// </returns>
+        public Task<Linked<Account>> AccountsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<Account>>(MethodType.Get, "lists/{id}/accounts", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Add accounts to a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -243,7 +219,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Adding accounts to a list.</para>
+        /// <para>Add accounts to a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -259,7 +235,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Deleting accounts from the list.</para>
+        /// <para>Delete accounts from the list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -275,7 +251,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Deleting accounts from the list.</para>
+        /// <para>Delete accounts from the list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -289,5 +265,36 @@ namespace TootNet.Rest
         {
             return Tokens.AccessParameterReservedApiAsync(MethodType.Delete, "lists/{id}/accounts", "id", parameters);
         }
+
+        /// <summary>
+        /// <para>Get lists containing this account.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of list object.</para>
+        /// </returns>
+        public Task<Linked<List>> AccountsListsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Get lists containing this account.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of list object.</para>
+        /// </returns>
+        public Task<Linked<List>> AccountsListsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Linked<List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
+        }
+
     }
 }

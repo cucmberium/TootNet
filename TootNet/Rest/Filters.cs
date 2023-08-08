@@ -42,8 +42,38 @@ namespace TootNet.Rest
         }
 
         /// <summary>
+        /// <para>Return a filter.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the filter object.</para>
+        /// </returns>
+        public Task<Filter> IdAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Filter>(MethodType.Get, "filters/{id}", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <summary>
+        /// <para>Return a filter.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the filter object.</para>
+        /// </returns>
+        public Task<Filter> IdAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Filter>(MethodType.Get, "filters/{id}", "id", parameters);
+        }
+
+        /// <summary>
         /// <para>Create a new filter.</para>
-        /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
+        /// <para>allowed values of context: "home", "notifications", "public", "thread", "account"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> phrase (required)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> context (required)</para>
@@ -63,7 +93,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Create a new filter.</para>
-        /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
+        /// <para>allowed values of context: "home", "notifications", "public", "thread", "account"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> phrase (required)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> context (required)</para>
@@ -82,38 +112,8 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Returns a filter.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the filter object.</para>
-        /// </returns>
-        public Task<Filter> IdAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Filter>(MethodType.Get, "filters/{id}", "id", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <summary>
-        /// <para>Returns a filter.</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>long</c> id (required)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the filter object.</para>
-        /// </returns>
-        public Task<Filter> IdAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessParameterReservedApiAsync<Filter>(MethodType.Get, "filters/{id}", "id", parameters);
-        }
-
-        /// <summary>
         /// <para>Updates a filter.</para>
-        /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
+        /// <para>allowed values of context: "home", "notifications", "public", "thread", "account"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> phrase (required)</para>
@@ -134,7 +134,7 @@ namespace TootNet.Rest
 
         /// <summary>
         /// <para>Updates a filter.</para>
-        /// <para>allowed values of context: "home", "notifications", "public", "thread"</para>
+        /// <para>allowed values of context: "home", "notifications", "public", "thread", "account"</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> phrase (required)</para>

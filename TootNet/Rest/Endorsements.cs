@@ -14,7 +14,10 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Accounts the user chose to endorse.</para>
         /// <para>Available parameters:</para>
-        /// <para>- No parameters available in this method.</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -29,7 +32,10 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>Accounts the user chose to endorse.</para>
         /// <para>Available parameters:</para>
-        /// <para>- No parameters available in this method.</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

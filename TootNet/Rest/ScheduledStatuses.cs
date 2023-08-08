@@ -19,7 +19,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the list of scheduled status object.</para>
         /// </returns>
         public Task<IEnumerable<ScheduledStatus>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -34,7 +34,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the list of scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the list of scheduled status object.</para>
         /// </returns>
         public Task<IEnumerable<ScheduledStatus>> GetAsync(IDictionary<string, object> parameters)
         {
@@ -49,7 +49,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the scheduled status object.</para>
         /// </returns>
         public Task<ScheduledStatus> IdAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -64,7 +64,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the scheduled status object.</para>
         /// </returns>
         public Task<ScheduledStatus> IdAsync(IDictionary<string, object> parameters)
         {
@@ -81,7 +81,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the scheduled status object.</para>
         /// </returns>
         public Task<ScheduledStatus> UpdateAsync(params Expression<Func<string, object>>[] parameters)
         {
@@ -98,7 +98,7 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the scheduledstatus object.</para>
+        /// <para>The Result property on the task object returns the scheduled status object.</para>
         /// </returns>
         public Task<ScheduledStatus> UpdateAsync(IDictionary<string, object> parameters)
         {
@@ -117,7 +117,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task DeleteAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ScheduledStatus>(MethodType.Delete, "scheduled_statuses/{id}", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Delete, "scheduled_statuses/{id}", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace TootNet.Rest
         /// </returns>
         public Task DeleteAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ScheduledStatus>(MethodType.Delete, "scheduled_statuses/{id}", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Delete, "scheduled_statuses/{id}", "id", parameters);
         }
     }
 }

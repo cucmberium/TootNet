@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -42,20 +41,20 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldaccount = await tokens.Accounts.VerifyCredentialsAsync();
+            var oldAccount = await tokens.Accounts.VerifyCredentialsAsync();
 
             await Task.Delay(1000);
 
-            var newaccount = await tokens.Accounts.UpdateCredentialsAsync(display_name => "test");
+            var newAccount = await tokens.Accounts.UpdateCredentialsAsync(display_name => "test");
 
-            Assert.NotNull(newaccount.Acct);
-            Assert.NotNull(newaccount.UserName);
-            Assert.NotNull(newaccount.Url);
-            Assert.Equal("test", newaccount.DisplayName);
+            Assert.NotNull(newAccount.Acct);
+            Assert.NotNull(newAccount.UserName);
+            Assert.NotNull(newAccount.Url);
+            Assert.Equal("test", newAccount.DisplayName);
 
             await Task.Delay(1000);
 
-            await tokens.Accounts.UpdateCredentialsAsync(display_name => oldaccount.DisplayName);
+            await tokens.Accounts.UpdateCredentialsAsync(display_name => oldAccount.DisplayName);
         }
 
         [Fact]

@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using TootNet.Internal;
 
 namespace TootNet.Objects
 {
-    public class PushSubscription : BaseObject
+    public class WebPushSubscription : BaseObject
     {
         [JsonProperty("id")]
         [JsonConverter(typeof(IdConverter))]
@@ -16,6 +17,6 @@ namespace TootNet.Objects
         public string ServerKey { get; set; }
 
         [JsonProperty("alerts")]
-        public string Alerts { get; set; }
+        public IDictionary<string, bool> Alerts { get; set; }
     }
 }

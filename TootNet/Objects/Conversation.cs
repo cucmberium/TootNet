@@ -11,13 +11,13 @@ namespace TootNet.Objects
         [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
 
+        [JsonProperty("unread")]
+        public bool Unread { get; set; }
+
         [JsonProperty("accounts")]
         public IEnumerable<Account> Accounts { get; set; }
 
         [JsonProperty("last_status")]
-        public IEnumerable<Account> Status { get; set; }
-        
-        [JsonProperty("unread")]
-        public bool Unread { get; set; }
+        public Status LastStatus { get; set; }
     }
 }

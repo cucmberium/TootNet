@@ -6,7 +6,7 @@ namespace TootNet.Objects
 {
     public class Instance : BaseObject
     {
-        [JsonProperty("uri")]
+        [JsonProperty("domain")]
         public string Uri { get; set; }
 
         [JsonProperty("title")]
