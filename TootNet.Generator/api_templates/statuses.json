@@ -1,0 +1,392 @@
+[
+    {
+        "path": "/api/v1/statuses",
+        "method": "POST",
+        "description": "Post a new status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": "status",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "media_ids[]",
+                "type": "Array String",
+                "required": true
+            },
+            {
+                "name": "poll[options][]",
+                "type": "Array String",
+                "required": true
+            },
+            {
+                "name": "poll[expires_in]",
+                "type": "Integer",
+                "required": true
+            },
+            {
+                "name": "poll[multiple]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "poll[hide_totals]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "in_reply_to_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "sensitive",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "spoiler_text",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "visibility",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "language",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "scheduled_at",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id",
+        "method": "GET",
+        "description": "View a single status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id",
+        "method": "DELETE",
+        "description": "Delete a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/context",
+        "method": "GET",
+        "description": "Get parent and child statuses in context",
+        "return": "Context",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/translate",
+        "method": "POST",
+        "description": "Translate a status",
+        "return": "Translation",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "lang",
+                "type": "String (ISO 639 language code)",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/reblogged_by",
+        "method": "GET",
+        "description": "See who boosted a status",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/favourited_by",
+        "method": "GET",
+        "description": "See who favourited a status",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/favourite",
+        "method": "POST",
+        "description": "Favourite a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unfavourite",
+        "method": "POST",
+        "description": "Undo favourite of a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/reblog",
+        "method": "POST",
+        "description": "Boost a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "visibility",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unreblog",
+        "method": "POST",
+        "description": "Undo boost of a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/bookmark",
+        "method": "POST",
+        "description": "Bookmark a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unbookmark",
+        "method": "POST",
+        "description": "Undo bookmark of a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/mute",
+        "method": "POST",
+        "description": "Mute a conversation",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unmute",
+        "method": "POST",
+        "description": "Unmute a conversation",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/pin",
+        "method": "POST",
+        "description": "Pin status to profile",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unpin",
+        "method": "POST",
+        "description": "Unpin status from profile",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id",
+        "method": "PUT",
+        "description": "Edit a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "status",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "spoiler_text",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "sensitive",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "language",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "media_ids[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "poll[options][]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "poll[expires_in]",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "poll[multiple]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "poll[hide_totals]",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/history",
+        "method": "GET",
+        "description": "View edit history of a status",
+        "return": "Array StatusEdit",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/source",
+        "method": "GET",
+        "description": "View status source",
+        "return": "StatusSource",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

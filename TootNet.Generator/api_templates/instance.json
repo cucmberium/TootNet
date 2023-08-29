@@ -1,0 +1,44 @@
+[
+    {
+        "path": "/api/v2/instance",
+        "method": "GET",
+        "description": "View server information",
+        "return": "Instance",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/peers",
+        "method": "GET",
+        "description": "List of connected domains",
+        "return": "Array String",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/activity",
+        "method": "GET",
+        "description": "Weekly activity",
+        "return": "Array Other",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/rules",
+        "method": "GET",
+        "description": "List of rules",
+        "return": "Array Rule",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/domain_blocks",
+        "method": "GET",
+        "description": "View moderated servers",
+        "return": "Array DomainBlock",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/extended_description",
+        "method": "GET",
+        "description": "View extended description",
+        "return": "ExtendedDescription",
+        "parameters": []
+    }
+]

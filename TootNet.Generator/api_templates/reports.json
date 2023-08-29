@@ -1,0 +1,40 @@
+[
+    {
+        "path": "/api/v1/reports",
+        "method": "POST",
+        "description": "File a report",
+        "return": "Report",
+        "parameters": [
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "status_ids[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "comment",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "forward",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "category",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "rule_ids[]",
+                "type": "Array Integer",
+                "required": false
+            }
+        ]
+    }
+]

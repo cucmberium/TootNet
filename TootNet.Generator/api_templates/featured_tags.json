@@ -1,0 +1,42 @@
+[
+    {
+        "path": "/api/v1/featured_tags",
+        "method": "GET",
+        "description": "View your featured tags",
+        "return": "Array FeaturedTag",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/featured_tags",
+        "method": "POST",
+        "description": "Feature a tag",
+        "return": "FeaturedTag",
+        "parameters": [
+            {
+                "name": "name",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/featured_tags/:id",
+        "method": "DELETE",
+        "description": "Unfeature a tag",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/featured_tags/suggestions",
+        "method": "GET",
+        "description": "View suggested tags to feature",
+        "return": "Array Tag",
+        "parameters": []
+    }
+]

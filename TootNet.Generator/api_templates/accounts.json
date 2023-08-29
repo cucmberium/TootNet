@@ -1,0 +1,505 @@
+[
+    {
+        "path": "/api/v1/accounts",
+        "method": "POST",
+        "description": "Register an account",
+        "return": "Token",
+        "parameters": [
+            {
+                "name": "username",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "email",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "password",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "agreement",
+                "type": "Boolean",
+                "required": true
+            },
+            {
+                "name": "locale",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "reason",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/verify_credentials",
+        "method": "GET",
+        "description": "Verify account credentials",
+        "return": "CredentialAccount",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/accounts/update_credentials",
+        "method": "PATCH",
+        "description": "Update account credentials",
+        "return": "Account",
+        "parameters": [
+            {
+                "name": "display_name",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "note",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "avatar",
+                "type": "Avatar image encoded using `multipart/form-data`",
+                "required": false
+            },
+            {
+                "name": "header",
+                "type": "Header image encoded using `multipart/form-data`",
+                "required": false
+            },
+            {
+                "name": "locked",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "bot",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "discoverable",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "fields_attributes",
+                "type": "Hash",
+                "required": false
+            },
+            {
+                "name": "fields_attributes[:index][name]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "fields_attributes[:index][value]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "source[privacy]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "source[sensitive]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "source[language]",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id",
+        "method": "GET",
+        "description": "Get account",
+        "return": "Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/statuses",
+        "method": "GET",
+        "description": "Get account's statuses",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "only_media",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "exclude_replies",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "exclude_reblogs",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "pinned",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "tagged",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/followers",
+        "method": "GET",
+        "description": "Get account's followers",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/following",
+        "method": "GET",
+        "description": "Get account's following",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/featured_tags",
+        "method": "GET",
+        "description": "Get account's featured tags",
+        "return": "Array FeaturedTag",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/lists",
+        "method": "GET",
+        "description": "Get lists containing this account",
+        "return": "Array List",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/follow",
+        "method": "POST",
+        "description": "Follow account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "reblogs",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "notify",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "languages",
+                "type": "Array String (ISO 639-1 language two-letter code)",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unfollow",
+        "method": "POST",
+        "description": "Unfollow account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/remove_from_followers",
+        "method": "POST",
+        "description": "Remove account from followers",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/block",
+        "method": "POST",
+        "description": "Block account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unblock",
+        "method": "POST",
+        "description": "Unblock account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/mute",
+        "method": "POST",
+        "description": "Mute account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "notifications",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "duration",
+                "type": "Number",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unmute",
+        "method": "POST",
+        "description": "Unmute account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/pin",
+        "method": "POST",
+        "description": "Feature account on your profile",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unpin",
+        "method": "POST",
+        "description": "Unfeature account from profile",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/note",
+        "method": "POST",
+        "description": "Set private note on profile",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "comment",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/relationships",
+        "method": "GET",
+        "description": "Check relationships to other accounts",
+        "return": "Array Relationship",
+        "parameters": [
+            {
+                "name": "id[]",
+                "type": "Array",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/familiar_followers",
+        "method": "GET",
+        "description": "Find familiar followers",
+        "return": "Array FamiliarFollowers",
+        "parameters": [
+            {
+                "name": "id[]",
+                "type": "Array String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/search",
+        "method": "GET",
+        "description": "Search for matching accounts",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "q",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "offset",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "resolve",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "following",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/lookup",
+        "method": "GET",
+        "description": "Lookup account ID from Webfinger address",
+        "return": "Account",
+        "parameters": [
+            {
+                "name": "acct",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

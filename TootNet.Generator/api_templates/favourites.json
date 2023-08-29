@@ -1,0 +1,25 @@
+[
+    {
+        "path": "/api/v1/favourites",
+        "method": "GET",
+        "description": "View favourited statuses",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

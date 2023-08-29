@@ -1,0 +1,28 @@
+[
+    {
+        "path": "/api/v2/suggestions",
+        "method": "GET",
+        "description": "View follow suggestions (v2)",
+        "return": "Array Suggestion",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/suggestions/:account_id",
+        "method": "DELETE",
+        "description": "Remove a suggestion",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":account_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

@@ -1,0 +1,41 @@
+[
+    {
+        "path": "/api/v1/tags/:id",
+        "method": "GET",
+        "description": "View information about a single tag",
+        "return": "Tag",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/tags/:id/follow",
+        "method": "POST",
+        "description": "Follow a hashtag",
+        "return": "Tag",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/tags/:id/unfollow",
+        "method": "POST",
+        "description": "Unfollow a hashtag",
+        "return": "Tag",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

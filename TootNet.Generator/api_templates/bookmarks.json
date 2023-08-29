@@ -1,0 +1,25 @@
+[
+    {
+        "path": "/api/v1/bookmarks",
+        "method": "GET",
+        "description": "View bookmarked statuses",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

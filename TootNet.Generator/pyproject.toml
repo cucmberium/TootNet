@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "tootnet-generator"
+version = "0.1.0"
+description = ""
+authors = ["cucmberium <cucmberium@clarkdale.sakura.ne.jp>"]
+packages = [
+    {include="tootnet", from="src"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+pyproject-flake8 = "^6.0.0.post1"
+mypy = "^1.5.1"
+isort = "^5.12.0"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.mypy]
+no_strict_optional = true
+ignore_missing_imports = true
+check_untyped_defs = true
+
+[tool.flake8]
+max-line-length = 120
+max-complexity = 18
+ignore = "E203,E266,E501,W503,"
+
+[tool.poetry.scripts]
+tootnet = "tootnet.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

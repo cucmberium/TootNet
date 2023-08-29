@@ -1,0 +1,9 @@
+[
+    {
+        "path": "/api/v1/custom_emojis",
+        "method": "GET",
+        "description": "View all custom emoji",
+        "return": "Array CustomEmoji",
+        "parameters": []
+    }
+]

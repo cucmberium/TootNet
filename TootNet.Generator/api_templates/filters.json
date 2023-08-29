@@ -1,0 +1,364 @@
+[
+    {
+        "path": "/api/v2/filters",
+        "method": "GET",
+        "description": "View all filters",
+        "return": "Array Filter",
+        "parameters": []
+    },
+    {
+        "path": "/api/v2/filters/:id",
+        "method": "GET",
+        "description": "View a specific filter",
+        "return": "Filter",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters",
+        "method": "POST",
+        "description": "Create a filter",
+        "return": "Filter",
+        "parameters": [
+            {
+                "name": "title",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "context[]",
+                "type": "Array String",
+                "required": true
+            },
+            {
+                "name": "filter_action",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "expires_in",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][keyword]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][whole_word]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][id]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][_destroy]",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:id",
+        "method": "PUT",
+        "description": "Update a filter",
+        "return": "Filter",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "title",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "context[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "filter_action",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "expires_in",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][keyword]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][whole_word]",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][id]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "keywords_attributes[][_destroy]",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:id",
+        "method": "DELETE",
+        "description": "Delete a filter",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:filter_id/keywords",
+        "method": "GET",
+        "description": "View keywords added to a filter",
+        "return": "Array FilterKeyword",
+        "parameters": [
+            {
+                "name": ":filter_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:filter_id/keywords",
+        "method": "POST",
+        "description": "Add a keyword to a filter",
+        "return": "FilterKeyword",
+        "parameters": [
+            {
+                "name": ":filter_id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "keyword",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "whole_word",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/keywords/:id",
+        "method": "GET",
+        "description": "View a single keyword",
+        "return": "FilterKeyword",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/keywords/:id",
+        "method": "PUT",
+        "description": "Edit a keyword within a filter",
+        "return": "FilterKeyword",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "keyword",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "whole_word",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/keywords/:id",
+        "method": "DELETE",
+        "description": "Remove keywords from a filter",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:filter_id/statuses",
+        "method": "GET",
+        "description": "View all status filters",
+        "return": "Array FilterStatus",
+        "parameters": [
+            {
+                "name": ":filter_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/:filter_id/statuses",
+        "method": "POST",
+        "description": "Add a status to a filter group",
+        "return": "FilterStatus",
+        "parameters": [
+            {
+                "name": ":filter_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/statuses/:id",
+        "method": "GET",
+        "description": "View a single status filter",
+        "return": "FilterStatus",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/filters/statuses/:id",
+        "method": "DELETE",
+        "description": "Remove a status from a filter group",
+        "return": "FilterStatus",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/filters",
+        "method": "GET",
+        "description": "View your filters",
+        "return": "V1::Filter",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/filters/:id",
+        "method": "GET",
+        "description": "View a single filter",
+        "return": "V1::Filter",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/filters",
+        "method": "POST",
+        "description": "Create a filter",
+        "return": "V1::Filter",
+        "parameters": [
+            {
+                "name": "phrase",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "context[]",
+                "type": "Array String",
+                "required": true
+            },
+            {
+                "name": "irreversible",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "whole_word",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "expires_in",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/filters/:id",
+        "method": "PUT",
+        "description": "Update a filter",
+        "return": "V1::Filter",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "phrase",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "context[]",
+                "type": "Array String",
+                "required": true
+            },
+            {
+                "name": "irreversible",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "whole_word",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "expires_in",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

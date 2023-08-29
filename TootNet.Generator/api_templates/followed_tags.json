@@ -1,0 +1,25 @@
+[
+    {
+        "path": "/api/v1/followed_tags",
+        "method": "GET",
+        "description": "View all followed tags",
+        "return": "Array Tag",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

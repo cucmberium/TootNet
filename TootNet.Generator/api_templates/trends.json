@@ -1,0 +1,56 @@
+[
+    {
+        "path": "/api/v1/trends/tags",
+        "method": "GET",
+        "description": "View trending tags",
+        "return": "Array Tag",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "offset",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/trends/statuses",
+        "method": "GET",
+        "description": "View trending statuses",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "offset",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/trends/links",
+        "method": "GET",
+        "description": "View trending links",
+        "return": "Array Trends::Link",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "offset",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "path": "/api/v1/follow_requests",
+        "method": "GET",
+        "description": "View pending follow requests",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/follow_requests/:account_id/authorize",
+        "method": "POST",
+        "description": "Accept follow request",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":account_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/follow_requests/:account_id/reject",
+        "method": "POST",
+        "description": "Reject follow request",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":account_id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

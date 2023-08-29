@@ -1,0 +1,169 @@
+[
+    {
+        "path": "/api/v1/timelines/public",
+        "method": "GET",
+        "description": "View public timeline",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "local",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "remote",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "only_media",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/timelines/tag/:hashtag",
+        "method": "GET",
+        "description": "View hashtag timeline",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": ":hashtag",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "any[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "all[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "none[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "local",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "remote",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "only_media",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/timelines/home",
+        "method": "GET",
+        "description": "View home timeline",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/timelines/list/:list_id",
+        "method": "GET",
+        "description": "View list timeline",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": ":list_id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

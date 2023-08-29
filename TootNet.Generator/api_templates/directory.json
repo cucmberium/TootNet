@@ -1,0 +1,30 @@
+[
+    {
+        "path": "/api/v1/directory",
+        "method": "GET",
+        "description": "View profile directory",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "offset",
+                "type": "Number",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Number",
+                "required": false
+            },
+            {
+                "name": "order",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "local",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    }
+]

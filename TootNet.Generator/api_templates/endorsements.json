@@ -1,0 +1,20 @@
+[
+    {
+        "path": "/api/v1/endorsements",
+        "method": "GET",
+        "description": "View currently featured profiles",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

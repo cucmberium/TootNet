@@ -1,0 +1,51 @@
+[
+    {
+        "path": "/api/v1/conversations",
+        "method": "GET",
+        "description": "View all conversations",
+        "return": "Array Conversation",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/conversations/:id",
+        "method": "DELETE",
+        "description": "Remove a conversation",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/conversations/:id/read",
+        "method": "POST",
+        "description": "Mark a conversation as read",
+        "return": "Conversation",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

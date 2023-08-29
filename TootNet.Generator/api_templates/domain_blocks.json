@@ -1,0 +1,51 @@
+[
+    {
+        "path": "/api/v1/domain_blocks",
+        "method": "GET",
+        "description": "Get domain blocks",
+        "return": "Array String",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/domain_blocks",
+        "method": "POST",
+        "description": "Block a domain",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": "domain",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/domain_blocks",
+        "method": "DELETE",
+        "description": "Unblock a domain",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": "domain",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

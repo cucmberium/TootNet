@@ -1,0 +1,33 @@
+[
+    {
+        "path": "/api/v1/polls/:id",
+        "method": "GET",
+        "description": "View a poll",
+        "return": "Poll",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/polls/:id/votes",
+        "method": "POST",
+        "description": "Vote on a poll",
+        "return": "Poll",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "choices[]",
+                "type": "Array Integer",
+                "required": true
+            }
+        ]
+    }
+]

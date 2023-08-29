@@ -1,0 +1,74 @@
+[
+    {
+        "path": "/api/v1/scheduled_statuses",
+        "method": "GET",
+        "description": "View scheduled statuses",
+        "return": "Array ScheduledStatus",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/scheduled_statuses/:id",
+        "method": "GET",
+        "description": "View a single scheduled status",
+        "return": "ScheduledStatus",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/scheduled_statuses/:id",
+        "method": "PUT",
+        "description": "Update a scheduled status's publishing date",
+        "return": "ScheduledStatus",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "scheduled_at",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/scheduled_statuses/:id",
+        "method": "DELETE",
+        "description": "Cancel a scheduled status",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

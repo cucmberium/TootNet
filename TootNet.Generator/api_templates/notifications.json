@@ -1,0 +1,78 @@
+[
+    {
+        "path": "/api/v1/notifications",
+        "method": "GET",
+        "description": "Get all notifications",
+        "return": "Array Notification",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "types[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "exclude_types[]",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/:id",
+        "method": "GET",
+        "description": "Get a single notification",
+        "return": "Notification",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/clear",
+        "method": "POST",
+        "description": "Dismiss all notifications",
+        "return": "Empty",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/notifications/:id/dismiss",
+        "method": "POST",
+        "description": "Dismiss a single notification",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

@@ -1,0 +1,60 @@
+[
+    {
+        "path": "/api/v2/search",
+        "method": "GET",
+        "description": "Perform a search",
+        "return": "Search",
+        "parameters": [
+            {
+                "name": "q",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "type",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "resolve",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "following",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "exclude_unreviewed",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "offset",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

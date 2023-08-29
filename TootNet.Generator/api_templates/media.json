@@ -1,0 +1,71 @@
+[
+    {
+        "path": "/api/v2/media",
+        "method": "POST",
+        "description": "Upload media as an attachment (async)",
+        "return": "MediaAttachment",
+        "parameters": [
+            {
+                "name": "file",
+                "type": "Object",
+                "required": true
+            },
+            {
+                "name": "thumbnail",
+                "type": "Object",
+                "required": false
+            },
+            {
+                "name": "description",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "focus",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/media/:id",
+        "method": "GET",
+        "description": "Get media attachment",
+        "return": "MediaAttachment",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/media/:id",
+        "method": "PUT",
+        "description": "Update media attachment",
+        "return": "MediaAttachment",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "thumbnail",
+                "type": "Object",
+                "required": false
+            },
+            {
+                "name": "description",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "focus",
+                "type": "String",
+                "required": false
+            }
+        ]
+    }
+]

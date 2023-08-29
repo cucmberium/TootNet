@@ -1,0 +1,25 @@
+[
+    {
+        "path": "/api/v1/blocks",
+        "method": "GET",
+        "description": "View blocked users",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    }
+]

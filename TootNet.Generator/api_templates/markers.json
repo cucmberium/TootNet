@@ -1,0 +1,33 @@
+[
+    {
+        "path": "/api/v1/markers",
+        "method": "GET",
+        "description": "Get saved timeline positions",
+        "return": "Marker",
+        "parameters": [
+            {
+                "name": "timeline[]",
+                "type": "Array String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/markers",
+        "method": "POST",
+        "description": "Save your position in a timeline",
+        "return": "Marker",
+        "parameters": [
+            {
+                "name": "home[last_read_id]",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "notifications[last_read_id]",
+                "type": "String",
+                "required": false
+            }
+        ]
+    }
+]

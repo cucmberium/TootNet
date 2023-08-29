@@ -1,0 +1,64 @@
+[
+    {
+        "path": "/api/v1/announcements",
+        "method": "GET",
+        "description": "View all announcements",
+        "return": "Array Announcement",
+        "parameters": [
+            {
+                "name": "with_dismissed",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/announcements/:id/dismiss",
+        "method": "POST",
+        "description": "Dismiss an announcement",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/announcements/:id/reactions/:name",
+        "method": "PUT",
+        "description": "Add a reaction to an announcement",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": ":name",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/announcements/:id/reactions/:name",
+        "method": "DELETE",
+        "description": "Remove a reaction from an announcement",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": ":name",
+                "type": "String",
+                "required": true
+            }
+        ]
+    }
+]

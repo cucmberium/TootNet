@@ -1,0 +1,140 @@
+[
+    {
+        "path": "/api/v1/lists",
+        "method": "GET",
+        "description": "View your lists",
+        "return": "Array List",
+        "parameters": []
+    },
+    {
+        "path": "/api/v1/lists/:id",
+        "method": "GET",
+        "description": "Show a single list",
+        "return": "List",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists",
+        "method": "POST",
+        "description": "Create a list",
+        "return": "List",
+        "parameters": [
+            {
+                "name": "title",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "replies_policy",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists/:id",
+        "method": "PUT",
+        "description": "Update a list",
+        "return": "List",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "title",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "replies_policy",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists/:id",
+        "method": "DELETE",
+        "description": "Delete a list",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists/:id/accounts",
+        "method": "GET",
+        "description": "View accounts in a list",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists/:id/accounts",
+        "method": "POST",
+        "description": "Add accounts to a list",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "account_ids[]",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/lists/:id/accounts",
+        "method": "DELETE",
+        "description": "Remove accounts from list",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "account_ids[]",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    }
+]

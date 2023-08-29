@@ -1,0 +1,25 @@
+[
+    {
+        "path": "/api/oembed",
+        "method": "GET",
+        "description": "Get OEmbed info as JSON",
+        "return": "Other",
+        "parameters": [
+            {
+                "name": "url",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "maxwidth",
+                "type": "Number",
+                "required": false
+            },
+            {
+                "name": "maxheight",
+                "type": "Number",
+                "required": false
+            }
+        ]
+    }
+]
