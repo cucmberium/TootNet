@@ -2,8 +2,8 @@ import argparse
 import logging
 from typing import Any
 
-from generate_template import main as generate_template_main
 from generate_cs_code import main as generate_cs_code_main
+from generate_template import main as generate_template_main
 
 
 def get_logger(debug: bool = False) -> logging.Logger:

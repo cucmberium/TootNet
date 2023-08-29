@@ -1,8 +1,7 @@
-import logging
 import glob
 import json
+import logging
 import os
-
 
 HEADER = """
 using System;
@@ -58,7 +57,7 @@ TEMPLATE_TYPE_TO_CSHARP_TYPE = {
     "Double": "double",
     "Char": "char",
     "Boolean": "bool",
-    "String": "string"
+    "String": "string",
 }
 
 
@@ -140,7 +139,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             reserved = ""
             if ":" in method["path"]:
                 reserved = [x["name"].replace(":", "") for x in method["parameters"] if x["name"].startswith(":")][0]
-                reserved = f", \"{reserved}\""
+                reserved = f', "{reserved}"'
 
             parameter_reserved = "ParameterReserved" if ":" in method["path"] else ""
 
