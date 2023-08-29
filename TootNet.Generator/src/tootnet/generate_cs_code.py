@@ -24,15 +24,7 @@ namespace TootNet.Rest
 EXPR_FUNC = """
         public Task{return_type} {method_name}Async(params Expression<Func<string, object>>[] parameters)
         {{
-            return Tokens.AccessApiAsync{return_type}(MethodType.{method_type}, "{route}", Utils.ExpressionToDictionary(parameters){api_version});
-        }}
-""".strip(
-    "\n"
-)
-EXPR_PR_FUNC = """
-        public Task{return_type} {method_name}Async(params Expression<Func<string, object>>[] parameters)
-        {{
-            return Tokens.AccessParameterReservedApiAsync{return_type}(MethodType.{method_type}, "{route}", "{reserved}", Utils.ExpressionToDictionary(parameters){api_version});
+            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, Utils.ExpressionToDictionary(parameters){api_version});
         }}
 """.strip(
     "\n"
@@ -41,15 +33,7 @@ EXPR_PR_FUNC = """
 DIC_FUNC = """
         public Task{return_type} {method_name}Async(IDictionary<string, object> parameters)
         {{
-            return Tokens.AccessApiAsync{return_type}(MethodType.{method_type}, "{route}", parameters{api_version});
-        }}
-""".strip(
-    "\n"
-)
-DIC_PR_FUNC = """
-        public Task{return_type} {method_name}Async(IDictionary<string, object> parameters)
-        {{
-            return Tokens.AccessParameterReservedApiAsync{return_type}(MethodType.{method_type}, "{route}", "{reserved}", parameters{api_version});
+            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, parameters{api_version});
         }}
 """.strip(
     "\n"
@@ -156,19 +140,20 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             reserved = ""
             if ":" in method["path"]:
                 reserved = [x["name"].replace(":", "") for x in method["parameters"] if x["name"].startswith(":")][0]
+                reserved = f", \"{reserved}\""
+
+            parameter_reserved = "ParameterReserved" if ":" in method["path"] else ""
 
             # write expr method
-            expr_func_str = EXPR_FUNC
-            if ":" in method["path"]:
-                expr_func_str = EXPR_PR_FUNC
             fout.write(
-                expr_func_str.format(
+                EXPR_FUNC.format(
                     return_type=return_type,
                     method_name=method_name,
                     method_type=method_type,
                     route=route,
                     api_version=api_version,
                     reserved=reserved,
+                    parameter_reserved=parameter_reserved,
                 )
             )
             fout.write("\n\n")
@@ -178,17 +163,15 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             fout.write("\n")
 
             # write dic method
-            dic_func_str = DIC_FUNC
-            if ":" in method["path"]:
-                dic_func_str = DIC_PR_FUNC
             fout.write(
-                dic_func_str.format(
+                DIC_FUNC.format(
                     return_type=return_type,
                     method_name=method_name,
                     method_type=method_type,
                     route=route,
                     api_version=api_version,
                     reserved=reserved,
+                    parameter_reserved=parameter_reserved,
                 )
             )
             fout.write("\n")
