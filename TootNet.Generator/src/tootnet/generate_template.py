@@ -5,7 +5,7 @@ import os
 import re
 from typing import Any
 
-IGNORE_FILES = ["push.md", "streaming.md"]
+IGNORE_FILES = ["oauth.md", "push.md", "streaming.md"]
 
 
 def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
