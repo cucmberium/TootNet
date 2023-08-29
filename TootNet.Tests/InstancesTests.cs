@@ -12,7 +12,7 @@ namespace TootNet.Tests
 
             var instance = await tokens.Instances.GetAsync();
 
-            Assert.Equal(instance.Uri, tokens.Instance);
+            Assert.Equal((string)instance.Uri, tokens.Instance);
         }
     }
 }

@@ -8,9 +8,9 @@ using TootNet.Objects;
 
 namespace TootNet.Rest
 {
-    public class Instances : ApiBase
+    public class Instance : ApiBase
     {
-        internal Instances(Tokens e) : base(e) { }
+        internal Instance(Tokens e) : base(e) { }
 
         /// <summary>
         /// <para>Returns information about instance.</para>

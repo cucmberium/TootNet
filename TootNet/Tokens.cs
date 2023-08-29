@@ -80,7 +80,7 @@ namespace TootNet
         /// <summary>
         /// Instances
         /// </summary>
-        public Instances Instances => new Instances(this);
+        public Rest.Instance Instances => new Rest.Instance(this);
 
         /// <summary>
         /// Lists

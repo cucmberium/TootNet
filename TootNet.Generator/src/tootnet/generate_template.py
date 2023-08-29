@@ -75,7 +75,7 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
                     continue
 
                 parameter_matches = re.findall(
-                    r"([?P<name>a-zA-Z0-9_\[\]:]+)\n: ?(?P<required>{{<required>}})? (?P<type>.+)",
+                    r"([?P<name>a-zA-Z0-9_\[\]:]+) *\n: ?(?P<required>{{<required>}})? (?P<type>.+)",
                     parameters_match.group(1),
                 )
                 for parameter in parameter_matches:

@@ -85,6 +85,11 @@
                 "required": true
             },
             {
+                "name": "max_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
                 "name": "since_id",
                 "type": "Integer",
                 "required": false

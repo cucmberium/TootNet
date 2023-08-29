@@ -24,7 +24,7 @@ namespace TootNet.Rest
 EXPR_FUNC = """
         public Task{return_type} {method_name}Async(params Expression<Func<string, object>>[] parameters)
         {{
-            return Tokens.AccessApiAsync<{return_type}>(MethodType.{method_type}, "{route}", Utils.ExpressionToDictionary(parameters){api_version});
+            return Tokens.AccessApiAsync{return_type}(MethodType.{method_type}, "{route}", Utils.ExpressionToDictionary(parameters){api_version});
         }}
 """.strip(
     "\n"
@@ -32,7 +32,7 @@ EXPR_FUNC = """
 EXPR_PR_FUNC = """
         public Task{return_type} {method_name}Async(params Expression<Func<string, object>>[] parameters)
         {{
-            return Tokens.AccessParameterReservedApiAsync<{return_type}>(MethodType.{method_type}, "{route}", "{reserved}", Utils.ExpressionToDictionary(parameters){api_version});
+            return Tokens.AccessParameterReservedApiAsync{return_type}(MethodType.{method_type}, "{route}", "{reserved}", Utils.ExpressionToDictionary(parameters){api_version});
         }}
 """.strip(
     "\n"
@@ -41,7 +41,7 @@ EXPR_PR_FUNC = """
 DIC_FUNC = """
         public Task{return_type} {method_name}Async(IDictionary<string, object> parameters)
         {{
-            return Tokens.AccessApiAsync<{return_type}>(MethodType.{method_type}, "{route}", parameters{api_version});
+            return Tokens.AccessApiAsync{return_type}(MethodType.{method_type}, "{route}", parameters{api_version});
         }}
 """.strip(
     "\n"
@@ -49,7 +49,7 @@ DIC_FUNC = """
 DIC_PR_FUNC = """
         public Task{return_type} {method_name}Async(IDictionary<string, object> parameters)
         {{
-            return Tokens.AccessParameterReservedApiAsync<{return_type}>(MethodType.{method_type}, "{route}", "{reserved}", parameters{api_version});
+            return Tokens.AccessParameterReservedApiAsync{return_type}(MethodType.{method_type}, "{route}", "{reserved}", parameters{api_version});
         }}
 """.strip(
     "\n"
@@ -64,7 +64,18 @@ FOOTER = """
 
 INDENT = "        "
 
-CSHARP_TYPES = ["int", "uint", "long", "ulong", "float", "double", "char", "bool", "string"]
+TEMPLATE_TYPE_TO_CSHARP_TYPE = {
+    "Number": "int",
+    "Integer": "int",
+    "UInteger": "uint",
+    "Long": "long",
+    "ULong": "ulong",
+    "Float": "float",
+    "Double": "double",
+    "Char": "char",
+    "Boolean": "bool",
+    "String": "string"
+}
 
 
 def snake_to_pascal(text):
@@ -90,9 +101,16 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                 fout.write(f"{INDENT}/// <para>- No parameters available in this method.</para>\n")
             else:
                 for parameter in method["parameters"]:
-                    ptype = parameter["type"].lower()
+                    ptype = parameter["type"]
+                    if ptype in TEMPLATE_TYPE_TO_CSHARP_TYPE:
+                        ptype = TEMPLATE_TYPE_TO_CSHARP_TYPE[ptype]
+                    else:
+                        ptype = ptype.lower()
                     pname = parameter["name"].replace(":", "")
                     popt = "required" if parameter["required"] else "optional"
+                    if pname in ["id", "max_id", "since_id", "min_id"]:
+                        ptype = "long"
+
                     fout.write(f"{INDENT}/// <para>- <c>{ptype}</c> {pname} ({popt})</para>\n")
             fout.write(f"{INDENT}/// </summary>\n")
 
@@ -110,7 +128,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
 
             # extract method info
             return_type = method["return"].split(" ")[-1]
-            if return_type.lower() in CSHARP_TYPES:
+            if return_type.lower() in TEMPLATE_TYPE_TO_CSHARP_TYPE.values():
                 return_type = return_type.lower()
             if method["return"].startswith("Array "):
                 if any(["since_id" == x["name"] for x in method["parameters"]]):

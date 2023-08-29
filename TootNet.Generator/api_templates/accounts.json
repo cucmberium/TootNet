@@ -200,6 +200,11 @@
                 "required": true
             },
             {
+                "name": "max_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
                 "name": "since_id",
                 "type": "Integer",
                 "required": false
@@ -226,6 +231,11 @@
                 "name": ":id",
                 "type": "String",
                 "required": true
+            },
+            {
+                "name": "max_id",
+                "type": "Integer",
+                "required": false
             },
             {
                 "name": "since_id",
