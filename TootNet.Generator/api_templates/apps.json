@@ -1,33 +1,5 @@
 [
     {
-        "path": "/api/v1/apps",
-        "method": "POST",
-        "description": "Create an application",
-        "return": "Application",
-        "parameters": [
-            {
-                "name": "client_name",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "redirect_uris",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "scopes",
-                "type": "String",
-                "required": false
-            },
-            {
-                "name": "website",
-                "type": "String",
-                "required": false
-            }
-        ]
-    },
-    {
         "path": "/api/v1/apps/verify_credentials",
         "method": "GET",
         "description": "Verify your app works",

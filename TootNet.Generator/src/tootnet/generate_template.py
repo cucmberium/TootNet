@@ -37,6 +37,9 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
                 raise ValueError("no http method found")
             method["path"] = http_match.group(2)
             method["method"] = http_match.group(1)
+
+            if "/api/v1/filters" in method["path"]:  # deprecated method
+                continue
             # endregion
 
             # region extract description
@@ -58,7 +61,7 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
                 method["return"] = "Array "
             return_entity_match = re.search(r".*?\[([^]]+)", return_entity_text)
             if return_entity_match:
-                method["return"] += return_entity_match.group(1)
+                method["return"] += return_entity_match.group(1).replace("::", "")
             elif "Empty" in return_entity_text or "empty" in return_entity_text or "n/a" in return_entity_text:
                 method["return"] += "Empty"
             elif "String" in return_entity_text:
@@ -79,13 +82,20 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
                     parameters_match.group(1),
                 )
                 for parameter in parameter_matches:
+                    ty = (
+                        parameter[2]
+                        .replace("**Internal parameter.**", "Integer. ")
+                        .replace("Array of ", "Array ")
+                        .split(".")[0]
+                    )
+                    if ty == "Hash":
+                        continue
+                    if ty == "Array":
+                        ty = "Array String"
                     method["parameters"].append(
                         {
-                            "name": parameter[0],
-                            "type": parameter[2]
-                            .replace("**Internal parameter.**", "Integer. ")
-                            .replace("Array of ", "Array ")
-                            .split(".")[0],
+                            "name": parameter[0].replace("[]", ""),
+                            "type": ty,
                             "required": parameter[1] == "{{<required>}}",
                         }
                     )

@@ -11,12 +11,12 @@
                 "required": true
             },
             {
-                "name": "media_ids[]",
+                "name": "media_ids",
                 "type": "Array String",
                 "required": true
             },
             {
-                "name": "poll[options][]",
+                "name": "poll[options]",
                 "type": "Array String",
                 "required": true
             },
@@ -347,12 +347,12 @@
                 "required": false
             },
             {
-                "name": "media_ids[]",
+                "name": "media_ids",
                 "type": "Array String",
                 "required": false
             },
             {
-                "name": "poll[options][]",
+                "name": "poll[options]",
                 "type": "Array String",
                 "required": false
             },

@@ -86,11 +86,6 @@
                 "required": false
             },
             {
-                "name": "fields_attributes",
-                "type": "Hash",
-                "required": false
-            },
-            {
                 "name": "fields_attributes[:index][name]",
                 "type": "String",
                 "required": false
@@ -447,8 +442,8 @@
         "return": "Array Relationship",
         "parameters": [
             {
-                "name": "id[]",
-                "type": "Array",
+                "name": "id",
+                "type": "Array String",
                 "required": false
             }
         ]
@@ -460,7 +455,7 @@
         "return": "Array FamiliarFollowers",
         "parameters": [
             {
-                "name": "id[]",
+                "name": "id",
                 "type": "Array String",
                 "required": false
             }

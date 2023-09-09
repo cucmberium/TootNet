@@ -60,6 +60,22 @@ TEMPLATE_TYPE_TO_CSHARP_TYPE = {
     "String": "string",
 }
 
+LONG_TYPE_PARAMS = [
+    "id",
+    "max_id",
+    "since_id",
+    "min_id",
+    "account_id",
+    "account_ids",
+    "status_id",
+    "status_ids",
+    "list_id",
+    "list_ids",
+    "media_id",
+    "media_ids",
+    "in_reply_to_id",
+]
+
 
 def snake_to_pascal(text):
     return "".join(word.capitalize() for word in text.split("_"))
@@ -85,14 +101,20 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             else:
                 for parameter in method["parameters"]:
                     ptype = parameter["type"]
+                    ptypeenu = False
+                    if ptype.startswith("Array "):
+                        ptype = ptype.replace("Array ", "")
+                        ptypeenu = True
                     if ptype in TEMPLATE_TYPE_TO_CSHARP_TYPE:
                         ptype = TEMPLATE_TYPE_TO_CSHARP_TYPE[ptype]
                     else:
                         ptype = ptype.lower()
                     pname = parameter["name"].replace(":", "")
                     popt = "required" if parameter["required"] else "optional"
-                    if pname in ["id", "max_id", "since_id", "min_id"]:
+                    if pname in LONG_TYPE_PARAMS:
                         ptype = "long"
+                    if ptypeenu:
+                        ptype = f"IEnumerable&lt;{ptype}&gt;"
 
                     fout.write(f"{INDENT}/// <para>- <c>{ptype}</c> {pname} ({popt})</para>\n")
             fout.write(f"{INDENT}/// </summary>\n")
@@ -123,11 +145,18 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             else:
                 return_type = "<" + return_type + ">"
 
-            method_name = snake_to_pascal(method["path"].split("/")[-1].replace(":", ""))
+            method_type = snake_to_pascal(method["method"])
+
+            if ":" in method["path"].split("/")[-1]:
+                if method_type == "Get":
+                    method_name = snake_to_pascal(method["path"].split("/")[-1].replace(":", ""))
+                else:
+                    method_name = snake_to_pascal(method["path"].split("/")[-2])
+            else:
+                method_name = snake_to_pascal(method["path"].split("/")[-1])
             if method_name == class_name:
                 method_name = snake_to_pascal(method["method"])
 
-            method_type = snake_to_pascal(method["method"])
 
             route = method["path"].replace("/api/v1/", "")
             api_version = ""

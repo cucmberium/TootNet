@@ -31,7 +31,7 @@
                 "required": true
             },
             {
-                "name": "context[]",
+                "name": "context",
                 "type": "Array String",
                 "required": true
             },
@@ -46,22 +46,22 @@
                 "required": false
             },
             {
-                "name": "keywords_attributes[][keyword]",
+                "name": "keywords_attributes[keyword]",
                 "type": "String",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][whole_word]",
+                "name": "keywords_attributes[whole_word]",
                 "type": "Boolean",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][id]",
+                "name": "keywords_attributes[id]",
                 "type": "String",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][_destroy]",
+                "name": "keywords_attributes[_destroy]",
                 "type": "Boolean",
                 "required": false
             }
@@ -84,7 +84,7 @@
                 "required": false
             },
             {
-                "name": "context[]",
+                "name": "context",
                 "type": "Array String",
                 "required": false
             },
@@ -99,22 +99,22 @@
                 "required": false
             },
             {
-                "name": "keywords_attributes[][keyword]",
+                "name": "keywords_attributes[keyword]",
                 "type": "String",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][whole_word]",
+                "name": "keywords_attributes[whole_word]",
                 "type": "Boolean",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][id]",
+                "name": "keywords_attributes[id]",
                 "type": "String",
                 "required": false
             },
             {
-                "name": "keywords_attributes[][_destroy]",
+                "name": "keywords_attributes[_destroy]",
                 "type": "Boolean",
                 "required": false
             }
@@ -267,97 +267,6 @@
                 "name": ":id",
                 "type": "String",
                 "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/filters",
-        "method": "GET",
-        "description": "View your filters",
-        "return": "V1::Filter",
-        "parameters": []
-    },
-    {
-        "path": "/api/v1/filters/:id",
-        "method": "GET",
-        "description": "View a single filter",
-        "return": "V1::Filter",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/filters",
-        "method": "POST",
-        "description": "Create a filter",
-        "return": "V1::Filter",
-        "parameters": [
-            {
-                "name": "phrase",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "context[]",
-                "type": "Array String",
-                "required": true
-            },
-            {
-                "name": "irreversible",
-                "type": "Boolean",
-                "required": false
-            },
-            {
-                "name": "whole_word",
-                "type": "Boolean",
-                "required": false
-            },
-            {
-                "name": "expires_in",
-                "type": "Integer",
-                "required": false
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/filters/:id",
-        "method": "PUT",
-        "description": "Update a filter",
-        "return": "V1::Filter",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "phrase",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "context[]",
-                "type": "Array String",
-                "required": true
-            },
-            {
-                "name": "irreversible",
-                "type": "Boolean",
-                "required": false
-            },
-            {
-                "name": "whole_word",
-                "type": "Boolean",
-                "required": false
-            },
-            {
-                "name": "expires_in",
-                "type": "Integer",
-                "required": false
             }
         ]
     }

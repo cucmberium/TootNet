@@ -11,7 +11,7 @@
                 "required": true
             },
             {
-                "name": "status_ids[]",
+                "name": "status_ids",
                 "type": "Array String",
                 "required": false
             },
@@ -31,7 +31,7 @@
                 "required": false
             },
             {
-                "name": "rule_ids[]",
+                "name": "rule_ids",
                 "type": "Array Integer",
                 "required": false
             }

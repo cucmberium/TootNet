@@ -24,7 +24,7 @@
                 "required": true
             },
             {
-                "name": "choices[]",
+                "name": "choices",
                 "type": "Array Integer",
                 "required": true
             }

@@ -118,7 +118,7 @@
                 "required": true
             },
             {
-                "name": "account_ids[]",
+                "name": "account_ids",
                 "type": "Array String",
                 "required": true
             }
@@ -136,7 +136,7 @@
                 "required": true
             },
             {
-                "name": "account_ids[]",
+                "name": "account_ids",
                 "type": "Array String",
                 "required": true
             }

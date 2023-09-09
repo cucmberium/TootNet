@@ -26,12 +26,12 @@
                 "required": false
             },
             {
-                "name": "types[]",
+                "name": "types",
                 "type": "Array String",
                 "required": false
             },
             {
-                "name": "exclude_types[]",
+                "name": "exclude_types",
                 "type": "Array String",
                 "required": false
             },

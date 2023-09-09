@@ -54,17 +54,17 @@
                 "required": true
             },
             {
-                "name": "any[]",
+                "name": "any",
                 "type": "Array String",
                 "required": false
             },
             {
-                "name": "all[]",
+                "name": "all",
                 "type": "Array String",
                 "required": false
             },
             {
-                "name": "none[]",
+                "name": "none",
                 "type": "Array String",
                 "required": false
             },

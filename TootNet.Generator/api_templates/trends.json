@@ -39,7 +39,7 @@
         "path": "/api/v1/trends/links",
         "method": "GET",
         "description": "View trending links",
-        "return": "Array Trends::Link",
+        "return": "Array TrendsLink",
         "parameters": [
             {
                 "name": "limit",
