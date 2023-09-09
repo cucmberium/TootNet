@@ -17,7 +17,7 @@
         "path": "/api/v1/instance/activity",
         "method": "GET",
         "description": "Weekly activity",
-        "return": "Array Other",
+        "return": "Array Activity",
         "parameters": []
     },
     {

@@ -74,6 +74,8 @@ LONG_TYPE_PARAMS = [
     "media_id",
     "media_ids",
     "in_reply_to_id",
+    "home[last_read_id]",
+    "notifications[last_read_id]",
 ]
 
 
@@ -85,6 +87,8 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
     name = os.path.basename(input_path).replace(".json", "")
 
     class_name = snake_to_pascal(name)
+    if class_name == "Oembed":
+        class_name = "OEmbed"
 
     with open(input_path) as fin, open(output_path, "w") as fout:
         fout.write(HEADER.format(class_name=class_name).lstrip() + "\n")
@@ -115,8 +119,9 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                         ptype = "long"
                     if ptypeenu:
                         ptype = f"IEnumerable&lt;{ptype}&gt;"
+                    pnote = f" ({parameter['note']})" if "note" in parameter else ""
 
-                    fout.write(f"{INDENT}/// <para>- <c>{ptype}</c> {pname} ({popt})</para>\n")
+                    fout.write(f"{INDENT}/// <para>- <c>{ptype}</c> {pname}{pnote} ({popt})</para>\n")
             fout.write(f"{INDENT}/// </summary>\n")
 
             fout.write(f'{INDENT}/// <param name="parameters">The parameters.</param>\n')
@@ -135,7 +140,9 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             return_type = method["return"].split(" ")[-1]
             if return_type.lower() in TEMPLATE_TYPE_TO_CSHARP_TYPE.values():
                 return_type = return_type.lower()
-            if method["return"].startswith("Array "):
+            if method["return"].startswith("Dict "):
+                return_type = "IDictionary<" + ", ".join(return_type.lower().split(",")) + ">"
+            elif method["return"].startswith("Array "):
                 if any(["since_id" == x["name"] for x in method["parameters"]]):
                     return_type = "Linked<" + return_type + ">"
                 else:
@@ -148,15 +155,17 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             method_type = snake_to_pascal(method["method"])
 
             if ":" in method["path"].split("/")[-1]:
-                if method_type == "Get":
+                if method_type == "Get" and method["path"].split("/")[-1] == ":id":
                     method_name = snake_to_pascal(method["path"].split("/")[-1].replace(":", ""))
                 else:
                     method_name = snake_to_pascal(method["path"].split("/")[-2])
             else:
                 method_name = snake_to_pascal(method["path"].split("/")[-1])
-            if method_name == class_name:
+            if method_name.lower() == class_name.lower():
                 method_name = snake_to_pascal(method["method"])
 
+            if "name" in method:
+                method_name = method["name"]
 
             route = method["path"].replace("/api/v1/", "")
             api_version = ""

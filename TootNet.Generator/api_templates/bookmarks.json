@@ -26,5 +26,31 @@
                 "required": false
             }
         ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/bookmark",
+        "method": "POST",
+        "description": "Bookmark a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unbookmark",
+        "method": "POST",
+        "description": "Undo bookmark of a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
     }
 ]

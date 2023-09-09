@@ -135,6 +135,7 @@
     },
     {
         "path": "/api/v2/filters/:filter_id/keywords",
+        "name": "GetFilterKeywords",
         "method": "GET",
         "description": "View keywords added to a filter",
         "return": "Array FilterKeyword",
@@ -148,6 +149,7 @@
     },
     {
         "path": "/api/v2/filters/:filter_id/keywords",
+        "name": "PostFilterKeywords",
         "method": "POST",
         "description": "Add a keyword to a filter",
         "return": "FilterKeyword",
@@ -171,6 +173,7 @@
     },
     {
         "path": "/api/v2/filters/keywords/:id",
+        "name": "GetKeyword",
         "method": "GET",
         "description": "View a single keyword",
         "return": "FilterKeyword",
@@ -184,6 +187,7 @@
     },
     {
         "path": "/api/v2/filters/keywords/:id",
+        "name": "PutKeyword",
         "method": "PUT",
         "description": "Edit a keyword within a filter",
         "return": "FilterKeyword",
@@ -207,6 +211,7 @@
     },
     {
         "path": "/api/v2/filters/keywords/:id",
+        "name": "DeleteKeyword",
         "method": "DELETE",
         "description": "Remove keywords from a filter",
         "return": "Empty",
@@ -220,6 +225,7 @@
     },
     {
         "path": "/api/v2/filters/:filter_id/statuses",
+        "name": "GetFilterStatuses",
         "method": "GET",
         "description": "View all status filters",
         "return": "Array FilterStatus",
@@ -233,6 +239,7 @@
     },
     {
         "path": "/api/v2/filters/:filter_id/statuses",
+        "name": "PostFilterStatuses",
         "method": "POST",
         "description": "Add a status to a filter group",
         "return": "FilterStatus",
@@ -246,6 +253,7 @@
     },
     {
         "path": "/api/v2/filters/statuses/:id",
+        "name": "GetFilterStatus",
         "method": "GET",
         "description": "View a single status filter",
         "return": "FilterStatus",
@@ -259,6 +267,7 @@
     },
     {
         "path": "/api/v2/filters/statuses/:id",
+        "name": "DeleteFilterStatus",
         "method": "DELETE",
         "description": "Remove a status from a filter group",
         "return": "FilterStatus",

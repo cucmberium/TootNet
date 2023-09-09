@@ -3,7 +3,7 @@
         "path": "/api/oembed",
         "method": "GET",
         "description": "Get OEmbed info as JSON",
-        "return": "Other",
+        "return": "OEmbed",
         "parameters": [
             {
                 "name": "url",

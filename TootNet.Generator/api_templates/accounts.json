@@ -41,7 +41,7 @@
         "path": "/api/v1/accounts/verify_credentials",
         "method": "GET",
         "description": "Verify account credentials",
-        "return": "CredentialAccount",
+        "return": "Account",
         "parameters": []
     },
     {
@@ -62,12 +62,14 @@
             },
             {
                 "name": "avatar",
-                "type": "Avatar image encoded using `multipart/form-data`",
+                "type": "string",
+                "note": "base64 encoded image string",
                 "required": false
             },
             {
                 "name": "header",
-                "type": "Header image encoded using `multipart/form-data`",
+                "type": "string",
+                "note": "base64 encoded image string",
                 "required": false
             },
             {
@@ -87,11 +89,13 @@
             },
             {
                 "name": "fields_attributes[:index][name]",
+                "note": "[0]-[3] is allowed",
                 "type": "String",
                 "required": false
             },
             {
                 "name": "fields_attributes[:index][value]",
+                "note": "[0]-[3] is allowed",
                 "type": "String",
                 "required": false
             },
@@ -263,19 +267,6 @@
         ]
     },
     {
-        "path": "/api/v1/accounts/:id/lists",
-        "method": "GET",
-        "description": "Get lists containing this account",
-        "return": "Array List",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
         "path": "/api/v1/accounts/:id/follow",
         "method": "POST",
         "description": "Follow account",
@@ -298,7 +289,8 @@
             },
             {
                 "name": "languages",
-                "type": "Array String (ISO 639-1 language two-letter code)",
+                "type": "Array String",
+                "note": "ISO 639-1 language two-letter code",
                 "required": false
             }
         ]
@@ -320,94 +312,6 @@
         "path": "/api/v1/accounts/:id/remove_from_followers",
         "method": "POST",
         "description": "Remove account from followers",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/block",
-        "method": "POST",
-        "description": "Block account",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/unblock",
-        "method": "POST",
-        "description": "Unblock account",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/mute",
-        "method": "POST",
-        "description": "Mute account",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "notifications",
-                "type": "Boolean",
-                "required": false
-            },
-            {
-                "name": "duration",
-                "type": "Number",
-                "required": false
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/unmute",
-        "method": "POST",
-        "description": "Unmute account",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/pin",
-        "method": "POST",
-        "description": "Feature account on your profile",
-        "return": "Relationship",
-        "parameters": [
-            {
-                "name": ":id",
-                "type": "String",
-                "required": true
-            }
-        ]
-    },
-    {
-        "path": "/api/v1/accounts/:id/unpin",
-        "method": "POST",
-        "description": "Unfeature account from profile",
         "return": "Relationship",
         "parameters": [
             {
@@ -452,7 +356,7 @@
         "path": "/api/v1/accounts/familiar_followers",
         "method": "GET",
         "description": "Find familiar followers",
-        "return": "Array FamiliarFollowers",
+        "return": "Array FamiliarFollower",
         "parameters": [
             {
                 "name": "id",

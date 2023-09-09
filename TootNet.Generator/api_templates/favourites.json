@@ -26,5 +26,31 @@
                 "required": false
             }
         ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/favourite",
+        "method": "POST",
+        "description": "Favourite a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/statuses/:id/unfavourite",
+        "method": "POST",
+        "description": "Undo favourite of a status",
+        "return": "Status",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
     }
 ]

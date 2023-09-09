@@ -7,7 +7,8 @@
         "parameters": [
             {
                 "name": "email",
-                "type": "If provided, updates the unconfirmed user's email before resending the confirmation email",
+                "type": "string",
+                "note": "If provided, updates the unconfirmed user's email before resending the confirmation email",
                 "required": false
             }
         ]

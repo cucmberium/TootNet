@@ -53,6 +53,7 @@
             },
             {
                 "name": "scheduled_at",
+                "note": "format: \"2019-01-01 12:00:00\"",
                 "type": "String",
                 "required": false
             }

@@ -21,5 +21,41 @@
                 "required": false
             }
         ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/mute",
+        "method": "POST",
+        "description": "Mute account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "notifications",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "duration",
+                "type": "Number",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unmute",
+        "method": "POST",
+        "description": "Unmute account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
     }
 ]

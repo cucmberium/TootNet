@@ -28,6 +28,7 @@
             {
                 "name": "types",
                 "type": "Array String",
+                "note": "allowed values: \"mention\", \"status\", \"reblog\", \"follow\", \"follow_request\", \"favourite\", \"poll\", \"update\"",
                 "required": false
             },
             {

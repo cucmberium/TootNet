@@ -3,7 +3,7 @@
         "path": "/api/v1/preferences",
         "method": "GET",
         "description": "View user preferences",
-        "return": "Other",
+        "return": "Dict String,Object",
         "parameters": []
     }
 ]

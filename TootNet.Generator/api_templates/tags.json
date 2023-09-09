@@ -1,38 +1,66 @@
 [
     {
-        "path": "/api/v1/tags/:id",
+        "path": "/api/v1/tags/:tag",
         "method": "GET",
         "description": "View information about a single tag",
         "return": "Tag",
         "parameters": [
             {
-                "name": ":id",
+                "name": ":tag",
                 "type": "String",
                 "required": true
             }
         ]
     },
     {
-        "path": "/api/v1/tags/:id/follow",
+        "path": "/api/v1/followed_tags",
+        "method": "GET",
+        "description": "View all followed tags",
+        "return": "Array Tag",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/tags/:tag/follow",
         "method": "POST",
         "description": "Follow a hashtag",
         "return": "Tag",
         "parameters": [
             {
-                "name": ":id",
+                "name": ":tag",
                 "type": "String",
                 "required": true
             }
         ]
     },
     {
-        "path": "/api/v1/tags/:id/unfollow",
+        "path": "/api/v1/tags/:tag/unfollow",
         "method": "POST",
         "description": "Unfollow a hashtag",
         "return": "Tag",
         "parameters": [
             {
-                "name": ":id",
+                "name": ":tag",
                 "type": "String",
                 "required": true
             }

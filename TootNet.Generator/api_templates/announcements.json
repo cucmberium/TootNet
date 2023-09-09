@@ -27,6 +27,7 @@
     },
     {
         "path": "/api/v1/announcements/:id/reactions/:name",
+        "name": "PutReaction",
         "method": "PUT",
         "description": "Add a reaction to an announcement",
         "return": "Empty",
@@ -45,6 +46,7 @@
     },
     {
         "path": "/api/v1/announcements/:id/reactions/:name",
+        "name": "DeleteReaction",
         "method": "DELETE",
         "description": "Remove a reaction from an announcement",
         "return": "Empty",

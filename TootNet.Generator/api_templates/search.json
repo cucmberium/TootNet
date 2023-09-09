@@ -12,6 +12,7 @@
             },
             {
                 "name": "type",
+                "note": "allowed values of types: \"accounts\", \"hashtags\", \"statuses\"",
                 "type": "String",
                 "required": false
             },

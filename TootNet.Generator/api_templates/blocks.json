@@ -26,5 +26,31 @@
                 "required": false
             }
         ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/block",
+        "method": "POST",
+        "description": "Block account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/unblock",
+        "method": "POST",
+        "description": "Unblock account",
+        "return": "Relationship",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
     }
 ]

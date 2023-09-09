@@ -2,7 +2,7 @@
     {
         "path": "/api/v2/suggestions",
         "method": "GET",
-        "description": "View follow suggestions (v2)",
+        "description": "View follow suggestions",
         "return": "Array Suggestion",
         "parameters": [
             {

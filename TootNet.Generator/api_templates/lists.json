@@ -75,6 +75,7 @@
     },
     {
         "path": "/api/v1/lists/:id/accounts",
+        "name": "GetAccounts",
         "method": "GET",
         "description": "View accounts in a list",
         "return": "Array Account",
@@ -108,6 +109,7 @@
     },
     {
         "path": "/api/v1/lists/:id/accounts",
+        "name": "PostAccounts",
         "method": "POST",
         "description": "Add accounts to a list",
         "return": "Empty",
@@ -126,6 +128,7 @@
     },
     {
         "path": "/api/v1/lists/:id/accounts",
+        "name": "DeleteAccounts",
         "method": "DELETE",
         "description": "Remove accounts from list",
         "return": "Empty",
@@ -138,6 +141,20 @@
             {
                 "name": "account_ids",
                 "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/accounts/:id/lists",
+        "name": "GetAccountsLists",
+        "method": "GET",
+        "description": "Get lists containing this account",
+        "return": "Array List",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
                 "required": true
             }
         ]

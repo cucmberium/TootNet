@@ -63,6 +63,7 @@
             },
             {
                 "name": "focus",
+                "note": "focal point: two floating points, comma-delimited",
                 "type": "String",
                 "required": false
             }
