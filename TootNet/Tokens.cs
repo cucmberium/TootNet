@@ -24,88 +24,133 @@ namespace TootNet
         /// <summary>
         /// Accounts
         /// </summary>
-        public Accounts Accounts => new Accounts(this);
+        public Rest.Accounts Accounts => new Rest.Accounts(this);
+
+        /// <summary>
+        /// Announcements
+        /// </summary>
+        public Rest.Announcements Announcements => new Rest.Announcements(this);
 
         /// <summary>
         /// Apps
         /// </summary>
-        public Apps Apps => new Apps(this);
+        public Rest.Apps Apps => new Rest.Apps(this);
 
         /// <summary>
         /// Blocks
         /// </summary>
-        public Blocks Blocks => new Blocks(this);
+        public Rest.Blocks Blocks => new Rest.Blocks(this);
 
         /// <summary>
-        /// CustomEmoji
+        /// Bookmarks
         /// </summary>
-        public CustomEmojis CustomEmoji => new CustomEmojis(this);
+        public Rest.Bookmarks Bookmarks => new Rest.Bookmarks(this);
+
+        /// <summary>
+        /// Conversations
+        /// </summary>
+        public Rest.Conversations Conversations => new Rest.Conversations(this);
+
+        /// <summary>
+        /// CustomEmojis
+        /// </summary>
+        public Rest.CustomEmojis CustomEmojis => new Rest.CustomEmojis(this);
+
+        /// <summary>
+        /// Directory
+        /// </summary>
+        public Rest.Directory Directory => new Rest.Directory(this);
 
         /// <summary>
         /// DomainBlocks
         /// </summary>
-        public DomainBlocks DomainBlocks => new DomainBlocks(this);
+        public Rest.DomainBlocks DomainBlocks => new Rest.DomainBlocks(this);
 
         /// <summary>
         /// Emails
         /// </summary>
-        public Emails Emails => new Emails(this);
+        public Rest.Emails Emails => new Rest.Emails(this);
 
         /// <summary>
         /// Endorsements
         /// </summary>
-        public Endorsements Endorsements => new Endorsements(this);
+        public Rest.Endorsements Endorsements => new Rest.Endorsements(this);
 
 
         /// <summary>
         /// Favorites
         /// </summary>
-        public Favourites Favourites => new Favourites(this);
+        public Rest.Favourites Favourites => new Rest.Favourites(this);
+
+        /// <summary>
+        /// FeaturedTags
+        /// </summary>
+        public Rest.FeaturedTags FeaturedTags => new Rest.FeaturedTags(this);
 
         /// <summary>
         /// Filters
         /// </summary>
-        public Filters Filters => new Filters(this);
+        public Rest.Filters Filters => new Rest.Filters(this);
 
         /// <summary>
         /// FollowRequests
         /// </summary>
-        public FollowRequests FollowRequests => new FollowRequests(this);
-
-        /// <summary>
-        /// FollowSuggestions
-        /// </summary>
-        public Suggestions FollowSuggestions => new Suggestions(this);
+        public Rest.FollowRequests FollowRequests => new Rest.FollowRequests(this);
         
         /// <summary>
-        /// Instances
+        /// Instances (alias of Instance)
         /// </summary>
         public Rest.Instance Instances => new Rest.Instance(this);
 
         /// <summary>
         /// Lists
         /// </summary>
-        public Lists Lists => new Lists(this);
+        public Rest.Lists Lists => new Rest.Lists(this);
+
+        /// <summary>
+        /// Markers
+        /// </summary>
+        public Rest.Markers Markers => new Rest.Markers(this);
 
         /// <summary>
         /// Media
         /// </summary>
-        public Media MediaAttachments => new Media(this);
+        public Rest.Media Media => new Rest.Media(this);
 
         /// <summary>
         /// Mutes
         /// </summary>
-        public Mutes Mutes => new Mutes(this);
+        public Rest.Mutes Mutes => new Rest.Mutes(this);
 
         /// <summary>
         /// Notifications
         /// </summary>
-        public Notifications Notifications => new Notifications(this);
-        
+        public Rest.Notifications Notifications => new Rest.Notifications(this);
+
+        /// <summary>
+        /// OEmbed
+        /// </summary>
+        public Rest.OEmbed OEmbed => new Rest.OEmbed(this);
+
+        /// <summary>
+        /// Polls
+        /// </summary>
+        public Rest.Polls Polls => new Rest.Polls(this);
+
+        /// <summary>
+        /// Preferences
+        /// </summary>
+        public Rest.Preferences Preferences => new Rest.Preferences(this);
+
         /// <summary>
         /// Reports
         /// </summary>
-        public Reports Reports => new Reports(this);
+        public Rest.Reports Reports => new Rest.Reports(this);
+
+        /// <summary>
+        /// ScheduledStatuses
+        /// </summary>
+        public Rest.ScheduledStatuses ScheduledStatuses => new Rest.ScheduledStatuses(this);
 
         /// <summary>
         /// Search
@@ -113,19 +158,29 @@ namespace TootNet
         public Rest.Search Search => new Rest.Search(this);
 
         /// <summary>
-        /// ScheduledStatuses
-        /// </summary>
-        public ScheduledStatuses ScheduledStatuses => new ScheduledStatuses(this);
-
-        /// <summary>
         /// Statuses
         /// </summary>
-        public Statuses Statuses => new Statuses(this);
+        public Rest.Statuses Statuses => new Rest.Statuses(this);
+
+        /// <summary>
+        /// Suggestions
+        /// </summary>
+        public Rest.Suggestions Suggestions => new Rest.Suggestions(this);
+
+        /// <summary>
+        /// Tags
+        /// </summary>
+        public Rest.Tags Tags => new Rest.Tags(this);
 
         /// <summary>
         /// Timelines
         /// </summary>
-        public Timelines Timelines => new Timelines(this);
+        public Rest.Timelines Timelines => new Rest.Timelines(this);
+
+        /// <summary>
+        /// Trends
+        /// </summary>
+        public Rest.Trends Trends => new Rest.Trends(this);
 
         /// <summary>
         /// Streaming
@@ -172,6 +227,7 @@ namespace TootNet
         /// <param name="param">The parameter.</param>
         /// <param name="headers">Headers of request.</param>
         /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
@@ -189,6 +245,7 @@ namespace TootNet
         /// <param name="param">The parameter.</param>
         /// <param name="headers">Headers of request.</param>
         /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
@@ -199,7 +256,38 @@ namespace TootNet
             var list = param.ToList();
             var kvp = Utils.GetReservedParameter(list, reserved);
             list.Remove(kvp);
-            return AccessApiAsyncImpl<T>(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
+            return AccessApiAsyncImpl<T>(type, uri.Replace($"{{{reserved}}}", kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
+        }
+
+        /// <summary>
+        /// <para>Access mastodon api targeted in uri field.</para>
+        /// </summary>
+        /// <param name="type">Method type of request.</param>
+        /// <param name="uri">Uri to access (relative path from API).</param>
+        /// <param name="reserved">Reserved parameter (relative path from API).</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="headers">Headers of request.</param>
+        /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
+        /// <returns>
+        /// <para>AsyncResponse of request.</para>
+        /// </returns>
+        public Task<T> AccessParameterReservedApiAsync<T>(MethodType type, string uri, IEnumerable<string> reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1") where T : class
+        {
+            if (param == null)
+                throw new ArgumentNullException(nameof(param));
+
+            var list = param.ToList();
+
+            var replacedUri = uri;
+            foreach (var res in reserved)
+            {
+                var kvp = Utils.GetReservedParameter(list, res);
+                list.Remove(kvp);
+                replacedUri = replacedUri.Replace($"{{{reserved}}}", kvp.Value.ToString());
+            }
+
+            return AccessApiAsyncImpl<T>(type, replacedUri, list, headers, useApiPath, apiVersion);
         }
 
         /// <summary>
@@ -210,6 +298,7 @@ namespace TootNet
         /// <param name="param">The parameter.</param>
         /// <param name="headers">Headers of request.</param>
         /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
@@ -227,6 +316,7 @@ namespace TootNet
         /// <param name="param">The parameter.</param>
         /// <param name="headers">Headers of request.</param>
         /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
         /// <returns>
         /// <para>AsyncResponse of request.</para>
         /// </returns>
@@ -237,7 +327,38 @@ namespace TootNet
             var list = param.ToList();
             var kvp = Utils.GetReservedParameter(list, reserved);
             list.Remove(kvp);
-            return AccessApiAsyncImpl(type, uri.Replace(string.Format("{{{0}}}", reserved), kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
+            return AccessApiAsyncImpl(type, uri.Replace($"{{{reserved}}}", kvp.Value.ToString()), list, headers, useApiPath, apiVersion);
+        }
+
+        /// <summary>
+        /// <para>Access mastodon api targeted in uri field.</para>
+        /// </summary>
+        /// <param name="type">Method type of request.</param>
+        /// <param name="uri">Uri to access (relative path from API).</param>
+        /// <param name="reserved">Reserved parameters (relative path from API).</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="headers">Headers of request.</param>
+        /// <param name="useApiPath">Use api path.</param>
+        /// <param name="apiVersion">Version of api.</param>
+        /// <returns>
+        /// <para>AsyncResponse of request.</para>
+        /// </returns>
+        public Task AccessParameterReservedApiAsync(MethodType type, string uri, IEnumerable<string> reserved, IDictionary<string, object> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1")
+        {
+            if (param == null)
+                throw new ArgumentNullException(nameof(param));
+
+            var list = param.ToList();
+
+            var replacedUri = uri;
+            foreach (var res in reserved)
+            {
+                var kvp = Utils.GetReservedParameter(list, res);
+                list.Remove(kvp);
+                replacedUri = replacedUri.Replace($"{{{reserved}}}", kvp.Value.ToString());
+            }
+            
+            return AccessApiAsyncImpl(type, replacedUri, list, headers, useApiPath, apiVersion);
         }
 
         private async Task<T> AccessApiAsyncImpl<T>(MethodType type, string uri, IEnumerable<KeyValuePair<string, object>> param = null, IDictionary<string, string> headers = null, bool useApiPath = true, string apiVersion = "v1") where T : class
