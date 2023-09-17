@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel;
-using Newtonsoft.Json;
 using TootNet.Internal;
 
 namespace TootNet.Objects
