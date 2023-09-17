@@ -14,32 +14,6 @@ namespace TootNet.Rest
         internal Accounts(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Register an account</para>
-        /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> username (required)</para>
-        /// <para>- <c>string</c> email (required)</para>
-        /// <para>- <c>string</c> password (required)</para>
-        /// <para>- <c>bool</c> agreement (required)</para>
-        /// <para>- <c>string</c> locale (required)</para>
-        /// <para>- <c>string</c> reason (optional)</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the token object.</para>
-        /// </returns>
-        public Task<Objects.Token> PostAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessApiAsync<Objects.Token>(MethodType.Post, "accounts", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <inheritdoc cref="PostAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Token> PostAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessApiAsync<Objects.Token>(MethodType.Post, "accounts", parameters);
-        }
-
-        /// <summary>
         /// <para>Verify account credentials</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>

@@ -1,43 +1,5 @@
 [
     {
-        "path": "/api/v1/accounts",
-        "method": "POST",
-        "description": "Register an account",
-        "return": "Token",
-        "parameters": [
-            {
-                "name": "username",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "email",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "password",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "agreement",
-                "type": "Boolean",
-                "required": true
-            },
-            {
-                "name": "locale",
-                "type": "String",
-                "required": true
-            },
-            {
-                "name": "reason",
-                "type": "String",
-                "required": false
-            }
-        ]
-    },
-    {
         "path": "/api/v1/accounts/verify_credentials",
         "method": "GET",
         "description": "Verify account credentials",
