@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using TootNet.Internal;
 using TootNet.Objects;
-using TootNet.Rest;
 using TootNet.Streaming;
 
 namespace TootNet
@@ -141,6 +140,11 @@ namespace TootNet
         /// Preferences
         /// </summary>
         public Rest.Preferences Preferences => new Rest.Preferences(this);
+
+        /// <summary>
+        /// Profile
+        /// </summary>
+        public Rest.Profile Profile => new Rest.Profile(this);
 
         /// <summary>
         /// Reports

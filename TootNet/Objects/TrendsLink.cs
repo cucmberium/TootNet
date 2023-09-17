@@ -11,13 +11,16 @@ namespace TootNet.Objects
 
     public class TrendsLinkHistory
     {
+        /// <summary>
+        /// Unix timestamp
+        /// </summary>
         [JsonProperty("day")]
-        public string Day { get; set; }
+        public long Day { get; set; }
 
         [JsonProperty("uses")]
-        public string Uses { get; set; }
+        public int Uses { get; set; }
 
         [JsonProperty("accounts")]
-        public string Accounts { get; set; }
+        public int Accounts { get; set; }
     }
 }

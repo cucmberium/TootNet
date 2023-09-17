@@ -13,6 +13,9 @@ namespace TootNet.Objects
         [JsonProperty("scope")]
         public string Scope { get; set; }
 
+        /// <summary>
+        /// Unix timestamp
+        /// </summary>
         [JsonProperty("created_at")]
         public long CreatedAt { get; set; }
     }
