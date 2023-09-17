@@ -68,18 +68,16 @@ namespace TootNet.Internal
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
             var httpContent = new MultipartFormDataContent();
-            foreach (var x in param)
-            {
-                var valueStream = x.Value as Stream;
-                var valueBytes = x.Value as IEnumerable<byte>;
-                
-                if (valueStream != null)
-                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
-                else if (valueBytes != null)
-                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
-                else
-                    httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
-            }
+            if (param != null)
+                foreach (var x in param)
+                {
+                    if (x.Value is Stream valueStream)
+                        httpContent.Add(new StreamContent(valueStream), x.Key, "file");
+                    else if (x.Value is IEnumerable<byte> valueBytes)
+                        httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
+                    else
+                        httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
+                }
 
             var uri = url;
             var response = await httpClient.PostAsync(uri, httpContent).ConfigureAwait(false);
@@ -108,18 +106,16 @@ namespace TootNet.Internal
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
             var httpContent = new MultipartFormDataContent();
-            foreach (var x in param)
-            {
-                var valueStream = x.Value as Stream;
-                var valueBytes = x.Value as IEnumerable<byte>;
-                
-                if (valueStream != null)
-                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
-                else if (valueBytes != null)
-                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
-                else
-                    httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
-            }
+            if (param != null)
+                foreach (var x in param)
+                {
+                    if (x.Value is Stream valueStream)
+                        httpContent.Add(new StreamContent(valueStream), x.Key, "file");
+                    else if (x.Value is IEnumerable<byte> valueBytes)
+                        httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
+                    else
+                        httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
+                }
 
             var httpMethod = new HttpMethod("PATCH");
             var message = new HttpRequestMessage(httpMethod, url)
@@ -140,18 +136,16 @@ namespace TootNet.Internal
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
             var httpContent = new MultipartFormDataContent();
-            foreach (var x in param)
-            {
-                var valueStream = x.Value as Stream;
-                var valueBytes = x.Value as IEnumerable<byte>;
-
-                if (valueStream != null)
-                    httpContent.Add(new StreamContent(valueStream), x.Key, "file");
-                else if (valueBytes != null)
-                    httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
-                else
-                    httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
-            }
+            if (param != null)
+                foreach (var x in param)
+                {
+                    if (x.Value is Stream valueStream)
+                        httpContent.Add(new StreamContent(valueStream), x.Key, "file");
+                    else if (x.Value is IEnumerable<byte> valueBytes)
+                        httpContent.Add(new ByteArrayContent(valueBytes.ToArray()), x.Key, "file");
+                    else
+                        httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
+                }
 
             var uri = url;
             var response = await httpClient.PutAsync(uri, httpContent).ConfigureAwait(false);

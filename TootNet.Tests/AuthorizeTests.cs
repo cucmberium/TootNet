@@ -11,7 +11,7 @@ namespace TootNet.Tests
         {
             var authorize = new Authorize();
             
-            await authorize.CreateApp(AccountInformation.Instance, "TootNet", Scope.Read | Scope.Write | Scope.Follow);
+            await authorize.CreateApp(AccountInformation.Instance, "TootNet", Scope.Read | Scope.Write);
 
             Assert.NotNull(authorize.Instance);
             Assert.NotNull(authorize.ClientId);
