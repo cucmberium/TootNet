@@ -1,15 +1,17 @@
 ﻿using Newtonsoft.Json;
 using TootNet.Internal;
 
+
 namespace TootNet.Objects
 {
-    public class AnnouncementStatus
+    public class FilterStatus : BaseObject
     {
         [JsonProperty("id")]
         [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
 
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty("status_id")]
+        [JsonConverter(typeof(IdConverter))]
+        public long StatusId { get; set; }
     }
 }

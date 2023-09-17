@@ -44,15 +44,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of string object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.String>> PeersAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<string>> PeersAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.String>>(MethodType.Get, "instance/peers", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<string>>(MethodType.Get, "instance/peers", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="PeersAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.String>> PeersAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<string>> PeersAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.String>>(MethodType.Get, "instance/peers", parameters);
+            return Tokens.AccessApiAsync<ListResponce<string>>(MethodType.Get, "instance/peers", parameters);
         }
 
         /// <summary>
@@ -65,15 +65,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of activity object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Activity>> ActivityAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Activity>> ActivityAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Activity>>(MethodType.Get, "instance/activity", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Activity>>(MethodType.Get, "instance/activity", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="ActivityAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Activity>> ActivityAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Activity>> ActivityAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Activity>>(MethodType.Get, "instance/activity", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Activity>>(MethodType.Get, "instance/activity", parameters);
         }
 
         /// <summary>
@@ -86,15 +86,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of rule object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Rule>> RulesAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Rule>> RulesAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Rule>>(MethodType.Get, "instance/rules", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Rule>>(MethodType.Get, "instance/rules", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="RulesAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Rule>> RulesAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Rule>> RulesAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Rule>>(MethodType.Get, "instance/rules", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Rule>>(MethodType.Get, "instance/rules", parameters);
         }
 
         /// <summary>
@@ -107,15 +107,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of domainblock object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.DomainBlock>> DomainBlocksAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.DomainBlock>> DomainBlocksAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.DomainBlock>>(MethodType.Get, "instance/domain_blocks", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.DomainBlock>>(MethodType.Get, "instance/domain_blocks", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="DomainBlocksAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.DomainBlock>> DomainBlocksAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.DomainBlock>> DomainBlocksAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.DomainBlock>>(MethodType.Get, "instance/domain_blocks", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.DomainBlock>>(MethodType.Get, "instance/domain_blocks", parameters);
         }
 
         /// <summary>

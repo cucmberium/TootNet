@@ -26,15 +26,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of string object.</para>
         /// </returns>
-        public Task<Linked<Objects.String>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Linked<string>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Objects.String>>(MethodType.Get, "domain_blocks", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Linked<string>>(MethodType.Get, "domain_blocks", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<Linked<Objects.String>> GetAsync(IDictionary<string, object> parameters)
+        public Task<Linked<string>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Linked<Objects.String>>(MethodType.Get, "domain_blocks", parameters);
+            return Tokens.AccessApiAsync<Linked<string>>(MethodType.Get, "domain_blocks", parameters);
         }
 
         /// <summary>

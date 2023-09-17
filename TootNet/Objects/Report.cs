@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using TootNet.Internal;
 
 namespace TootNet.Objects
@@ -10,6 +12,32 @@ namespace TootNet.Objects
         public long Id { get; set; }
 
         [JsonProperty("action_taken")]
-        public string ActionTaken { get; set; }
+        public bool ActionTaken { get; set; }
+
+        [JsonProperty("action_taken_at")]
+        public DateTime? ActionTakenAt { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("forwarded")]
+        public bool Forwarded { get; set; }
+
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonProperty("status_ids")]
+        [JsonConverter(typeof(IdArrayConverter))]
+        public IEnumerable<long> StatusIds { get; set; }
+
+        [JsonProperty("rule_ids")]
+        [JsonConverter(typeof(IdArrayConverter))]
+        public IEnumerable<long> RuleIds { get; set; }
+
+        [JsonProperty("target_account")]
+        public Account TargetAccount { get; set; }
     }
 }

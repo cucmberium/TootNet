@@ -33,10 +33,10 @@ namespace TootNet.Objects
         public string Html { get; set; }
 
         [JsonProperty("width")]
-        public string Width { get; set; }
+        public int Width { get; set; }
 
         [JsonProperty("height")]
-        public string Height { get; set; }
+        public int Height { get; set; }
 
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -46,11 +46,5 @@ namespace TootNet.Objects
 
         [JsonProperty("blurhash")]
         public string Blurhash { get; set; }
-
-        /// <summary>
-        /// Only returns if you use trends/links
-        /// </summary>
-        [JsonProperty("history")]
-        public IEnumerable<IDictionary<string, string>> History { get; set; }
     }
 }

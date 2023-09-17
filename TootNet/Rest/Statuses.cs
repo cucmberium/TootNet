@@ -345,15 +345,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of statusedit object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.StatusEdit>> HistoryAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.StatusEdit>> HistoryAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.StatusEdit>>(MethodType.Get, "statuses/{id}/history", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.StatusEdit>>(MethodType.Get, "statuses/{id}/history", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="HistoryAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.StatusEdit>> HistoryAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.StatusEdit>> HistoryAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.StatusEdit>>(MethodType.Get, "statuses/{id}/history", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.StatusEdit>>(MethodType.Get, "statuses/{id}/history", "id", parameters);
         }
 
         /// <summary>

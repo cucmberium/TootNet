@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of featuredtag object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.FeaturedTag>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.FeaturedTag>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.FeaturedTag>>(MethodType.Get, "featured_tags", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.FeaturedTag>>(MethodType.Get, "featured_tags", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.FeaturedTag>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.FeaturedTag>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.FeaturedTag>>(MethodType.Get, "featured_tags", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.FeaturedTag>>(MethodType.Get, "featured_tags", parameters);
         }
 
         /// <summary>
@@ -86,15 +86,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of tag object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Tag>> SuggestionsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Tag>> SuggestionsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Tag>>(MethodType.Get, "featured_tags/suggestions", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Tag>>(MethodType.Get, "featured_tags/suggestions", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="SuggestionsAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Tag>> SuggestionsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Tag>> SuggestionsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Tag>>(MethodType.Get, "featured_tags/suggestions", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Tag>>(MethodType.Get, "featured_tags/suggestions", parameters);
         }
     }
 }

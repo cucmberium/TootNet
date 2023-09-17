@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of customemoji object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.CustomEmoji>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.CustomEmoji>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.CustomEmoji>>(MethodType.Get, "custom_emojis", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.CustomEmoji>>(MethodType.Get, "custom_emojis", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.CustomEmoji>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.CustomEmoji>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.CustomEmoji>>(MethodType.Get, "custom_emojis", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.CustomEmoji>>(MethodType.Get, "custom_emojis", parameters);
         }
     }
 }

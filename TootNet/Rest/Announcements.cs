@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of announcement object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Announcement>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Announcement>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Announcement>>(MethodType.Get, "announcements", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Announcement>>(MethodType.Get, "announcements", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Announcement>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Announcement>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Announcement>>(MethodType.Get, "announcements", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Announcement>>(MethodType.Get, "announcements", parameters);
         }
 
         /// <summary>

@@ -10,9 +10,6 @@ namespace TootNet.Objects
         [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
 
-        /// <summary>
-        /// One of: "mention", "reblog", "favourite", "follow"
-        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -24,5 +21,8 @@ namespace TootNet.Objects
 
         [JsonProperty("status")]
         public Status Status { get; set; }
+
+        [JsonProperty("report")]
+        public Report Report { get; set; }
     }
 }

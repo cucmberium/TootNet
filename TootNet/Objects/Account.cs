@@ -42,7 +42,7 @@ namespace TootNet.Objects
         public bool Locked { get; set; }
 
         [JsonProperty("fields")]
-        public IEnumerable<Field> Fields { get; set; }
+        public IEnumerable<AccountField> Fields { get; set; }
 
         [JsonProperty("emojis")]
         public IEnumerable<CustomEmoji> Emojis { get; set; }
@@ -63,16 +63,16 @@ namespace TootNet.Objects
         public Account Moved { get; set; }
 
         [JsonProperty("suspended")]
-        public bool Suspended { get; set; }
+        public bool? Suspended { get; set; }
 
         [JsonProperty("limited")]
-        public bool Limited { get; set; }
+        public bool? Limited { get; set; }
 
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
 
         [JsonProperty("last_status_at")]
-        public DateTime LastStatusAt { get; set; }
+        public DateTime? LastStatusAt { get; set; }
 
         [JsonProperty("statuses_count")]
         public int StatusesCount { get; set; }
@@ -83,16 +83,19 @@ namespace TootNet.Objects
         [JsonProperty("following_count")]
         public int FollowingCount { get; set; }
 
-        /// <summary>
-        /// Only returns if you use accounts/verify_credentials
-        /// </summary>
-        [JsonProperty("source")]
-        public Source Source { get; set; }
-
-        [JsonProperty("role")]
-        public Role Role { get; set; }
-
         [JsonProperty("mute_expires_at")]
         public DateTime? MuteExpiresAt { get; set; }
+    }
+
+    public class AccountField
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("verified_at")]
+        public DateTime? VerifiedAt { get; set; }
     }
 }

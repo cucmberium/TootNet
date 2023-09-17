@@ -15,7 +15,7 @@ namespace TootNet.Objects
         public string Url { get; set; }
 
         [JsonProperty("statuses_count")]
-        public string StatusesCount { get; set; }
+        public int StatusesCount { get; set; }
 
         [JsonProperty("last_status_at")]
         public DateTime LastStatusAt { get; set; }

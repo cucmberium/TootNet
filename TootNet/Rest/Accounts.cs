@@ -21,17 +21,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the credentialaccount object.</para>
         /// </returns>
-        public Task<Objects.Account> VerifyCredentialsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Objects.CredentialAccount> VerifyCredentialsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Get, "accounts/verify_credentials", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Get, "accounts/verify_credentials", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="VerifyCredentialsAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Account> VerifyCredentialsAsync(IDictionary<string, object> parameters)
+        public Task<Objects.CredentialAccount> VerifyCredentialsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Get, "accounts/verify_credentials", parameters);
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Get, "accounts/verify_credentials", parameters);
         }
 
         /// <summary>
@@ -53,17 +53,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the credentialaccount object.</para>
         /// </returns>
-        public Task<Objects.Account> UpdateCredentialsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Objects.CredentialAccount> UpdateCredentialsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Patch, "accounts/update_credentials", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Patch, "accounts/update_credentials", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="UpdateCredentialsAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Account> UpdateCredentialsAsync(IDictionary<string, object> parameters)
+        public Task<Objects.CredentialAccount> UpdateCredentialsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Patch, "accounts/update_credentials", parameters);
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Patch, "accounts/update_credentials", parameters);
         }
 
         /// <summary>
@@ -177,15 +177,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of featuredtag object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.FeaturedTag>> FeaturedTagsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.FeaturedTag>> FeaturedTagsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FeaturedTag>>(MethodType.Get, "accounts/{id}/featured_tags", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FeaturedTag>>(MethodType.Get, "accounts/{id}/featured_tags", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="FeaturedTagsAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.FeaturedTag>> FeaturedTagsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.FeaturedTag>> FeaturedTagsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FeaturedTag>>(MethodType.Get, "accounts/{id}/featured_tags", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FeaturedTag>>(MethodType.Get, "accounts/{id}/featured_tags", "id", parameters);
         }
 
         /// <summary>
@@ -286,15 +286,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of relationship object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Relationship>> RelationshipsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Relationship>> RelationshipsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Relationship>>(MethodType.Get, "accounts/relationships", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Relationship>>(MethodType.Get, "accounts/relationships", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="RelationshipsAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Relationship>> RelationshipsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Relationship>> RelationshipsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Relationship>>(MethodType.Get, "accounts/relationships", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Relationship>>(MethodType.Get, "accounts/relationships", parameters);
         }
 
         /// <summary>
@@ -307,15 +307,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of familiarfollower object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.FamiliarFollower>> FamiliarFollowersAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.FamiliarFollower>> FamiliarFollowersAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.FamiliarFollower>>(MethodType.Get, "accounts/familiar_followers", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.FamiliarFollower>>(MethodType.Get, "accounts/familiar_followers", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="FamiliarFollowersAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.FamiliarFollower>> FamiliarFollowersAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.FamiliarFollower>> FamiliarFollowersAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.FamiliarFollower>>(MethodType.Get, "accounts/familiar_followers", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.FamiliarFollower>>(MethodType.Get, "accounts/familiar_followers", parameters);
         }
 
         /// <summary>
@@ -332,15 +332,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Account>> SearchAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Account>> SearchAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Account>>(MethodType.Get, "accounts/search", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponce<Objects.Account>>(MethodType.Get, "accounts/search", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="SearchAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Account>> SearchAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Account>> SearchAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Account>>(MethodType.Get, "accounts/search", parameters);
+            return Tokens.AccessApiAsync<ListResponce<Objects.Account>>(MethodType.Get, "accounts/search", parameters);
         }
 
         /// <summary>

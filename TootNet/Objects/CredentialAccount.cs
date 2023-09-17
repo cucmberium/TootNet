@@ -1,16 +1,25 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-
 namespace TootNet.Objects
 {
-    public class Source : BaseObject
+    public class CredentialAccount : Account
+    {
+        [JsonProperty("source")]
+        public CredentialAccountSource Source { get; set; }
+
+        [JsonProperty("role")]
+        public Role Role { get; set; }
+    }
+
+
+    public class CredentialAccountSource
     {
         [JsonProperty("note")]
         public string Note { get; set; }
 
         [JsonProperty("fields")]
-        public IEnumerable<Field> Fields { get; set; }
+        public IEnumerable<AccountField> Fields { get; set; }
 
         [JsonProperty("privacy")]
         public string Privacy { get; set; }
@@ -19,12 +28,9 @@ namespace TootNet.Objects
         public bool Sensitive { get; set; }
 
         [JsonProperty("language")]
-        public bool Language { get; set; }
+        public string Language { get; set; }
 
         [JsonProperty("follow_requests_count")]
-        public bool FollowRequestsCount { get; set; }
-
-        [JsonProperty("role")]
-        public Role Role { get; set; }
+        public int FollowRequestsCount { get; set; }
     }
 }

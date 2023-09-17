@@ -3,14 +3,14 @@
         "path": "/api/v1/accounts/verify_credentials",
         "method": "GET",
         "description": "Verify account credentials",
-        "return": "Account",
+        "return": "CredentialAccount",
         "parameters": []
     },
     {
         "path": "/api/v1/accounts/update_credentials",
         "method": "PATCH",
         "description": "Update account credentials",
-        "return": "Account",
+        "return": "CredentialAccount",
         "parameters": [
             {
                 "name": "display_name",

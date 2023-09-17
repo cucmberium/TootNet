@@ -10,26 +10,11 @@ namespace TootNet.Internal
 {
     public class IdConverter : JsonConverter
     {
-        /// <summary>
-        /// Returns whether this converter can convert the object to the specified type.
-        /// </summary>
-        /// <param name="objectType">A <see cref="System.Type"/> that represents the type you want to convert to.</param>
-        /// <returns>
-        /// <c>true</c> if this converter can perform the conversion; otherwise, <c>false</c>.
-        /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(string);
+            return objectType == typeof(long);
         }
 
-        /// <summary>
-        /// Reads the JSON representation of the object.
-        /// </summary>
-        /// <param name="reader">The <see cref="Newtonsoft.Json.JsonReader"/> to read from.</param>
-        /// <param name="objectType">The <see cref="System.Type"/> of the object.</param>
-        /// <param name="existingValue">The existing value of object being read.</param>
-        /// <param name="serializer">The calling serializer.</param>
-        /// <returns>The object value.</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             switch (reader.TokenType)
@@ -41,22 +26,56 @@ namespace TootNet.Internal
                 case JsonToken.Null:
                     return null;
                 default:
-                    throw new InvalidOperationException("This object is not convertible");
+                    throw new JsonSerializationException("This object is not convertible");
             }
         }
 
-        /// <summary>
-        /// Writes the JSON representation of the object.
-        /// </summary>
-        /// <param name="writer">The <see cref="Newtonsoft.Json.JsonWriter"/> to write to.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteValue((long)value);
+            throw new NotImplementedException();
         }
     }
-    
+
+    public class IdArrayConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(IEnumerable<long>);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var token = JToken.Load(reader);
+            if (token.Type != JTokenType.Array)
+            {
+                throw new JsonSerializationException("Expected string array but got " + token.Type);
+            }
+
+            var idList = new List<long>();
+            foreach (var childToken in token.Values())
+            {
+                switch (childToken.Type)
+                {
+                    case JTokenType.String:
+                        idList.Add(long.Parse(childToken.ToString()));
+                        break;
+                    case JTokenType.Integer:
+                        idList.Add(childToken.Value<long>());
+                        break;
+                    default:
+                        throw new JsonSerializationException("Invalid array value found" + childToken.Type);
+                }
+            }
+
+            return idList;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     internal static class Converter
     {
         public static T Convert<T>(string json) where T : class

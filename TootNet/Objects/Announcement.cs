@@ -50,4 +50,30 @@ namespace TootNet.Objects
         [JsonProperty("reactions")]
         public IEnumerable<Reaction> Reactions { get; set; }
     }
+
+    public class AnnouncementAccount
+    {
+        [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
+        public long Id { get; set; }
+
+        [JsonProperty("username")]
+        public string UserName { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("acct")]
+        public string Acct { get; set; }
+    }
+
+    public class AnnouncementStatus
+    {
+        [JsonProperty("id")]
+        [JsonConverter(typeof(IdConverter))]
+        public long Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
 }

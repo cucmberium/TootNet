@@ -12,8 +12,8 @@ namespace TootNet.Objects
         [JsonConverter(typeof(IdConverter))]
         public long Id { get; set; }
         
-        [JsonProperty("phrase")]
-        public string Phrase { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
 
         [JsonProperty("context")]
         public IEnumerable<string> Context { get; set; }
@@ -21,10 +21,13 @@ namespace TootNet.Objects
         [JsonProperty("expires_at")]
         public DateTime? ExpiresAt { get; set; }
 
-        [JsonProperty("irreversible")]
-        public bool Irreversible { get; set; }
+        [JsonProperty("filter_action")]
+        public string FilterAction { get; set; }
 
-        [JsonProperty("whole_word")]
-        public bool WholeWord { get; set; }
+        [JsonProperty("keywords")]
+        public IEnumerable<FilterKeyword> Keywords { get; set; }
+
+        [JsonProperty("statuses")]
+        public IEnumerable<FilterStatus> Statuses { get; set; }
     }
 }

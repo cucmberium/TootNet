@@ -11,5 +11,8 @@ namespace TootNet.Objects
 
         [JsonProperty("title")]
         public string Title { get; set; }
+
+        [JsonProperty("replies_policy")]
+        public string RepliesPolicy { get; set; }
     }
 }

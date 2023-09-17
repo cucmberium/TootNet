@@ -12,7 +12,7 @@ namespace TootNet.Objects
         public long Id { get; set; }
 
         [JsonProperty("expires_at")]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         [JsonProperty("expired")]
         public bool Expired { get; set; }
@@ -24,10 +24,10 @@ namespace TootNet.Objects
         public int VotesCount { get; set; }
 
         [JsonProperty("voters_count")]
-        public int VotersCount { get; set; }
+        public int? VotersCount { get; set; }
 
         [JsonProperty("options")]
-        public int Options { get; set; }
+        public IEnumerable<PollOption> Options { get; set; }
 
         [JsonProperty("emojis")]
         public IEnumerable<CustomEmoji> Emojis { get; set; }
@@ -37,6 +37,14 @@ namespace TootNet.Objects
 
         [JsonProperty("own_votes")]
         public IEnumerable<int> OwnVotes { get; set; }
+    }
 
+    public class PollOption
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("votes_count")]
+        public int? VotesCount { get; set; }
     }
 }

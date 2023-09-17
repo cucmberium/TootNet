@@ -21,17 +21,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the credentialaccount object.</para>
         /// </returns>
-        public Task<Objects.Account> DeleteAvatarAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Objects.CredentialAccount> DeleteAvatarAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Delete, "profile/avatar", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Delete, "profile/avatar", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="DeleteAvatarAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Account> DeleteAvatarAsync(IDictionary<string, object> parameters)
+        public Task<Objects.CredentialAccount> DeleteAvatarAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Delete, "profile/avatar", parameters);
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Delete, "profile/avatar", parameters);
         }
 
         /// <summary>
@@ -42,17 +42,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the account object.</para>
+        /// <para>The Result property on the task object returns the credentialaccount object.</para>
         /// </returns>
-        public Task<Objects.Account> DeleteHeaderAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Objects.CredentialAccount> DeleteHeaderAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Delete, "profile/header", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Delete, "profile/header", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="DeleteHeaderAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Account> DeleteHeaderAsync(IDictionary<string, object> parameters)
+        public Task<Objects.CredentialAccount> DeleteHeaderAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Account>(MethodType.Delete, "profile/header", parameters);
+            return Tokens.AccessApiAsync<Objects.CredentialAccount>(MethodType.Delete, "profile/header", parameters);
         }
     }
 }

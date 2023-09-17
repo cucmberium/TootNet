@@ -12,6 +12,21 @@ namespace TootNet.Objects
         public string Url { get; set; }
 
         [JsonProperty("history")]
-        public IEnumerable<History> History { get; set; }
+        public IEnumerable<TagHistory> History { get; set; }
+
+        [JsonProperty("following")]
+        public bool? Following { get; set; }
+    }
+
+    public class TagHistory
+    {
+        [JsonProperty("day")]
+        public string Day { get; set; }
+
+        [JsonProperty("uses")]
+        public string Uses { get; set; }
+
+        [JsonProperty("accounts")]
+        public string Accounts { get; set; }
     }
 }

@@ -4,7 +4,7 @@
         "name": "DeleteAvatar",
         "method": "DELETE",
         "description": "Deletes the avatar associated with the user's profile",
-        "return": "Account",
+        "return": "CredentialAccount",
         "parameters": []
     },
     {
@@ -12,7 +12,7 @@
         "name": "DeleteHeader",
         "method": "DELETE",
         "description": "Deletes the header image associated with the user's profile",
-        "return": "Account",
+        "return": "CredentialAccount",
         "parameters": []
     }
 ]

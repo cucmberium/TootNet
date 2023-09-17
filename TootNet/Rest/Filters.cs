@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filter object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.Filter>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.Filter>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Filter>>(MethodType.Get, "filters", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponce<Objects.Filter>>(MethodType.Get, "filters", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.Filter>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.Filter>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IEnumerable<Objects.Filter>>(MethodType.Get, "filters", parameters, apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponce<Objects.Filter>>(MethodType.Get, "filters", parameters, apiVersion: "v2");
         }
 
         /// <summary>
@@ -143,15 +143,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filterkeyword object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.FilterKeyword>> GetFilterKeywordsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.FilterKeyword>> GetFilterKeywordsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetFilterKeywordsAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.FilterKeyword>> GetFilterKeywordsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.FilterKeyword>> GetFilterKeywordsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", parameters, apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", parameters, apiVersion: "v2");
         }
 
         /// <summary>
@@ -252,15 +252,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filterstatus object.</para>
         /// </returns>
-        public Task<IEnumerable<Objects.FilterStatus>> GetFilterStatusesAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponce<Objects.FilterStatus>> GetFilterStatusesAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetFilterStatusesAsync(Expression{Func{string, object}}[])"/>
-        public Task<IEnumerable<Objects.FilterStatus>> GetFilterStatusesAsync(IDictionary<string, object> parameters)
+        public Task<ListResponce<Objects.FilterStatus>> GetFilterStatusesAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<IEnumerable<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", parameters, apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", parameters, apiVersion: "v2");
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 
 namespace TootNet.Objects
 {
-    public class OEmbedMetadata : BaseObject
+    public class OEmbed : BaseObject
     {
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -139,7 +139,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             fout.write(f"{INDENT}/// </returns>\n")
 
             # extract method info
-            if method["return"].split(" ")[-1] in TEMPLATE_TYPE_TO_CSHARP_TYPE.values():
+            if method["return"].split(" ")[-1] in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
                 return_type = method["return"].split(" ")[-1].lower()
             elif method["return"].split(" ")[-1] == "Empty":
                 return_type = ""
@@ -152,7 +152,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                 if any(["since_id" == x["name"] for x in method["parameters"]]):
                     return_type = "Linked<" + return_type + ">"
                 else:
-                    return_type = "IEnumerable<" + return_type + ">"
+                    return_type = "ListResponce<" + return_type + ">"
 
             if return_type:
                 return_type = "<" + return_type + ">"

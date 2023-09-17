@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using TootNet.Internal;
 
 namespace TootNet.Objects
 {
