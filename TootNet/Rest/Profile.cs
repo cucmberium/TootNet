@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Profile(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Deletes the avatar associated with the user's profile</para>
+        /// <para>Deletes the avatar associated with the user's profile.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Deletes the header image associated with the user's profile</para>
+        /// <para>Deletes the header image associated with the user's profile.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

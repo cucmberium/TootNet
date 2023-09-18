@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Instance(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View server information</para>
+        /// <para>View server information.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>List of connected domains</para>
+        /// <para>List of connected domains.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -56,7 +56,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Weekly activity</para>
+        /// <para>Weekly activity.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -77,7 +77,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>List of rules</para>
+        /// <para>List of rules.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -98,7 +98,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View moderated servers</para>
+        /// <para>View moderated servers.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -119,7 +119,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View extended description</para>
+        /// <para>View extended description.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

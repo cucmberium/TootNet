@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Favourites(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View favourited statuses</para>
+        /// <para>View favourited statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Favourite a status</para>
+        /// <para>Favourite a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Undo favourite of a status</para>
+        /// <para>Undo favourite of a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

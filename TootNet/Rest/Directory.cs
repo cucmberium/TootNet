@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Directory(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View profile directory</para>
+        /// <para>View profile directory.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>int</c> offset (optional)</para>
         /// <para>- <c>int</c> limit (optional)</para>

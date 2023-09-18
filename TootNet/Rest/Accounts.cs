@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Accounts(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Verify account credentials</para>
+        /// <para>Verify account credentials.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Update account credentials</para>
+        /// <para>Update account credentials.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> display_name (optional)</para>
         /// <para>- <c>string</c> note (optional)</para>
@@ -67,7 +67,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get account</para>
+        /// <para>Get account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -88,7 +88,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get account's statuses</para>
+        /// <para>Get account's statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -118,7 +118,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get account's followers</para>
+        /// <para>Get account's followers.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -143,7 +143,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get account's following</para>
+        /// <para>Get account's following.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -168,7 +168,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get account's featured tags</para>
+        /// <para>Get account's featured tags.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -189,7 +189,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Follow account</para>
+        /// <para>Follow account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>bool</c> reblogs (optional)</para>
@@ -213,7 +213,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unfollow account</para>
+        /// <para>Unfollow account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -234,7 +234,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove account from followers</para>
+        /// <para>Remove account from followers.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -255,7 +255,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Set private note on profile</para>
+        /// <para>Set private note on profile.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> comment (optional)</para>
@@ -277,7 +277,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Check relationships to other accounts</para>
+        /// <para>Check relationships to other accounts.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> id (optional)</para>
         /// </summary>
@@ -298,7 +298,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Find familiar followers</para>
+        /// <para>Find familiar followers.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> id (optional)</para>
         /// </summary>
@@ -319,7 +319,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Search for matching accounts</para>
+        /// <para>Search for matching accounts.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>int</c> limit (optional)</para>
@@ -344,7 +344,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Lookup account ID from Webfinger address</para>
+        /// <para>Lookup account ID from Webfinger address.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> acct (required)</para>
         /// </summary>

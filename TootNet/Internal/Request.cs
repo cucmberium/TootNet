@@ -54,7 +54,7 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var uri = param == null ? url : Utils.CreateUrlParameter(url, param);
+            var uri = Utils.CreateUrlParameter(url, param);
             var response = await httpClient.GetAsync(uri).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
@@ -92,7 +92,7 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var uri = param == null ? url : Utils.CreateUrlParameter(url, param);
+            var uri = Utils.CreateUrlParameter(url, param);
             var response = await httpClient.DeleteAsync(uri).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 

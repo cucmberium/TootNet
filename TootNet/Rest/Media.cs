@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Media(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Upload media as an attachment (async)</para>
+        /// <para>Upload media as an attachment (async).</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>object</c> file (required)</para>
         /// <para>- <c>object</c> thumbnail (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get media attachment</para>
+        /// <para>Get media attachment.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Update media attachment</para>
+        /// <para>Update media attachment.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>object</c> thumbnail (optional)</para>

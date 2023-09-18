@@ -10,20 +10,10 @@ namespace TootNet.Internal
     {
         internal static string CreateUrlParameter(string url, IEnumerable<KeyValuePair<string, object>> param)
         {
-            var uri = url;
-            if (param.Any())
-            {
-                uri += "?" + string.Join("&",
-                    param.Select(
-                        kvp =>
-                        {
-                            if (kvp.Value is bool)
-                                return string.Format("{0}={1}", kvp.Key, kvp.Value.ToString().ToLower());
+            if (param == null)
+                return url;
 
-                            return string.Format("{0}={1}", kvp.Key, WebUtility.UrlEncode(kvp.Value.ToString()));
-                        }));
-            }
-            return uri;
+            return url + "?" + string.Join("&", param.Select(kvp => kvp.Value is bool ? $"{kvp.Key}={kvp.Value.ToString().ToLower()}" : $"{kvp.Key}={WebUtility.UrlEncode(kvp.Value.ToString())}"));
         }
 
         internal static KeyValuePair<string, object> GetReservedParameter(List<KeyValuePair<string, object>> parameters, string reserved)

@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Conversations(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View all conversations</para>
+        /// <para>View all conversations.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove a conversation</para>
+        /// <para>Remove a conversation.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Mark a conversation as read</para>
+        /// <para>Mark a conversation as read.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

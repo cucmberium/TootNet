@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Tags(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View information about a single tag</para>
+        /// <para>View information about a single tag.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> tag (required)</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View all followed tags</para>
+        /// <para>View all followed tags.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Follow a hashtag</para>
+        /// <para>Follow a hashtag.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> tag (required)</para>
         /// </summary>
@@ -80,7 +80,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unfollow a hashtag</para>
+        /// <para>Unfollow a hashtag.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> tag (required)</para>
         /// </summary>

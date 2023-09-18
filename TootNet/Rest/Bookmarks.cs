@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Bookmarks(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View bookmarked statuses</para>
+        /// <para>View bookmarked statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Bookmark a status</para>
+        /// <para>Bookmark a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Undo bookmark of a status</para>
+        /// <para>Undo bookmark of a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

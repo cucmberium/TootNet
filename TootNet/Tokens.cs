@@ -217,10 +217,10 @@ namespace TootNet
                         return await Request.HttpPatchAsync(httpClient, uri, param, headers);
                     case MethodType.Put:
                         return await Request.HttpPutAsync(httpClient, uri, param, headers);
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
                 }
             }
-
-            return null;
         }
 
         /// <summary>

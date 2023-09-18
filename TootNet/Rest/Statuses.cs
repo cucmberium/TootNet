@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Statuses(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Post a new status</para>
+        /// <para>Post a new status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> status (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> media_ids (required)</para>
@@ -46,7 +46,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View a single status</para>
+        /// <para>View a single status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -67,7 +67,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Delete a status</para>
+        /// <para>Delete a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -88,7 +88,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get parent and child statuses in context</para>
+        /// <para>Get parent and child statuses in context.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -109,7 +109,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Translate a status</para>
+        /// <para>Translate a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> lang (ISO 639-1 language two-letter code) (optional)</para>
@@ -131,7 +131,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>See who boosted a status</para>
+        /// <para>See who boosted a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -155,7 +155,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>See who favourited a status</para>
+        /// <para>See who favourited a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -179,7 +179,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Boost a status</para>
+        /// <para>Boost a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> visibility (optional)</para>
@@ -201,7 +201,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Undo boost of a status</para>
+        /// <para>Undo boost of a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -222,7 +222,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Mute a conversation</para>
+        /// <para>Mute a conversation.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -243,7 +243,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unmute a conversation</para>
+        /// <para>Unmute a conversation.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -264,7 +264,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Pin status to profile</para>
+        /// <para>Pin status to profile.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -285,7 +285,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unpin status from profile</para>
+        /// <para>Unpin status from profile.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -306,7 +306,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Edit a status</para>
+        /// <para>Edit a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> status (optional)</para>
@@ -336,7 +336,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View edit history of a status</para>
+        /// <para>View edit history of a status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -357,7 +357,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View status source</para>
+        /// <para>View status source.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

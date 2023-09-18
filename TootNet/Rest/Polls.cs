@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Polls(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View a poll</para>
+        /// <para>View a poll.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Vote on a poll</para>
+        /// <para>Vote on a poll.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;int&gt;</c> choices (required)</para>

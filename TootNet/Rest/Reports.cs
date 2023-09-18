@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Reports(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>File a report</para>
+        /// <para>File a report.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> status_ids (optional)</para>

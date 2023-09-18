@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal CustomEmojis(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View all custom emoji</para>
+        /// <para>View all custom emoji.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Suggestions(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View follow suggestions</para>
+        /// <para>View follow suggestions.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove a suggestion</para>
+        /// <para>Remove a suggestion.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
         /// </summary>

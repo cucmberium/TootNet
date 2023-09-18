@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Blocks(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View blocked users</para>
+        /// <para>View blocked users.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Block account</para>
+        /// <para>Block account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unblock account</para>
+        /// <para>Unblock account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

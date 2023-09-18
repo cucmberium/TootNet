@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal ScheduledStatuses(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View scheduled statuses</para>
+        /// <para>View scheduled statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View a single scheduled status</para>
+        /// <para>View a single scheduled status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Update a scheduled status's publishing date</para>
+        /// <para>Update a scheduled status's publishing date.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> scheduled_at (format: "2019-01-01 12:00:00") (optional)</para>
@@ -81,7 +81,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Cancel a scheduled status</para>
+        /// <para>Cancel a scheduled status.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

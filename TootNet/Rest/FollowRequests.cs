@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal FollowRequests(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View pending follow requests</para>
+        /// <para>View pending follow requests.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -37,7 +37,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Accept follow request</para>
+        /// <para>Accept follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
         /// </summary>
@@ -58,7 +58,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Reject follow request</para>
+        /// <para>Reject follow request.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> account_id (required)</para>
         /// </summary>

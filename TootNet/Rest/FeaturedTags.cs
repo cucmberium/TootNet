@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal FeaturedTags(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View your featured tags</para>
+        /// <para>View your featured tags.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Feature a tag</para>
+        /// <para>Feature a tag.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> name (required)</para>
         /// </summary>
@@ -56,7 +56,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unfeature a tag</para>
+        /// <para>Unfeature a tag.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -77,7 +77,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View suggested tags to feature</para>
+        /// <para>View suggested tags to feature.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

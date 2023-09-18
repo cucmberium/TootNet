@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal OEmbed(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Get OEmbed info as JSON</para>
+        /// <para>Get OEmbed info as JSON.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> url (required)</para>
         /// <para>- <c>int</c> maxwidth (optional)</para>

@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Mutes(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View muted accounts</para>
+        /// <para>View muted accounts.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -37,7 +37,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Mute account</para>
+        /// <para>Mute account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>bool</c> notifications (optional)</para>
@@ -60,7 +60,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unmute account</para>
+        /// <para>Unmute account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

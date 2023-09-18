@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Trends(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View trending tags</para>
+        /// <para>View trending tags.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>int</c> offset (optional)</para>
@@ -36,7 +36,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View trending statuses</para>
+        /// <para>View trending statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>int</c> offset (optional)</para>
@@ -58,7 +58,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View trending links</para>
+        /// <para>View trending links.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>int</c> limit (optional)</para>
         /// <para>- <c>int</c> offset (optional)</para>

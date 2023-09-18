@@ -100,7 +100,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
 
             # write documents
             fout.write(f"{INDENT}/// <summary>\n")
-            fout.write(f"{INDENT}/// <para>{method['description']}</para>\n")
+            fout.write(f"{INDENT}/// <para>{method['description']}.</para>\n")
             fout.write(f"{INDENT}/// <para>Available parameters:</para>\n")
             if len(method["parameters"]) == 0:
                 fout.write(f"{INDENT}/// <para>- No parameters available in this method.</para>\n")

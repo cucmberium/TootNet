@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Filters(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View all filters</para>
+        /// <para>View all filters.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View a specific filter</para>
+        /// <para>View a specific filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -56,7 +56,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Create a filter</para>
+        /// <para>Create a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> title (required)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> context (required)</para>
@@ -84,7 +84,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Update a filter</para>
+        /// <para>Update a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> title (optional)</para>
@@ -113,7 +113,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Delete a filter</para>
+        /// <para>Delete a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -134,7 +134,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View keywords added to a filter</para>
+        /// <para>View keywords added to a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> filter_id (required)</para>
         /// </summary>
@@ -155,7 +155,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Add a keyword to a filter</para>
+        /// <para>Add a keyword to a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> filter_id (required)</para>
         /// <para>- <c>string</c> keyword (required)</para>
@@ -178,7 +178,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View a single keyword</para>
+        /// <para>View a single keyword.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -199,7 +199,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Edit a keyword within a filter</para>
+        /// <para>Edit a keyword within a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> keyword (required)</para>
@@ -222,7 +222,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove keywords from a filter</para>
+        /// <para>Remove keywords from a filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -243,7 +243,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View all status filters</para>
+        /// <para>View all status filters.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> filter_id (required)</para>
         /// </summary>
@@ -264,7 +264,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Add a status to a filter group</para>
+        /// <para>Add a status to a filter group.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> filter_id (required)</para>
         /// </summary>
@@ -285,7 +285,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View a single status filter</para>
+        /// <para>View a single status filter.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -306,7 +306,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove a status from a filter group</para>
+        /// <para>Remove a status from a filter group.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

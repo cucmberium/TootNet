@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Preferences(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View user preferences</para>
+        /// <para>View user preferences.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

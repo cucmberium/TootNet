@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Timelines(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View public timeline</para>
+        /// <para>View public timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> local (optional)</para>
         /// <para>- <c>bool</c> remote (optional)</para>
@@ -41,7 +41,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View hashtag timeline</para>
+        /// <para>View hashtag timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> hashtag (required)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> any (optional)</para>
@@ -72,7 +72,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View home timeline</para>
+        /// <para>View home timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -96,7 +96,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View list timeline</para>
+        /// <para>View list timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> list_id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>

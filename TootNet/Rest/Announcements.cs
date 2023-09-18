@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Announcements(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View all announcements</para>
+        /// <para>View all announcements.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> with_dismissed (optional)</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Dismiss an announcement</para>
+        /// <para>Dismiss an announcement.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -56,7 +56,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Add a reaction to an announcement</para>
+        /// <para>Add a reaction to an announcement.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> name (required)</para>
@@ -78,7 +78,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove a reaction from an announcement</para>
+        /// <para>Remove a reaction from an announcement.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> name (required)</para>

@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Apps(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Verify your app works</para>
+        /// <para>Verify your app works.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>

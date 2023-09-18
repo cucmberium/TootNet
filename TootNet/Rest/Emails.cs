@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Emails(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Resend confirmation email</para>
+        /// <para>Resend confirmation email.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> email (If provided, updates the unconfirmed user's email before resending the confirmation email) (optional)</para>
         /// </summary>

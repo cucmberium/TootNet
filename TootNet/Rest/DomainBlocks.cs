@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal DomainBlocks(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Get domain blocks</para>
+        /// <para>Get domain blocks.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -38,7 +38,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Block a domain</para>
+        /// <para>Block a domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> domain (required)</para>
         /// </summary>
@@ -59,7 +59,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Unblock a domain</para>
+        /// <para>Unblock a domain.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> domain (required)</para>
         /// </summary>

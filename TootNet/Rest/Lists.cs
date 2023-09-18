@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Lists(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>View your lists</para>
+        /// <para>View your lists.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Show a single list</para>
+        /// <para>Show a single list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -56,7 +56,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Create a list</para>
+        /// <para>Create a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> title (required)</para>
         /// <para>- <c>string</c> replies_policy (optional)</para>
@@ -78,7 +78,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Update a list</para>
+        /// <para>Update a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> title (required)</para>
@@ -101,7 +101,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Delete a list</para>
+        /// <para>Delete a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -122,7 +122,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>View accounts in a list</para>
+        /// <para>View accounts in a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>long</c> max_id (optional)</para>
@@ -147,7 +147,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Add accounts to a list</para>
+        /// <para>Add accounts to a list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -169,7 +169,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Remove accounts from list</para>
+        /// <para>Remove accounts from list.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> account_ids (required)</para>
@@ -191,7 +191,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get lists containing this account</para>
+        /// <para>Get lists containing this account.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>

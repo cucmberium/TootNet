@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Markers(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Get saved timeline positions</para>
+        /// <para>Get saved timeline positions.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> timeline (allowed values: "home", "notifications") (optional)</para>
         /// </summary>
@@ -35,7 +35,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Save your position in a timeline</para>
+        /// <para>Save your position in a timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> home[last_read_id] (optional)</para>
         /// <para>- <c>long</c> notifications[last_read_id] (optional)</para>

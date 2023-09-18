@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Search(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Perform a search</para>
+        /// <para>Perform a search.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> q (required)</para>
         /// <para>- <c>string</c> type (allowed values of types: "accounts", "hashtags", "statuses") (optional)</para>

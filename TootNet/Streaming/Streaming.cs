@@ -269,9 +269,11 @@ namespace TootNet.Streaming
                 case StreamingType.Direct:
                     url += "/direct";
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
-            url = _parameters == null ? url : Utils.CreateUrlParameter(url, _parameters);
+            url = Utils.CreateUrlParameter(url, _parameters);
 
             conn.Start(observer, _tokens, url);
             return conn;

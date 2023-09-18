@@ -14,7 +14,7 @@ namespace TootNet.Rest
         internal Notifications(Tokens e) : base(e) { }
 
         /// <summary>
-        /// <para>Get all notifications</para>
+        /// <para>Get all notifications.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> max_id (optional)</para>
         /// <para>- <c>long</c> since_id (optional)</para>
@@ -41,7 +41,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Get a single notification</para>
+        /// <para>Get a single notification.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
@@ -62,7 +62,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Dismiss all notifications</para>
+        /// <para>Dismiss all notifications.</para>
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -83,7 +83,7 @@ namespace TootNet.Rest
         }
 
         /// <summary>
-        /// <para>Dismiss a single notification</para>
+        /// <para>Dismiss a single notification.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>
         /// </summary>
