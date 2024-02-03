@@ -14,10 +14,10 @@ This library uses part of the codes of the following libraries.
     <PackageProjectUrl>https://github.com/cucmberium/TootNet</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/cucmberium/TootNet/blob/master/LICENSE</PackageLicenseUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Copyright>(c) 2017-2023 cucmberium</Copyright>
+    <Copyright>(c) 2017-2024 cucmberium</Copyright>
     <RepositoryUrl>https://github.com/cucmberium/TootNet</RepositoryUrl>
     <PackageTags>Mastodon</PackageTags>
-    <Version>4.0.0</Version>
+    <Version>4.2.0</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace TootNet.Demo
 {
@@ -18,7 +15,7 @@ namespace TootNet.Demo
         static async Task MainAsync()
         {
             var authorize = new Authorize();
-            await authorize.CreateApp("mstdn.jp", "Tootnet", Scope.Read | Scope.Write | Scope.Follow);
+            await authorize.CreateApp("mstdn.jp", "Tootnet", Scope.Read | Scope.Write);
 
             var authorizeUrl = authorize.GetAuthorizeUri();
             Console.WriteLine(authorizeUrl);
@@ -61,7 +58,7 @@ namespace TootNet.Demo
                     case "toot":
                         if (command.Length <= 1)
                             break;
-                        
+
                         var text = command[1].Trim();
                         var post = await tokens.Statuses.PostAsync(status => text);
 
