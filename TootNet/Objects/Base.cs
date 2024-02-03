@@ -25,9 +25,9 @@ namespace TootNet.Objects
     }
 
     /// <summary>
-    /// Represents a list responce object.
+    /// Represents a list response object.
     /// </summary>
-    public class ListResponce<T> : List<T>, IBaseObject
+    public class ListResponse<T> : List<T>, IBaseObject
     {
         /// <summary>
         /// Gets or sets the raw json.
@@ -39,7 +39,7 @@ namespace TootNet.Objects
     /// <summary>
     /// Represents a linked message object.
     /// </summary>
-    public class Linked<T> : List<T>, IBaseObject, ILinked
+    public class Linked<T> : ListResponse<T>, ILinked
     {
         /// <summary>
         /// Gets or sets the max id.
@@ -52,7 +52,10 @@ namespace TootNet.Objects
         /// </summary>
         [JsonIgnore]
         public long? SinceId { get; set; }
+    }
 
+    public class DictResponse<TKey, TValue> : Dictionary<TKey, TValue>, IBaseObject
+    {
         /// <summary>
         /// Gets or sets the raw json.
         /// </summary>

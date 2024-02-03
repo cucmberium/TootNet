@@ -26,15 +26,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of account object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Account>>(MethodType.Get, "directory", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponse<Objects.Account>>(MethodType.Get, "directory", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.Account>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.Account>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Account>>(MethodType.Get, "directory", parameters);
+            return Tokens.AccessApiAsync<ListResponse<Objects.Account>>(MethodType.Get, "directory", parameters);
         }
     }
 }

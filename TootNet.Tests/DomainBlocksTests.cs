@@ -10,18 +10,18 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            await tokens.DomainBlocks.PostAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.PostAsync(domain => "mstdn.jp");
 
             await Task.Delay(1000);
 
             var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
             Assert.True(domainBlocks.Count > 0);
-            Assert.Contains("pawoo.net", domainBlocks);
+            Assert.Contains("mstdn.jp", domainBlocks);
 
             await Task.Delay(1000);
 
-            await tokens.DomainBlocks.DeleteAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.DeleteAsync(domain => "mstdn.jp");
         }
 
         [Fact]
@@ -29,18 +29,18 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            await tokens.DomainBlocks.PostAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.PostAsync(domain => "mstdn.jp");
 
             await Task.Delay(1000);
 
             var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
             Assert.True(domainBlocks.Count > 0);
-            Assert.Contains("pawoo.net", domainBlocks);
+            Assert.Contains("mstdn.jp", domainBlocks);
 
             await Task.Delay(1000);
 
-            await tokens.DomainBlocks.DeleteAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.DeleteAsync(domain => "mstdn.jp");
         }
 
         [Fact]
@@ -48,17 +48,17 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
             
-            await tokens.DomainBlocks.PostAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.PostAsync(domain => "mstdn.jp");
 
             await Task.Delay(1000);
 
-            await tokens.DomainBlocks.DeleteAsync(domain => "pawoo.net");
+            await tokens.DomainBlocks.DeleteAsync(domain => "mstdn.jp");
 
             await Task.Delay(1000);
 
             var domainBlocks = await tokens.DomainBlocks.GetAsync();
 
-            Assert.DoesNotContain("pawoo.net", domainBlocks);
+            Assert.DoesNotContain("mstdn.jp", domainBlocks);
         }
     }
 }

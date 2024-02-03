@@ -54,8 +54,7 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var uri = Utils.CreateUrlParameter(url, param);
-            var response = await httpClient.GetAsync(uri).ConfigureAwait(false);
+            var response = await httpClient.GetAsync(Utils.CreateUrlParameter(url, param)).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
             return asyncResponse;
@@ -67,8 +66,9 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var httpContent = new MultipartFormDataContent();
-            if (param != null)
+            MultipartFormDataContent httpContent = null;
+            if (param != null && param.Any()) {
+                httpContent = new MultipartFormDataContent();
                 foreach (var x in param)
                 {
                     if (x.Value is Stream valueStream)
@@ -78,9 +78,9 @@ namespace TootNet.Internal
                     else
                         httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
                 }
+            }
 
-            var uri = url;
-            var response = await httpClient.PostAsync(uri, httpContent).ConfigureAwait(false);
+            var response = await httpClient.PostAsync(url, httpContent).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
             return asyncResponse;
@@ -105,8 +105,10 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var httpContent = new MultipartFormDataContent();
-            if (param != null)
+            MultipartFormDataContent httpContent = null;
+            if (param != null && param.Any())
+            {
+                httpContent = new MultipartFormDataContent();
                 foreach (var x in param)
                 {
                     if (x.Value is Stream valueStream)
@@ -116,6 +118,7 @@ namespace TootNet.Internal
                     else
                         httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
                 }
+            }
 
             var httpMethod = new HttpMethod("PATCH");
             var message = new HttpRequestMessage(httpMethod, url)
@@ -135,8 +138,10 @@ namespace TootNet.Internal
                 foreach (var header in headers)
                     httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            var httpContent = new MultipartFormDataContent();
-            if (param != null)
+            MultipartFormDataContent httpContent = null;
+            if (param != null && param.Any())
+            {
+                httpContent = new MultipartFormDataContent();
                 foreach (var x in param)
                 {
                     if (x.Value is Stream valueStream)
@@ -146,9 +151,9 @@ namespace TootNet.Internal
                     else
                         httpContent.Add(new StringContent(x.Value.ToString()), x.Key);
                 }
+            }
 
-            var uri = url;
-            var response = await httpClient.PutAsync(uri, httpContent).ConfigureAwait(false);
+            var response = await httpClient.PutAsync(url, httpContent).ConfigureAwait(false);
             var asyncResponse = new AsyncResponse(response);
 
             return asyncResponse;

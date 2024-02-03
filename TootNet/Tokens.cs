@@ -66,11 +66,6 @@ namespace TootNet
         public Rest.DomainBlocks DomainBlocks => new Rest.DomainBlocks(this);
 
         /// <summary>
-        /// Emails
-        /// </summary>
-        public Rest.Emails Emails => new Rest.Emails(this);
-
-        /// <summary>
         /// Endorsements
         /// </summary>
         public Rest.Endorsements Endorsements => new Rest.Endorsements(this);
@@ -407,6 +402,9 @@ namespace TootNet
 
         private IEnumerable<KeyValuePair<string, object>> FormatParameters(IEnumerable<KeyValuePair<string, object>> param)
         {
+            if (param == null)
+                yield break;
+
             foreach (var p in param)
             {
                 if (p.Value == null)

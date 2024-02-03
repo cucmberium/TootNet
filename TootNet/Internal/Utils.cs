@@ -10,7 +10,7 @@ namespace TootNet.Internal
     {
         internal static string CreateUrlParameter(string url, IEnumerable<KeyValuePair<string, object>> param)
         {
-            if (param == null)
+            if (param == null || !param.Any())
                 return url;
 
             return url + "?" + string.Join("&", param.Select(kvp => kvp.Value is bool ? $"{kvp.Key}={kvp.Value.ToString().ToLower()}" : $"{kvp.Key}={WebUtility.UrlEncode(kvp.Value.ToString())}"));

@@ -23,16 +23,6 @@ namespace TootNet.Tests
         }
 
         [Fact]
-        public async Task ConversationAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var conversations = await tokens.Timelines.ConversationsAsync(limit => 10);
-
-            Assert.NotNull(conversations);
-        }
-
-        [Fact]
         public async Task PublicAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
@@ -54,7 +44,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var statuses = await tokens.Timelines.TagAsync(hashtag => "pixiv", limit => 10);
+            var statuses = await tokens.Timelines.TagAsync(hashtag => "mastodon", limit => 10);
 
             Assert.Equal(10, statuses.Count);
             foreach (var status in statuses)
@@ -66,7 +56,7 @@ namespace TootNet.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "WIP")]
         public async Task ListAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();

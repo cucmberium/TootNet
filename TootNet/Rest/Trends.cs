@@ -24,15 +24,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of tag object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.Tag>> TagsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.Tag>> TagsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Tag>>(MethodType.Get, "trends/tags", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponse<Objects.Tag>>(MethodType.Get, "trends/tags", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="TagsAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.Tag>> TagsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.Tag>> TagsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Tag>>(MethodType.Get, "trends/tags", parameters);
+            return Tokens.AccessApiAsync<ListResponse<Objects.Tag>>(MethodType.Get, "trends/tags", parameters);
         }
 
         /// <summary>
@@ -46,15 +46,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of status object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.Status>> StatusesAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.Status>> StatusesAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Status>>(MethodType.Get, "trends/statuses", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponse<Objects.Status>>(MethodType.Get, "trends/statuses", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="StatusesAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.Status>> StatusesAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.Status>> StatusesAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Status>>(MethodType.Get, "trends/statuses", parameters);
+            return Tokens.AccessApiAsync<ListResponse<Objects.Status>>(MethodType.Get, "trends/statuses", parameters);
         }
 
         /// <summary>
@@ -68,15 +68,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of trendslink object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.TrendsLink>> LinksAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.TrendsLink>> LinksAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.TrendsLink>>(MethodType.Get, "trends/links", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponse<Objects.TrendsLink>>(MethodType.Get, "trends/links", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="LinksAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.TrendsLink>> LinksAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.TrendsLink>> LinksAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.TrendsLink>>(MethodType.Get, "trends/links", parameters);
+            return Tokens.AccessApiAsync<ListResponse<Objects.TrendsLink>>(MethodType.Get, "trends/links", parameters);
         }
     }
 }

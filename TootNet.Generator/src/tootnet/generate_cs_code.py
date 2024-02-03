@@ -25,7 +25,7 @@ namespace TootNet.Rest
 EXPR_FUNC = """
         public Task{return_type} {method_name}Async(params Expression<Func<string, object>>[] parameters)
         {{
-            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, Utils.ExpressionToDictionary(parameters){api_version});
+            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, Utils.ExpressionToDictionary(parameters){use_api_path}{api_version});
         }}
 """.strip(
     "\n"
@@ -34,7 +34,7 @@ EXPR_FUNC = """
 DIC_FUNC = """
         public Task{return_type} {method_name}Async(IDictionary<string, object> parameters)
         {{
-            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, parameters{api_version});
+            return Tokens.Access{parameter_reserved}ApiAsync{return_type}(MethodType.{method_type}, "{route}"{reserved}, parameters{use_api_path}{api_version});
         }}
 """.strip(
     "\n"
@@ -60,6 +60,7 @@ TEMPLATE_TYPE_TO_CSHARP_TYPE = {
     "Char": "char",
     "Boolean": "bool",
     "String": "string",
+    "Object": "object",
 }
 
 LONG_TYPE_PARAMS = [
@@ -75,6 +76,7 @@ LONG_TYPE_PARAMS = [
     "list_ids",
     "media_id",
     "media_ids",
+    "filter_id",
     "in_reply_to_id",
     "home[last_read_id]",
     "notifications[last_read_id]",
@@ -144,7 +146,13 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             elif method["return"].split(" ")[-1] == "Empty":
                 return_type = ""
             elif method["return"].startswith("Dict "):
-                return_type = "IDictionary<" + ", ".join(method["return"].split(" ")[-1].lower().split(",")) + ">"
+                dict_key, dict_value = method["return"].split(" ")[-1].split(",")
+                dict_key = dict_key.lower()
+                if dict_value in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
+                    dict_value = dict_value.lower()
+                else:
+                    dict_value = "Objects." + dict_value
+                return_type = f"DictResponse<{dict_key}, {dict_value}>"
             else:
                 return_type = "Objects." + method["return"].split(" ")[-1]
 
@@ -152,7 +160,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                 if any(["since_id" == x["name"] for x in method["parameters"]]):
                     return_type = "Linked<" + return_type + ">"
                 else:
-                    return_type = "ListResponce<" + return_type + ">"
+                    return_type = "ListResponse<" + return_type + ">"
 
             if return_type:
                 return_type = "<" + return_type + ">"
@@ -172,11 +180,18 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             if "name" in method:
                 method_name = method["name"]
 
-            route = method["path"].replace("/api/v1/", "")
+            route: str
             api_version = ""
-            if "/api/v2/" in method["path"]:
+            use_api_path = ""
+            if "/api/v1/" in method["path"]:
+                route = method["path"].replace("/api/v1/", "")
+            elif "/api/v2/" in method["path"]:
                 route = method["path"].replace("/api/v2/", "")
                 api_version = ', apiVersion: "v2"'
+            else:
+                route = method["path"]
+                use_api_path = ", useApiPath: false"
+
             route = "/".join(["{" + x.replace(":", "") + "}" if x.startswith(":") else x for x in route.split("/")])
 
             reserved = ""
@@ -186,7 +201,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                     reserved = f', "{res_params[0]}"'
                 else:
                     reserved = ", ".join([f'"{x}"' for x in res_params])
-                    reserved = f', new []{{{reserved}}}'
+                    reserved = f", new []{{{reserved}}}"
 
             parameter_reserved = "ParameterReserved" if ":" in method["path"] else ""
 
@@ -198,6 +213,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                     method_type=method_type,
                     route=route,
                     api_version=api_version,
+                    use_api_path=use_api_path,
                     reserved=reserved,
                     parameter_reserved=parameter_reserved,
                 )
@@ -216,6 +232,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                     method_type=method_type,
                     route=route,
                     api_version=api_version,
+                    use_api_path=use_api_path,
                     reserved=reserved,
                     parameter_reserved=parameter_reserved,
                 )

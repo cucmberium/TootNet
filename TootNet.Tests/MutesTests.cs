@@ -12,12 +12,12 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var relationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var relationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
 
             await Task.Delay(1000);
 
             if (!relationship.Muting)
-                await tokens.Mutes.MuteAccountAsync(id => 32641);
+                await tokens.Mutes.MuteAsync(id => 13179);
 
             await Task.Delay(1000);
 
@@ -25,11 +25,11 @@ namespace TootNet.Tests
 
             Assert.NotNull(accounts);
             Assert.True(accounts.Count > 0);
-            Assert.Contains(accounts, x => x.Id == 32641);
+            Assert.Contains(accounts, x => x.Id == 13179);
 
             await Task.Delay(1000);
 
-            await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+            await tokens.Mutes.UnmuteAsync(id => 13179);
         }
 
         [Fact]
@@ -37,20 +37,20 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
 
             await Task.Delay(1000);
 
             if (oldRelationship.Muting)
-                await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+                await tokens.Mutes.UnmuteAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            var relationship = await tokens.Mutes.MuteAccountAsync(id => 32641);
+            var relationship = await tokens.Mutes.MuteAsync(id => 13179);
 
             Assert.True(relationship.Muting);
 
-            await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+            await tokens.Mutes.UnmuteAsync(id => 13179);
         }
 
         [Fact]
@@ -58,60 +58,18 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
 
             await Task.Delay(1000);
 
             if (!oldRelationship.Muting)
-                await tokens.Mutes.MuteAccountAsync(id => 32641);
+                await tokens.Mutes.MuteAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            var relationship = await tokens.Mutes.UnmuteAccountAsync(id => 32641);
+            var relationship = await tokens.Mutes.UnmuteAsync(id => 13179);
 
             Assert.False(relationship.Muting);
-        }
-
-        [Fact]
-        public async Task MuteStatusAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            if (status.Muted == true)
-                await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            var mutedStatus = await tokens.Mutes.MuteStatusAsync(id => 45720257);
-
-            Assert.True(mutedStatus.Muted);
-
-            await Task.Delay(1000);
-
-            await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
-        }
-
-        [Fact]
-        public async Task UnmuteStatusAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            if (status.Muted == false || status.Muted == null)
-                await tokens.Mutes.MuteStatusAsync(id => 45720257);
-
-            await Task.Delay(1000);
-
-            var mutedStatus = await tokens.Mutes.UnmuteStatusAsync(id => 45720257);
-
-            Assert.False(mutedStatus.Muted);
         }
     }
 }

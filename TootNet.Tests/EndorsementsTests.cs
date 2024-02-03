@@ -11,20 +11,26 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
+            await tokens.Accounts.FollowAsync(id => 13179);
+
+            await Task.Delay(1000);
+
+            await tokens.Endorsements.PinAsync(id => 13179);
+
+            await Task.Delay(1000);
+
             var endorsements = await tokens.Endorsements.GetAsync();
-            if (endorsements.All(x => x.Acct != "cucmberium@mstdn.maud.io"))
-                await tokens.Endorsements.PinAsync(id => 157355);
+
+            Assert.NotEmpty(endorsements);
+            Assert.Contains(endorsements, x => x.Acct == "Mastodon");
 
             await Task.Delay(1000);
 
-            var endorsements2 = await tokens.Endorsements.GetAsync();
-
-            Assert.True(endorsements2.Count() > 0);
-            Assert.Contains(endorsements2, x => x.Acct == "cucmberium@mstdn.maud.io");
+            await tokens.Endorsements.UnpinAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            await tokens.Endorsements.UnpinAsync(id => 157355);
+            await tokens.Accounts.UnfollowAsync(id => 13179);
         }
 
         [Fact]
@@ -32,20 +38,26 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
+            await tokens.Accounts.FollowAsync(id => 13179);
+
+            await Task.Delay(1000);
+
+            await tokens.Endorsements.PinAsync(id => 13179);
+
+            await Task.Delay(1000);
+
             var endorsements = await tokens.Endorsements.GetAsync();
-            if (endorsements.All(x => x.Acct != "cucmberium@mstdn.maud.io"))
-                await tokens.Endorsements.PinAsync(id => 157355);
+
+            Assert.NotEmpty(endorsements);
+            Assert.Contains(endorsements, x => x.Acct == "Mastodon");
 
             await Task.Delay(1000);
 
-            var endorsements2 = await tokens.Endorsements.GetAsync();
-
-            Assert.True(endorsements2.Count() > 0);
-            Assert.Contains(endorsements2, x => x.Acct == "cucmberium@mstdn.maud.io");
+            await tokens.Endorsements.UnpinAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            await tokens.Endorsements.UnpinAsync(id => 157355);
+            await tokens.Accounts.UnfollowAsync(id => 13179);
         }
 
         [Fact]
@@ -53,19 +65,25 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
+            await tokens.Accounts.FollowAsync(id => 13179);
+
+            await Task.Delay(1000);
+
+            await tokens.Endorsements.PinAsync(id => 13179);
+
+            await Task.Delay(1000);
+
+            await tokens.Endorsements.UnpinAsync(id => 13179);
+
+            await Task.Delay(1000);
+
             var endorsements = await tokens.Endorsements.GetAsync();
-            if (endorsements.All(x => x.Acct != "cucmberium@mstdn.maud.io"))
-                await tokens.Endorsements.PinAsync(id => 157355);
+
+            Assert.DoesNotContain(endorsements, x => x.Acct == "Mastodon");
 
             await Task.Delay(1000);
 
-            await tokens.Endorsements.UnpinAsync(id => 157355);
-
-            await Task.Delay(1000);
-
-            var endorsements2 = await tokens.Endorsements.GetAsync();
-
-            Assert.DoesNotContain(endorsements2, x => x.Acct == "cucmberium@mstdn.maud.io");
+            await tokens.Accounts.UnfollowAsync(id => 13179);
         }
     }
 }

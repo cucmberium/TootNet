@@ -2,14 +2,12 @@
 {
     public static class AccountInformation
     {
-        public const string Instance = "mstdn.jp";
-        public const string Username = "";
-        public const string Password = "";
+        public const string Instance = "mastodon.social";
         public const string ClientId = "";
         public const string ClientSecret = "";
         public const string AccessToken = "";
 
-		public static Tokens GetTokens()
+        public static Tokens GetTokens()
         {
             return new Tokens(Instance, AccessToken, ClientId, ClientSecret);
         }

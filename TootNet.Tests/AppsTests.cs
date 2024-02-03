@@ -8,12 +8,6 @@ namespace TootNet.Tests
     public class AppsTests
     {
         [Fact]
-        public async Task PostAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-        }
-
-        [Fact]
         public async Task VerifyCredentialsAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();

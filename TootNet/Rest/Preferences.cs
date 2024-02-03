@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the dict string,object object.</para>
         /// </returns>
-        public Task<IDictionary<string, object>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<DictResponse<string, object>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<IDictionary<string, object>>(MethodType.Get, "preferences", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<DictResponse<string, object>>(MethodType.Get, "preferences", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<IDictionary<string, object>> GetAsync(IDictionary<string, object> parameters)
+        public Task<DictResponse<string, object>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<IDictionary<string, object>>(MethodType.Get, "preferences", parameters);
+            return Tokens.AccessApiAsync<DictResponse<string, object>>(MethodType.Get, "preferences", parameters);
         }
     }
 }

@@ -248,6 +248,11 @@
                 "name": ":filter_id",
                 "type": "String",
                 "required": true
+            },
+            {
+                "name": "status_id",
+                "type": "String",
+                "required": true
             }
         ]
     },

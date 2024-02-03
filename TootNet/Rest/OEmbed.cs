@@ -27,13 +27,13 @@ namespace TootNet.Rest
         /// </returns>
         public Task<Objects.OEmbed> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.OEmbed>(MethodType.Get, "/api/oembed", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<Objects.OEmbed>(MethodType.Get, "/api/oembed", Utils.ExpressionToDictionary(parameters), useApiPath: false);
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
         public Task<Objects.OEmbed> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.OEmbed>(MethodType.Get, "/api/oembed", parameters);
+            return Tokens.AccessApiAsync<Objects.OEmbed>(MethodType.Get, "/api/oembed", parameters, useApiPath: false);
         }
     }
 }

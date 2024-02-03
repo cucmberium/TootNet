@@ -3,7 +3,7 @@
         "path": "/api/v1/markers",
         "method": "GET",
         "description": "Get saved timeline positions",
-        "return": "Marker",
+        "return": "Dict String,Marker",
         "parameters": [
             {
                 "name": "timeline",
@@ -17,7 +17,7 @@
         "path": "/api/v1/markers",
         "method": "POST",
         "description": "Save your position in a timeline",
-        "return": "Marker",
+        "return": "Dict String,Marker",
         "parameters": [
             {
                 "name": "home[last_read_id]",

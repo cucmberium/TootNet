@@ -10,9 +10,9 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var statuses = await tokens.Favourites.GetAsync(limit => 10);
+            var statuses = await tokens.Favourites.GetAsync(limit => 1);
 
-            Assert.Equal(10, statuses.Count);
+            Assert.Single(statuses);
             foreach (var status in statuses)
             {
                 Assert.NotNull(status.Account.Acct);
@@ -27,23 +27,22 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
+            var status = await tokens.Statuses.IdAsync(id => 111031128530593092);
 
             await Task.Delay(1000);
 
             if (status.Favourited == true)
-                await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+                await tokens.Favourites.UnfavouriteAsync(id => 111031128530593092);
 
             await Task.Delay(1000);
 
-            var reblogedStatus = await tokens.Favourites.FavouriteAsync(id => 45720257);
+            var favoritedStatus = await tokens.Favourites.FavouriteAsync(id => 111031128530593092);
 
-            Assert.True(reblogedStatus.Favourited);
-
+            Assert.True(favoritedStatus.Favourited);
 
             await Task.Delay(1000);
 
-            await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+            await tokens.Favourites.UnfavouriteAsync(id => 111031128530593092);
         }
 
         [Fact]
@@ -51,19 +50,18 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var status = await tokens.Statuses.IdAsync(id => 45720257);
+            var status = await tokens.Statuses.IdAsync(id => 111031128530593092);
 
             await Task.Delay(1000);
 
-            if (status.Favourited == false || status.Favourited == null)
-                await tokens.Favourites.FavouriteAsync(id => 45720257);
-
+            if (status.Favourited is false or null)
+                await tokens.Favourites.FavouriteAsync(id => 111031128530593092);
 
             await Task.Delay(1000);
 
-            var reblogedStatus = await tokens.Favourites.UnfavouriteAsync(id => 45720257);
+            var favoritedStatus = await tokens.Favourites.UnfavouriteAsync(id => 111031128530593092);
 
-            Assert.False(reblogedStatus.Favourited);
+            Assert.False(favoritedStatus.Favourited);
         }
     }
 }

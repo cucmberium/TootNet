@@ -18,6 +18,6 @@ namespace TootNet.Objects
         public int StatusesCount { get; set; }
 
         [JsonProperty("last_status_at")]
-        public DateTime LastStatusAt { get; set; }
+        public DateTime? LastStatusAt { get; set; }
     }
 }

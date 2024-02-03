@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filter object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.Filter>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.Filter>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Filter>>(MethodType.Get, "filters", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponse<Objects.Filter>>(MethodType.Get, "filters", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.Filter>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.Filter>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Filter>>(MethodType.Get, "filters", parameters, apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponse<Objects.Filter>>(MethodType.Get, "filters", parameters, apiVersion: "v2");
         }
 
         /// <summary>
@@ -136,28 +136,28 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>View keywords added to a filter.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> filter_id (required)</para>
+        /// <para>- <c>long</c> filter_id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filterkeyword object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.FilterKeyword>> GetFilterKeywordsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.FilterKeyword>> GetFilterKeywordsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetFilterKeywordsAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.FilterKeyword>> GetFilterKeywordsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.FilterKeyword>> GetFilterKeywordsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", parameters, apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.FilterKeyword>>(MethodType.Get, "filters/{filter_id}/keywords", "filter_id", parameters, apiVersion: "v2");
         }
 
         /// <summary>
         /// <para>Add a keyword to a filter.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> filter_id (required)</para>
+        /// <para>- <c>long</c> filter_id (required)</para>
         /// <para>- <c>string</c> keyword (required)</para>
         /// <para>- <c>bool</c> whole_word (optional)</para>
         /// </summary>
@@ -245,28 +245,29 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>View all status filters.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> filter_id (required)</para>
+        /// <para>- <c>long</c> filter_id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of filterstatus object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.FilterStatus>> GetFilterStatusesAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.FilterStatus>> GetFilterStatusesAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetFilterStatusesAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.FilterStatus>> GetFilterStatusesAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.FilterStatus>> GetFilterStatusesAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", parameters, apiVersion: "v2");
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.FilterStatus>>(MethodType.Get, "filters/{filter_id}/statuses", "filter_id", parameters, apiVersion: "v2");
         }
 
         /// <summary>
         /// <para>Add a status to a filter group.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>string</c> filter_id (required)</para>
+        /// <para>- <c>long</c> filter_id (required)</para>
+        /// <para>- <c>long</c> status_id (required)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of suggestion object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.Suggestion>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.Suggestion>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Suggestion>>(MethodType.Get, "suggestions", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponse<Objects.Suggestion>>(MethodType.Get, "suggestions", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.Suggestion>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.Suggestion>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.Suggestion>>(MethodType.Get, "suggestions", parameters, apiVersion: "v2");
+            return Tokens.AccessApiAsync<ListResponse<Objects.Suggestion>>(MethodType.Get, "suggestions", parameters, apiVersion: "v2");
         }
 
         /// <summary>

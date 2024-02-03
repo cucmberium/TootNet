@@ -49,6 +49,11 @@ namespace TootNet.Internal
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var token = JToken.Load(reader);
+            if (token.Type == JTokenType.Null)
+            {
+                return null;
+            }
+
             if (token.Type != JTokenType.Array)
             {
                 throw new JsonSerializationException("Expected string array but got " + token.Type);

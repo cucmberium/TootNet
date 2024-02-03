@@ -19,12 +19,20 @@ namespace TootNet.Tests
         public async Task AuthorizeAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
+
+            var accounts = await tokens.FollowRequests.AuthorizeAsync(account_id => 13179);
+
+            Assert.NotNull(accounts);
         }
 
         [Fact]
         public async Task RejectAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
+
+            var accounts = await tokens.FollowRequests.RejectAsync(account_id => 13179);
+
+            Assert.NotNull(accounts);
         }
     }
 }

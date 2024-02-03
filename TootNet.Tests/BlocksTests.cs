@@ -12,24 +12,23 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
             
-            var relationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var relationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
 
             await Task.Delay(1000);
 
             if (!relationship.Blocking)
-                await tokens.Blocks.BlockAsync(id => 32641);
+                await tokens.Blocks.BlockAsync(id => 13179);
 
             await Task.Delay(1000);
 
             var accounts = await tokens.Blocks.GetAsync();
 
-            Assert.NotNull(accounts);
-            Assert.True(accounts.Count > 0);
-            Assert.Contains(accounts, x => x.Id == 32641);
+            Assert.NotEmpty(accounts);
+            Assert.Contains(accounts, x => x.Id == 13179);
 
             await Task.Delay(1000);
 
-            await tokens.Blocks.UnblockAsync(id => 32641);
+            await tokens.Blocks.UnblockAsync(id => 13179);
         }
 
         [Fact]
@@ -37,19 +36,20 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
+
             await Task.Delay(1000);
 
             if (oldRelationship.Blocking)
-                await tokens.Blocks.UnblockAsync(id => 32641);
+                await tokens.Blocks.UnblockAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            var relationship = await tokens.Blocks.BlockAsync(id => 32641);
+            var relationship = await tokens.Blocks.BlockAsync(id => 13179);
 
             Assert.True(relationship.Blocking);
 
-            await tokens.Blocks.UnblockAsync(id => 32641);
+            await tokens.Blocks.UnblockAsync(id => 13179);
         }
 
         [Fact]
@@ -57,15 +57,16 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 32641 })).First();
+            var oldRelationship = (await tokens.Accounts.RelationshipsAsync(id => new List<long> { 13179 })).First();
+
             await Task.Delay(1000);
 
             if (!oldRelationship.Blocking)
-                await tokens.Blocks.BlockAsync(id => 32641);
+                await tokens.Blocks.BlockAsync(id => 13179);
 
             await Task.Delay(1000);
 
-            var relationship = await tokens.Blocks.UnblockAsync(id => 32641);
+            var relationship = await tokens.Blocks.UnblockAsync(id => 13179);
 
             Assert.False(relationship.Blocking);
         }

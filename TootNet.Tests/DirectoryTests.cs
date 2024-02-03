@@ -5,18 +5,16 @@ using Xunit;
 
 namespace TootNet.Tests
 {
-    public class CustomEmojiTests
+    public class DirectoryTests
     {
         [Fact]
         public async Task GetAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
             
-            var emojis = await tokens.CustomEmoji.GetAsync();
+            var accounts = await tokens.Directory.GetAsync();
             
-            Assert.NotNull(emojis);
-            Assert.True(emojis.Any());
-            Assert.Contains(emojis, x => x.Shortcode == "amazon");
+            Assert.NotEmpty(accounts);
         }
     }
 }

@@ -12,20 +12,20 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var filter = await tokens.Filters.PostAsync(phrase => "test", context => new List<string> {"home"});
-
-            await Task.Delay(1000);
-
             var filters = await tokens.Filters.GetAsync();
 
-            Assert.NotNull(filters);
-            Assert.True(filters.Any());
-            Assert.Contains(filters, x => x.Id == filter.Id);
-            Assert.Contains(filters, x => x.Phrase == "test");
+            Assert.NotEmpty(filters);
+            Assert.Contains(filters, x => x.Title == "tootnet");
+        }
 
-            await Task.Delay(1000);
+        [Fact]
+        public async Task IdAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
 
-            await tokens.Filters.DeleteAsync(id => filter.Id);
+            var filter = await tokens.Filters.IdAsync(id => 50143);
+
+            Assert.Equal("tootnet", filter.Title);
         }
 
         [Fact]
@@ -33,35 +33,9 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var filter = await tokens.Filters.PostAsync(phrase => "test2", context => new List<string> { "home" });
+            var filter = await tokens.Filters.PostAsync(title => "test", context => new[]{ "home" });
 
-            await Task.Delay(1000);
-
-            var filters = await tokens.Filters.GetAsync();
-
-            Assert.NotNull(filters);
-            Assert.True(filters.Any());
-            Assert.Contains(filters, x => x.Id == filter.Id);
-            Assert.Contains(filters, x => x.Phrase == "test2");
-
-            await Task.Delay(1000);
-
-            await tokens.Filters.DeleteAsync(id => filter.Id);
-        }
-        [Fact]
-        public async Task IdAsyncTest()
-        {
-            var tokens = AccountInformation.GetTokens();
-
-            var filter = await tokens.Filters.PostAsync(phrase => "test6", context => new List<string> { "home" });
-
-            await Task.Delay(1000);
-
-            var filter2 = await tokens.Filters.IdAsync(id => filter.Id);
-
-            Assert.NotNull(filter2);
-            Assert.True(filter.Id == filter2.Id);
-            Assert.True(filter.Phrase == filter2.Phrase);
+            Assert.Equal("test", filter.Title);
 
             await Task.Delay(1000);
 
@@ -69,26 +43,21 @@ namespace TootNet.Tests
         }
 
         [Fact]
-        public async Task UpdateAsyncTest()
+        public async Task PutAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
 
-            var filter = await tokens.Filters.PostAsync(phrase => "test3", context => new List<string> { "home" });
-
-            await Task.Delay(1000);
-            
-            var updatedFilter = await tokens.Filters.UpdateAsync(id => filter.Id, phrase => "test4", context => new List<string> { "home" });
-
-            var filters = await tokens.Filters.GetAsync();
-
-            Assert.NotNull(filters);
-            Assert.True(filters.Any());
-            Assert.Contains(filters, x => x.Id == filter.Id);
-            Assert.Contains(filters, x => x.Phrase == "test4");
+            var oldFilter = await tokens.Filters.PostAsync(title => "test", context => new[] { "home" });
 
             await Task.Delay(1000);
 
-            await tokens.Filters.DeleteAsync(id => filter.Id);
+            var newFilter = await tokens.Filters.PutAsync(id => oldFilter.Id, title => "test2");
+
+            Assert.Equal("test2", newFilter.Title);
+
+            await Task.Delay(1000);
+
+            await tokens.Filters.DeleteAsync(id => newFilter.Id);
         }
 
         [Fact]
@@ -96,7 +65,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var filter = await tokens.Filters.PostAsync(phrase => "test5", context => new List<string> { "home" });
+            var filter = await tokens.Filters.PostAsync(title => "test", context => new[] { "home" });
 
             await Task.Delay(1000);
 
@@ -106,8 +75,133 @@ namespace TootNet.Tests
 
             var filters = await tokens.Filters.GetAsync();
 
-            Assert.NotNull(filters);
-            Assert.DoesNotContain(filters, x => x.Id == filter.Id);
+            Assert.DoesNotContain(filters, x => x.Title == "test");
+        }
+
+        [Fact]
+        public async Task GetFilterKeywordsAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterKeywords = await tokens.Filters.GetFilterKeywordsAsync(filter_id => 50143);
+
+            Assert.Contains(filterKeywords, keyword => keyword.Keyword == "fugafuga");
+        }
+
+        [Fact]
+        public async Task PostFilterKeywordsAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterKeyword = await tokens.Filters.PostFilterKeywordsAsync(filter_id => 50143, keyword => "foobar");
+
+            await Task.Delay(1000);
+
+            var filterKeywords = await tokens.Filters.GetFilterKeywordsAsync(filter_id => 50143);
+
+            Assert.Contains(filterKeywords, keyword => keyword.Keyword == "foobar");
+
+            await Task.Delay(1000);
+
+            await tokens.Filters.DeleteKeywordAsync(id => filterKeyword.Id);
+        }
+
+        [Fact]
+        public async Task GetKeywordAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterKeyword = await tokens.Filters.GetKeywordAsync(id => 108834);
+
+            Assert.Equal("fugafuga", filterKeyword.Keyword);
+        }
+
+        [Fact]
+        public async Task PutKeywordAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterKeyword = await tokens.Filters.PutKeywordAsync(id => 108834, keyword => "hogehoge");
+
+            Assert.Equal("hogehoge", filterKeyword.Keyword);
+
+            await tokens.Filters.PutKeywordAsync(id => 108834, keyword => "fugafuga");
+        }
+
+        [Fact]
+        public async Task DeleteKeywordAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterKeyword = await tokens.Filters.PostFilterKeywordsAsync(filter_id => 50143, keyword => "foobar");
+
+            await Task.Delay(1000);
+
+            await tokens.Filters.DeleteKeywordAsync(id => filterKeyword.Id);
+
+            await Task.Delay(1000);
+
+            var filterKeywords = await tokens.Filters.GetFilterKeywordsAsync(filter_id => 50143);
+
+            Assert.DoesNotContain(filterKeywords, keyword => keyword.Keyword == "foobar");
+        }
+
+        [Fact]
+        public async Task GetFilterStatusesAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterStatuses = await tokens.Filters.GetFilterStatusesAsync(filter_id => 50143);
+
+            Assert.NotEmpty(filterStatuses);
+            Assert.Contains(filterStatuses, status => status.StatusId == 110854506623038676);
+        }
+
+        [Fact]
+        public async Task PostFilterStatusesAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterStatus = await tokens.Filters.PostFilterStatusesAsync(filter_id => 50143, status_id => 110362824208084074);
+
+            await Task.Delay(1000);
+
+            var filterStatuses = await tokens.Filters.GetFilterStatusesAsync(filter_id => 50143);
+
+            await Task.Delay(1000);
+
+            Assert.NotEmpty(filterStatuses);
+            Assert.Contains(filterStatuses, status => status.StatusId == 110362824208084074);
+
+            await tokens.Filters.DeleteFilterStatusAsync(id => filterStatus.Id);
+        }
+
+        [Fact]
+        public async Task GetFilterStatusAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterStatus = await tokens.Filters.GetFilterStatusAsync(id => 12689);
+
+            Assert.Equal(110854506623038676, filterStatus.StatusId);
+        }
+
+        [Fact]
+        public async Task DeleteFilterStatusesAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var filterStatus = await tokens.Filters.PostFilterStatusesAsync(filter_id => 50143, status_id => 110362824208084074);
+
+            await Task.Delay(1000);
+
+            await tokens.Filters.DeleteFilterStatusAsync(id => filterStatus.Id);
+
+            await Task.Delay(1000);
+
+            var filterStatuses = await tokens.Filters.GetFilterStatusesAsync(filter_id => 50143);
+
+            Assert.DoesNotContain(filterStatuses, status => status.StatusId == 110362824208084074);
         }
     }
 }

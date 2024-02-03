@@ -21,17 +21,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the marker object.</para>
+        /// <para>The Result property on the task object returns the dict string,marker object.</para>
         /// </returns>
-        public Task<Objects.Marker> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<DictResponse<string, Objects.Marker>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Marker>(MethodType.Get, "markers", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<DictResponse<string, Objects.Marker>>(MethodType.Get, "markers", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Marker> GetAsync(IDictionary<string, object> parameters)
+        public Task<DictResponse<string, Objects.Marker>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Marker>(MethodType.Get, "markers", parameters);
+            return Tokens.AccessApiAsync<DictResponse<string, Objects.Marker>>(MethodType.Get, "markers", parameters);
         }
 
         /// <summary>
@@ -43,17 +43,17 @@ namespace TootNet.Rest
         /// <param name="parameters">The parameters.</param>
         /// <returns>
         /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the marker object.</para>
+        /// <para>The Result property on the task object returns the dict string,marker object.</para>
         /// </returns>
-        public Task<Objects.Marker> PostAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<DictResponse<string, Objects.Marker>> PostAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Marker>(MethodType.Post, "markers", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<DictResponse<string, Objects.Marker>>(MethodType.Post, "markers", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="PostAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.Marker> PostAsync(IDictionary<string, object> parameters)
+        public Task<DictResponse<string, Objects.Marker>> PostAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<Objects.Marker>(MethodType.Post, "markers", parameters);
+            return Tokens.AccessApiAsync<DictResponse<string, Objects.Marker>>(MethodType.Post, "markers", parameters);
         }
     }
 }

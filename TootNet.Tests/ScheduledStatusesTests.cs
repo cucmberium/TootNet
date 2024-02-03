@@ -15,8 +15,12 @@ namespace TootNet.Tests
             var tokens = AccountInformation.GetTokens();
             using (var fs = new FileStream(@"./Data/image.png", FileMode.Open, FileAccess.Read))
             {
-                var attachment = await tokens.MediaAttachments.PostAsync(file => fs, focus => "0.0,0.0");
-                var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future", visibility => "private", scheduled_at => "2022-12-24 12:00:00", media_ids => new List<long> { attachment.Id });
+                var attachment = await tokens.Media.PostAsync(file => fs);
+
+                await Task.Delay(1000);
+
+                var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future", visibility => "private", scheduled_at => "2025-12-24 12:00:00", media_ids => new List<long> { attachment.Id });
+                
                 statusId = scheduledStatus.Id;
             }
             
@@ -25,7 +29,7 @@ namespace TootNet.Tests
             var scheduledStatuses = await tokens.ScheduledStatuses.GetAsync();
 
             Assert.NotNull(scheduledStatuses);
-            Assert.True(scheduledStatuses.Count() > 0);
+            Assert.NotEmpty(scheduledStatuses);
 
             await Task.Delay(1000);
 
@@ -37,7 +41,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future2", visibility => "private", scheduled_at => "2023-12-24 12:00:00");
+            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future2", visibility => "private", scheduled_at => "2025-12-24 12:00:00");
 
             await Task.Delay(1000);
 
@@ -52,11 +56,11 @@ namespace TootNet.Tests
         }
 
         [Fact]
-        public async Task UpdateAsyncTest()
+        public async Task PutAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();
 
-            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future3", visibility => "private", scheduled_at => "2023-12-24 12:00:00");
+            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future3", visibility => "private", scheduled_at => "2025-12-24 12:00:00");
 
             await Task.Delay(1000);
 
@@ -64,10 +68,10 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            var scheduledStatus3 = await tokens.ScheduledStatuses.UpdateAsync(id => scheduledStatus.Id, scheduled_at => "2023-12-24 11:00:00");
+            var scheduledStatus3 = await tokens.ScheduledStatuses.PutAsync(id => scheduledStatus.Id, scheduled_at => "2026-12-24 11:00:00");
 
             Assert.NotNull(scheduledStatus3);
-            Assert.True(scheduledStatus2.ScheduledAt > scheduledStatus3.ScheduledAt);
+            Assert.True(scheduledStatus2.ScheduledAt < scheduledStatus3.ScheduledAt);
 
             await Task.Delay(1000);
 
@@ -85,7 +89,7 @@ namespace TootNet.Tests
                 await tokens.ScheduledStatuses.DeleteAsync(id => status.Id);
             }
 
-            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future4", visibility => "private", scheduled_at => "2024-12-24 12:00:00");
+            var scheduledStatus = await tokens.Statuses.PostAsync(status => "test toot future4", visibility => "private", scheduled_at => "2025-12-24 12:00:00");
 
             await Task.Delay(1000);
 
@@ -96,7 +100,7 @@ namespace TootNet.Tests
             var scheduledStatuses2 = await tokens.ScheduledStatuses.GetAsync();
 
             Assert.NotNull(scheduledStatuses2);
-            Assert.True(scheduledStatuses2.Count() == 0);
+            Assert.Empty(scheduledStatuses2);
         }
     }
 }

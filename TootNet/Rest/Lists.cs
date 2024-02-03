@@ -23,15 +23,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.List>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.List>> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.List>>(MethodType.Get, "lists", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessApiAsync<ListResponse<Objects.List>>(MethodType.Get, "lists", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.List>> GetAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.List>> GetAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessApiAsync<ListResponce<Objects.List>>(MethodType.Get, "lists", parameters);
+            return Tokens.AccessApiAsync<ListResponse<Objects.List>>(MethodType.Get, "lists", parameters);
         }
 
         /// <summary>
@@ -200,15 +200,15 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the list of list object.</para>
         /// </returns>
-        public Task<ListResponce<Objects.List>> GetAccountsListsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<ListResponse<Objects.List>> GetAccountsListsAsync(params Expression<Func<string, object>>[] parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.List>>(MethodType.Get, "accounts/{id}/lists", "id", Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="GetAccountsListsAsync(Expression{Func{string, object}}[])"/>
-        public Task<ListResponce<Objects.List>> GetAccountsListsAsync(IDictionary<string, object> parameters)
+        public Task<ListResponse<Objects.List>> GetAccountsListsAsync(IDictionary<string, object> parameters)
         {
-            return Tokens.AccessParameterReservedApiAsync<ListResponce<Objects.List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
+            return Tokens.AccessParameterReservedApiAsync<ListResponse<Objects.List>>(MethodType.Get, "accounts/{id}/lists", "id", parameters);
         }
     }
 }
