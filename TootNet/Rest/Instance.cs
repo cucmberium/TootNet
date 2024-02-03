@@ -138,5 +138,26 @@ namespace TootNet.Rest
         {
             return Tokens.AccessApiAsync<Objects.ExtendedDescription>(MethodType.Get, "instance/extended_description", parameters);
         }
+
+        /// <summary>
+        /// <para>View translation languages.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the dict string,(array string) object.</para>
+        /// </returns>
+        public Task<DictResponse<string, IEnumerable<string>>> TranslationLanguagesAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, IEnumerable<string>>>(MethodType.Get, "instance/translation_languages", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="TranslationLanguagesAsync(Expression{Func{string, object}}[])"/>
+        public Task<DictResponse<string, IEnumerable<string>>> TranslationLanguagesAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, IEnumerable<string>>>(MethodType.Get, "instance/translation_languages", parameters);
+        }
     }
 }

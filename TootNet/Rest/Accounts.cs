@@ -44,6 +44,8 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> locked (optional)</para>
         /// <para>- <c>bool</c> bot (optional)</para>
         /// <para>- <c>bool</c> discoverable (optional)</para>
+        /// <para>- <c>bool</c> hide_collections (optional)</para>
+        /// <para>- <c>bool</c> indexable (optional)</para>
         /// <para>- <c>string</c> fields_attributes[index][name] ([0]-[3] is allowed) (optional)</para>
         /// <para>- <c>string</c> fields_attributes[index][value] ([0]-[3] is allowed) (optional)</para>
         /// <para>- <c>string</c> source[privacy] (optional)</para>
@@ -280,6 +282,7 @@ namespace TootNet.Rest
         /// <para>Check relationships to other accounts.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> id (optional)</para>
+        /// <para>- <c>bool</c> with_suspended (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

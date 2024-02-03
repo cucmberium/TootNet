@@ -40,5 +40,12 @@
         "description": "View extended description",
         "return": "ExtendedDescription",
         "parameters": []
+    },
+    {
+        "path": "/api/v1/instance/translation_languages",
+        "method": "GET",
+        "description": "View translation languages",
+        "return": "Dict String,(Array String)",
+        "parameters": []
     }
 ]

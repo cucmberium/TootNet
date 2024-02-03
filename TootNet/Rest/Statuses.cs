@@ -314,6 +314,7 @@ namespace TootNet.Rest
         /// <para>- <c>bool</c> sensitive (optional)</para>
         /// <para>- <c>string</c> language (ISO 639-1 language two-letter code) (optional)</para>
         /// <para>- <c>IEnumerable&lt;long&gt;</c> media_ids (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> media_attributes (optional)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> poll[options] (optional)</para>
         /// <para>- <c>int</c> poll[expires_in] (optional)</para>
         /// <para>- <c>bool</c> poll[multiple] (optional)</para>

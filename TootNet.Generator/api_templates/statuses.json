@@ -304,6 +304,11 @@
                 "required": false
             },
             {
+                "name": "media_attributes",
+                "type": "Array String",
+                "required": false
+            },
+            {
                 "name": "poll[options]",
                 "type": "Array String",
                 "required": false

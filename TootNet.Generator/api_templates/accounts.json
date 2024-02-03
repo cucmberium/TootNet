@@ -50,6 +50,16 @@
                 "required": false
             },
             {
+                "name": "hide_collections",
+                "type": "Boolean",
+                "required": false
+            },
+            {
+                "name": "indexable",
+                "type": "Boolean",
+                "required": false
+            },
+            {
                 "name": "fields_attributes[:index][name]",
                 "note": "[0]-[3] is allowed",
                 "type": "String",
@@ -310,6 +320,11 @@
             {
                 "name": "id",
                 "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "with_suspended",
+                "type": "Boolean",
                 "required": false
             }
         ]

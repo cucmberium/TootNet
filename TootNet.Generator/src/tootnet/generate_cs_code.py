@@ -146,10 +146,18 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             elif method["return"].split(" ")[-1] == "Empty":
                 return_type = ""
             elif method["return"].startswith("Dict "):
-                dict_key, dict_value = method["return"].split(" ")[-1].split(",")
+                dict_key, dict_value = " ".join(method["return"].split(" ")[1:]).split(",")
                 dict_key = dict_key.lower()
                 if dict_value in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
                     dict_value = dict_value.lower()
+                elif dict_value.startswith("(") and dict_value.endswith(")"):
+                    dict_value = dict_value.replace("(", "").replace(")", "")
+                    if not dict_value.startswith("Array"):
+                        raise ValueError()
+                    if dict_value.split(' ')[-1] in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
+                        dict_value = f"IEnumerable<{dict_value.split(' ')[-1].lower()}>"
+                    else:
+                        dict_value = f"IEnumerable<Objects.{dict_value.split(' ')[-1]}>"
                 else:
                     dict_value = "Objects." + dict_value
                 return_type = f"DictResponse<{dict_key}, {dict_value}>"

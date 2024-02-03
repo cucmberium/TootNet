@@ -60,6 +60,7 @@ namespace TootNet.Rest
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> title (required)</para>
         /// <para>- <c>string</c> replies_policy (optional)</para>
+        /// <para>- <c>bool</c> exclusive (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -83,6 +84,7 @@ namespace TootNet.Rest
         /// <para>- <c>long</c> id (required)</para>
         /// <para>- <c>string</c> title (required)</para>
         /// <para>- <c>string</c> replies_policy (optional)</para>
+        /// <para>- <c>bool</c> exclusive (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
