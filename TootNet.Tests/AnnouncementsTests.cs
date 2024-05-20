@@ -12,7 +12,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var announcements = await tokens.Announcements.GetAsync(with_dismissed => true);
+            var announcements = await tokens.Announcements.GetAsync();
 
             foreach (var announcement in announcements)
             {
@@ -25,7 +25,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var oldAnnouncement = (await tokens.Announcements.GetAsync(with_dismissed => true)).First();
+            var oldAnnouncement = (await tokens.Announcements.GetAsync()).First();
 
             await Task.Delay(1000);
 
@@ -33,7 +33,7 @@ namespace TootNet.Tests
 
             await Task.Delay(1000);
 
-            var newAnnouncement = (await tokens.Announcements.GetAsync(with_dismissed => true)).First(announcement => announcement.Id == oldAnnouncement.Id);
+            var newAnnouncement = (await tokens.Announcements.GetAsync()).First(announcement => announcement.Id == oldAnnouncement.Id);
 
             Assert.True(newAnnouncement.Read);
         }
@@ -43,7 +43,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var announcement = (await tokens.Announcements.GetAsync(with_dismissed => true)).First();
+            var announcement = (await tokens.Announcements.GetAsync()).First();
 
             await Task.Delay(1000);
 
@@ -55,7 +55,7 @@ namespace TootNet.Tests
         {
             var tokens = AccountInformation.GetTokens();
 
-            var announcement = (await tokens.Announcements.GetAsync(with_dismissed => true)).First();
+            var announcement = (await tokens.Announcements.GetAsync()).First();
 
             await Task.Delay(1000);
 

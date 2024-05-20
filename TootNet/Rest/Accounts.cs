@@ -90,6 +90,27 @@ namespace TootNet.Rest
         }
 
         /// <summary>
+        /// <para>Get multiple accounts.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>IEnumerable&lt;long&gt;</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of account object.</para>
+        /// </returns>
+        public Task<ListResponse<Objects.Account>> GetAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<ListResponse<Objects.Account>>(MethodType.Get, "accounts", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
+        public Task<ListResponse<Objects.Account>> GetAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<ListResponse<Objects.Account>>(MethodType.Get, "accounts", parameters);
+        }
+
+        /// <summary>
         /// <para>Get account's statuses.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> id (required)</para>

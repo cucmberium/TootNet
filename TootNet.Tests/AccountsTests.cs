@@ -53,6 +53,20 @@ namespace TootNet.Tests
         }
 
         [Fact]
+        public async Task GetAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var accounts = await tokens.Accounts.GetAsync(id => new List<long> { 13179 });
+
+            Assert.NotEmpty(accounts);
+            var account = accounts.First();
+            Assert.NotNull(account.Acct);
+            Assert.NotNull(account.UserName);
+            Assert.NotNull(account.Url);
+        }
+
+        [Fact]
         public async Task StatusesAsyncTest()
         {
             var tokens = AccountInformation.GetTokens();

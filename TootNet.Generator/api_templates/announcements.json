@@ -4,13 +4,7 @@
         "method": "GET",
         "description": "View all announcements",
         "return": "Array Announcement",
-        "parameters": [
-            {
-                "name": "with_dismissed",
-                "type": "Boolean",
-                "required": false
-            }
-        ]
+        "parameters": []
     },
     {
         "path": "/api/v1/announcements/:id/dismiss",

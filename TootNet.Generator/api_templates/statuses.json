@@ -83,6 +83,19 @@
         ]
     },
     {
+        "path": "/api/v1/statuses",
+        "method": "GET",
+        "description": "View multiple statuses",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
         "path": "/api/v1/statuses/:id",
         "method": "DELETE",
         "description": "Delete a status",

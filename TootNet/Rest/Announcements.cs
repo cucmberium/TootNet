@@ -16,7 +16,7 @@ namespace TootNet.Rest
         /// <summary>
         /// <para>View all announcements.</para>
         /// <para>Available parameters:</para>
-        /// <para>- <c>bool</c> with_dismissed (optional)</para>
+        /// <para>- No parameters available in this method.</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>

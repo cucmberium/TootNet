@@ -102,6 +102,19 @@
         ]
     },
     {
+        "path": "/api/v1/accounts",
+        "method": "GET",
+        "description": "Get multiple accounts",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
         "path": "/api/v1/accounts/:id/statuses",
         "method": "GET",
         "description": "Get account's statuses",

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using TootNet.Exception;
 using Xunit;
@@ -26,6 +28,19 @@ namespace TootNet.Tests
             var status = await tokens.Statuses.IdAsync(id => 111155004820251442);
 
             Assert.NotNull(status);
+            Assert.Equal("tootnet", status.Account.Acct);
+            Assert.Equal("tootnet", status.Account.UserName);
+        }
+
+        [Fact]
+        public async Task GetAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var statuses = await tokens.Statuses.GetAsync(id => new List<long> { 111155004820251442 });
+
+            Assert.NotEmpty(statuses);
+            var status = statuses.First();
             Assert.Equal("tootnet", status.Account.Acct);
             Assert.Equal("tootnet", status.Account.UserName);
         }
