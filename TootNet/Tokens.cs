@@ -187,6 +187,11 @@ namespace TootNet
         public StreamingApi Streaming => new StreamingApi(this);
 
         /// <summary>
+        /// Streaming w/ WebSocket
+        /// </summary>
+        public WebSocketStreamingApi WebSocketStreaming => new WebSocketStreamingApi(this);
+
+        /// <summary>
         /// <para>Send request to target uri.</para>
         /// </summary>
         /// <param name="type">Method type of request.</param>

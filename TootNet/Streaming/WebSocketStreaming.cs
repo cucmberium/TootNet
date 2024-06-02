@@ -2,39 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TootNet.Internal;
 using TootNet.Objects;
 
 namespace TootNet.Streaming
 {
-    public class StreamingApi : ApiBase
+    public class WebSocketStreamingApi : ApiBase
     {
-        internal StreamingApi(Tokens e) : base(e) { }
-
-        /// <summary>
-        /// <para>Check if the server is alive</para>
-        /// <para>Available parameters:</para>
-        /// <para>- No parameters available in this method.</para>
-        /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>
-        /// <para>The task object representing the asynchronous operation.</para>
-        /// <para>The Result property on the task object returns the string object.</para>
-        /// </returns>
-        public Task<string> CheckAsync(params Expression<Func<string, object>>[] parameters)
-        {
-            return Tokens.AccessApiAsync<string>(MethodType.Get, "streaming/health", Utils.ExpressionToDictionary(parameters));
-        }
-
-        /// <inheritdoc cref="CheckAsync(Expression{Func{string, object}}[])"/>
-        public Task<string> CheckAsync(IDictionary<string, object> parameters)
-        {
-            return Tokens.AccessApiAsync<string>(MethodType.Get, "streaming/health", parameters);
-        }
+        internal WebSocketStreamingApi(Tokens e) : base(e) { }
 
         /// <summary>
         /// Watch your home timeline and notifications
@@ -45,13 +24,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> UserAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.User, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.User, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="UserAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> UserAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.User, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.User, parameters);
         }
 
         /// <summary>
@@ -63,13 +42,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> UserNotificationAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.UserNotification, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.UserNotification, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="UserNotificationAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> UserNotificationAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.UserNotification, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.UserNotification, parameters);
         }
 
         /// <summary>
@@ -81,13 +60,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> PublicAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Public, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Public, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="PublicAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> PublicAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Public, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Public, parameters);
         }
 
         /// <summary>
@@ -99,13 +78,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> PublicLocalAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.PublicLocal, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.PublicLocal, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="PublicLocalAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> PublicLocalAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.PublicLocal, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.PublicLocal, parameters);
         }
 
         /// <summary>
@@ -117,13 +96,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> PublicRemoteAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.PublicRemote, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.PublicRemote, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="PublicRemoteAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> PublicRemoteAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.PublicRemote, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.PublicRemote, parameters);
         }
 
         /// <summary>
@@ -135,13 +114,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> HashtagAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Hashtag, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Hashtag, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="HashtagAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> HashtagAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Hashtag, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Hashtag, parameters);
         }
 
         /// <summary>
@@ -153,13 +132,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> HashtagLocalAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.HashtagLocal, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.HashtagLocal, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="HashtagLocalAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> HashtagLocalAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.HashtagLocal, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.HashtagLocal, parameters);
         }
 
         /// <summary>
@@ -171,13 +150,13 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> ListAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.List, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.List, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="ListAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> ListAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.List, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.List, parameters);
         }
 
         /// <summary>
@@ -189,161 +168,176 @@ namespace TootNet.Streaming
         /// <returns>The stream messages.</returns>
         public IObservable<StreamingMessage> DirectAsObservable(params Expression<Func<string, object>>[] parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Direct, Utils.ExpressionToDictionary(parameters));
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Direct, Utils.ExpressionToDictionary(parameters));
         }
 
         /// <inheritdoc cref="DirectAsObservable(Expression{Func{string, object}}[])"/>
         public IObservable<StreamingMessage> DirectAsObservable(IDictionary<string, object> parameters)
         {
-            return new StreamingObservable(Tokens, StreamingType.Direct, parameters);
+            return new WebSocketStreamingObservable(Tokens, StreamingType.Direct, parameters);
         }
     }
 
-    internal class StreamingObservable : IObservable<StreamingMessage>
+    internal class WebSocketStreamingObservable : IObservable<StreamingMessage>
     {
-        public StreamingObservable(Tokens tokens, StreamingType type,
+        public WebSocketStreamingObservable(Tokens tokens, StreamingType type,
             IDictionary<string, object> parameters = null)
         {
             _tokens = tokens;
             _type = type;
-            _parameters = parameters;
+            _parameters = parameters is null ? new Dictionary<string, object>() : new Dictionary<string, object>(parameters);
         }
 
         private readonly Tokens _tokens;
         private readonly StreamingType _type;
-        private readonly IDictionary<string, object> _parameters;
+        private readonly Dictionary<string, object> _parameters;
 
         public IDisposable Subscribe(IObserver<StreamingMessage> observer)
         {
-            var conn = new StreamingConnection();
+            var conn = new WebSocketStreamingConnection();
 
-            var url = "https://" + _tokens.Instance + "/api/v1/streaming";
+            var url = "wss://" + _tokens.Instance + "/api/v1/streaming";
             switch (_type)
             {
                 case StreamingType.User:
-                    url += "/user";
+                    _parameters["stream"] = "user";
                     break;
                 case StreamingType.UserNotification:
-                    url += "/user/notification";
+                    _parameters["stream"] = "user:notification";
                     break;
                 case StreamingType.Public:
-                    url += "/public";
+                    if (_parameters.ContainsKey("only_media") && (bool)_parameters["only_media"])
+                        _parameters["stream"] = "public:media";
+                    else
+                        _parameters["stream"] = "public";
                     break;
                 case StreamingType.PublicLocal:
-                    url += "/public/local";
+                    if (_parameters.ContainsKey("only_media") && (bool)_parameters["only_media"])
+                        _parameters["stream"] = "public:local:media";
+                    else
+                        _parameters["stream"] = "public:local";
                     break;
                 case StreamingType.PublicRemote:
-                    url += "/public/remote";
+                    if (_parameters.ContainsKey("only_media") && (bool)_parameters["only_media"])
+                        _parameters["stream"] = "public:remote:media";
+                    else
+                        _parameters["stream"] = "public:remote";
                     break;
                 case StreamingType.Hashtag:
                     if (!_parameters.ContainsKey("tag") || string.IsNullOrEmpty(_parameters["tag"].ToString()))
                         throw new ArgumentException("You must specify a tag");
 
-                    url += "/hashtag";
+                    _parameters["stream"] = "hashtag";
                     break;
                 case StreamingType.HashtagLocal:
                     if (!_parameters.ContainsKey("tag") || string.IsNullOrEmpty(_parameters["tag"].ToString()))
                         throw new ArgumentException("You must specify a tag");
 
-                    url += "/hashtag/local";
+                    _parameters["stream"] = "hashtag";
                     break;
                 case StreamingType.List:
                     if (!_parameters.ContainsKey("list") || string.IsNullOrEmpty(_parameters["list"].ToString()))
                         throw new ArgumentException("You must specify a list");
 
-                    url += "/list";
+                    _parameters["stream"] = "list";
                     break;
                 case StreamingType.Direct:
-                    url += "/direct";
+                    _parameters["stream"] = "direct";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            url = Utils.CreateUrlParameter(url, _parameters);
+            _parameters["access_token"] = _tokens.AccessToken;
+            if (_parameters.ContainsKey("only_media"))
+            {
+                _parameters.Remove("only_media");
+            }
 
-            conn.Start(observer, _tokens, url);
+            conn.Start(observer, _tokens, url, _parameters);
             return conn;
         }
     }
 
-    internal class StreamingConnection : IDisposable
+    internal class WebSocketStreamingConnection : IDisposable
     {
+        private const int BufferSize = 1024;
+
         private readonly CancellationTokenSource _cancel = new CancellationTokenSource();
 
-        public async void Start(IObserver<StreamingMessage> observer, Tokens tokens, string url)
+        public async void Start(IObserver<StreamingMessage> observer, Tokens tokens, string url, IDictionary<string, object> param)
         {
             var token = _cancel.Token;
             try
             {
-                using (var client = tokens.ConnectionOptions.GetHttpClient(tokens.AccessToken, false))
+                using (var client = new ClientWebSocket())
                 using (token.Register(client.Dispose))
                 {
-                    using (var stream = await client.GetStreamAsync(url))
-                    using (token.Register(stream.Dispose))
-                    using (var reader = new StreamReader(stream, Encoding.UTF8, true, 16384))
-                    using (token.Register(reader.Dispose))
+                    await client.ConnectAsync(new Uri(url), token);
+
+                    var buffer = new byte[BufferSize];
+                    using (var memoryStream = new MemoryStream())
+                    using (token.Register(memoryStream.Dispose))
                     {
-                        string eventName = null;
-                        while (!reader.EndOfStream)
+                        while (client.State == WebSocketState.Open)
                         {
-                            var line = await reader.ReadLineAsync();
-                            if (string.IsNullOrEmpty(line) || line.StartsWith(":"))
+                            var result = await client.ReceiveAsync(new ArraySegment<byte>(buffer), token);
+
+                            if (result.MessageType == WebSocketMessageType.Close)
                             {
-                                eventName = null;
-                                continue;
+                                observer.OnCompleted();
+                                return;
                             }
 
-                            if (line.StartsWith("event: "))
+                            memoryStream.Write(buffer, 0, result.Count);
+                            if (!result.EndOfMessage)
+                                continue;
+
+                            var message = Encoding.UTF8.GetString(memoryStream.ToArray());
+                            var ev = JsonConvert.DeserializeObject<StreamingEvent>(message);
+                            switch (ev.Event)
                             {
-                                eventName = line.Substring("event: ".Length).Trim();
+                                case "update":
+                                    var status = JsonConvert.DeserializeObject<Status>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Status, status));
+                                    break;
+                                case "delete":
+                                    var deletedStatusId = long.Parse(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.StatusDelete, deletedStatusId));
+                                    break;
+                                case "notification":
+                                    var notification = JsonConvert.DeserializeObject<Notification>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Notification, notification));
+                                    break;
+                                case "filters_changed":
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.FiltersChanged));
+                                    break;
+                                case "conversation":
+                                    var conversation = JsonConvert.DeserializeObject<Conversation>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Conversation, conversation));
+                                    break;
+                                case "announcement":
+                                    var announcement = JsonConvert.DeserializeObject<Announcement>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Announcement, announcement));
+                                    break;
+                                case "announcement.reaction":
+                                    var announcementReaction = JsonConvert.DeserializeObject<Reaction>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.AnnouncementReaction, announcementReaction));
+                                    break;
+                                case "announcement.delete":
+                                    var deletedAnnouncementId = long.Parse(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.AnnouncementDelete, deletedAnnouncementId));
+                                    break;
+                                case "status.update":
+                                    var updatedStatus = JsonConvert.DeserializeObject<Status>(ev.Payload);
+                                    observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.StatusUpdate, updatedStatus));
+                                    break;
+                                case "encrypted_message":
+                                    break;
                             }
-                            if (line.StartsWith("data: "))
-                            {
-                                var data = line.Substring("data: ".Length);
-                                switch (eventName)
-                                {
-                                    case "update":
-                                        var status = JsonConvert.DeserializeObject<Status>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Status, status));
-                                        break;
-                                    case "delete":
-                                        var deletedStatusId = long.Parse(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.StatusDelete, deletedStatusId));
-                                        break;
-                                    case "notification":
-                                        var notification = JsonConvert.DeserializeObject<Notification>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Notification, notification));
-                                        break;
-                                    case "filters_changed":
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.FiltersChanged));
-                                        break;
-                                    case "conversation":
-                                        var conversation = JsonConvert.DeserializeObject<Conversation>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Conversation, conversation));
-                                        break;
-                                    case "announcement":
-                                        var announcement = JsonConvert.DeserializeObject<Announcement>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.Announcement, announcement));
-                                        break;
-                                    case "announcement.reaction":
-                                        var announcementReaction = JsonConvert.DeserializeObject<Reaction>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.AnnouncementReaction, announcementReaction));
-                                        break;
-                                    case "announcement.delete":
-                                        var deletedAnnouncementId = long.Parse(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.AnnouncementDelete, deletedAnnouncementId));
-                                        break;
-                                    case "status.update":
-                                        var updatedStatus = JsonConvert.DeserializeObject<Status>(data);
-                                        observer.OnNext(new StreamingMessage(StreamingMessage.MessageType.StatusUpdate, updatedStatus));
-                                        break;
-                                    case "encrypted_message":
-                                        break;
-                                }
-                            }
+
+                            memoryStream.SetLength(0);
                         }
-                        observer.OnCompleted();
                     }
                 }
             }
@@ -360,5 +354,17 @@ namespace TootNet.Streaming
         {
             _cancel.Cancel();
         }
+    }
+
+    internal class StreamingEvent
+    {
+        [JsonProperty("stream")]
+        public IEnumerable<string> Stream { get; set; }
+
+        [JsonProperty("event")]
+        public string Event { get; set; }
+
+        [JsonProperty("payload")]
+        public string Payload { get; set; }
     }
 }
