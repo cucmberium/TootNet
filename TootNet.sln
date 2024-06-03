@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TootNet", "TootNet\TootNet.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TootNet.Tests", "TootNet.Tests\TootNet.Tests.csproj", "{F39D4179-3DEA-43E8-9629-967A5777BAA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TootNet.Demo", "TootNet.Demo\TootNet.Demo.csproj", "{DE1A8100-7077-49D0-8E27-C8A6FCCA092A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F39D4179-3DEA-43E8-9629-967A5777BAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39D4179-3DEA-43E8-9629-967A5777BAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39D4179-3DEA-43E8-9629-967A5777BAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1A8100-7077-49D0-8E27-C8A6FCCA092A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1A8100-7077-49D0-8E27-C8A6FCCA092A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1A8100-7077-49D0-8E27-C8A6FCCA092A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1A8100-7077-49D0-8E27-C8A6FCCA092A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
