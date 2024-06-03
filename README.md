@@ -50,8 +50,6 @@ foreach (var status in statuses)
 
 Streaming using reactive extensions:
 ```cs
-Console.OutputEncoding = Encoding.UTF8;
-
 var observable = tokens.Streaming.UserAsObservable();
 var disposable = observable.Subscribe(x =>
 {

@@ -48,8 +48,6 @@ foreach (var status in statuses)
 
 ReactiveExtensionsを用いたストリーミング:
 ```cs
-Console.OutputEncoding = Encoding.UTF8;
-
 var observable = tokens.Streaming.UserAsObservable();
 var disposable = observable.Subscribe(x =>
 {
