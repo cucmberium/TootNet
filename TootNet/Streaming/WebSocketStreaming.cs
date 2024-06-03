@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TootNet.Internal;
 using TootNet.Objects;
@@ -16,7 +17,28 @@ namespace TootNet.Streaming
         internal WebSocketStreamingApi(Tokens e) : base(e) { }
 
         /// <summary>
-        /// Watch your home timeline and notifications
+        /// <para>Check if the server is alive.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the string object.</para>
+        /// </returns>
+        public Task<string> CheckAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<string>(MethodType.Get, "streaming/health", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="CheckAsync(Expression{Func{string, object}}[])"/>
+        public Task<string> CheckAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<string>(MethodType.Get, "streaming/health", parameters);
+        }
+
+        /// <summary>
+        /// Watch your home timeline and notifications.
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -34,7 +56,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch your notifications
+        /// Watch your notifications.
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -52,7 +74,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch the federated timeline
+        /// Watch the federated timeline.
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -70,7 +92,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch the local timeline
+        /// Watch the local timeline.
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -88,7 +110,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch the remote statuses
+        /// Watch the remote statuses.
         /// <para>Available parameters:</para>
         /// <para>- <c>bool</c> only_media (optional)</para>
         /// </summary>
@@ -106,7 +128,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch the public timeline for a hashtag
+        /// Watch the public timeline for a hashtag.
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> tag (required)</para>
         /// </summary>
@@ -124,7 +146,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch the local timeline for a hashtag
+        /// Watch the local timeline for a hashtag.
         /// <para>Available parameters:</para>
         /// <para>- <c>string</c> tag (required)</para>
         /// </summary>
@@ -142,7 +164,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch for list updates
+        /// Watch for list updates.
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> list (required)</para>
         /// </summary>
@@ -160,7 +182,7 @@ namespace TootNet.Streaming
         }
 
         /// <summary>
-        /// Watch for direct messages
+        /// Watch for direct messages.
         /// <para>Available parameters:</para>
         /// <para>- No parameters available in this method.</para>
         /// </summary>
@@ -249,12 +271,15 @@ namespace TootNet.Streaming
             }
 
             _parameters["access_token"] = _tokens.AccessToken;
+
             if (_parameters.ContainsKey("only_media"))
             {
                 _parameters.Remove("only_media");
             }
 
-            conn.Start(observer, _tokens, url, _parameters);
+            url = Utils.CreateUrlParameter(url, _parameters);
+
+            conn.Start(observer, _tokens, url);
             return conn;
         }
     }
@@ -265,7 +290,7 @@ namespace TootNet.Streaming
 
         private readonly CancellationTokenSource _cancel = new CancellationTokenSource();
 
-        public async void Start(IObserver<StreamingMessage> observer, Tokens tokens, string url, IDictionary<string, object> param)
+        public async void Start(IObserver<StreamingMessage> observer, Tokens tokens, string url)
         {
             var token = _cancel.Token;
             try
@@ -285,6 +310,7 @@ namespace TootNet.Streaming
 
                             if (result.MessageType == WebSocketMessageType.Close)
                             {
+                                await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "OK", token);
                                 observer.OnCompleted();
                                 return;
                             }
