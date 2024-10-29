@@ -5,7 +5,7 @@ import os
 import re
 from typing import Any
 
-IGNORE_FILES = ["oauth.md", "push.md", "streaming.md", "emails.md"]
+IGNORE_FILES = ["oauth.md", "push.md", "streaming.md", "emails.md", "proofs.md", "notifications_alpha.md"]
 
 
 def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
@@ -29,6 +29,9 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
 
         methods = []
         for content in contents:
+            if re.search(r"` entity", content):
+                continue
+
             method: dict[str, Any] = {}
 
             # region extract http method and path
@@ -43,7 +46,7 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
             # endregion
 
             # region extract description
-            description_match = re.search(r"(.+?) {", content)
+            description_match = re.search(r"^(.+?)( {.+})?\n\n", content)
             if not description_match:
                 raise ValueError("no description detected")
             description = description_match.group(1)
@@ -54,7 +57,10 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
 
             # region extract return entity type
             method["return"] = ""
-            return_entity_text = [x for x in content.split("\n") if x.startswith("**Returns:**")][0].replace(
+            return_entity_text = [
+                x for x in content.split("\n")
+                if x.startswith("**Returns:**") or x.startswith("***Returns:**")
+            ][0].replace(
                 "**Returns:** ", ""
             )
             if "Array of" in return_entity_text:
@@ -73,7 +79,7 @@ def main(doc_dir: str, output_dir: str, logger: logging.Logger) -> None:
             # region extract parameters
             method["parameters"] = []
             for parameter_type in ["Path", "Form data", "Query"]:
-                parameters_match = re.search(rf"##### {parameter_type} parameters\n\n(.+?)\n\n####", content, re.DOTALL)
+                parameters_match = re.search(rf"#####? {parameter_type} parameters\n\n(.+?)\n\n####", content, re.DOTALL)
                 if not parameters_match:
                     continue
 

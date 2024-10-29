@@ -40,6 +40,11 @@
                 "name": "account_id",
                 "type": "String",
                 "required": false
+            },
+            {
+                "name": "include_filtered",
+                "type": "Boolean",
+                "required": false
             }
         ]
     },
@@ -75,5 +80,181 @@
                 "required": true
             }
         ]
+    },
+    {
+        "path": "/api/v1/notifications/unread_count",
+        "method": "GET",
+        "description": "Get the number of unread notifications",
+        "return": "Dict String,Integer",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "exclude_types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/notifications/policy",
+        "method": "GET",
+        "description": "Get the filtering policy for notifications",
+        "return": "NotificationPolicy",
+        "parameters": []
+    },
+    {
+        "path": "/api/v2/notifications/policy",
+        "name": "UpdatePolicy",
+        "method": "PATCH",
+        "description": "Update the filtering policy for notifications",
+        "return": "NotificationPolicy",
+        "parameters": [
+            {
+                "name": "for_not_following",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "for_not_followers",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "for_new_accounts",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "for_private_mentions",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "for_limited_accounts",
+                "type": "String",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests",
+        "name": "GetRequests",
+        "method": "GET",
+        "description": "Get all notification requests",
+        "return": "Array NotificationRequest",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/:id",
+        "name": "IdRequest",
+        "method": "GET",
+        "description": "Get a single notification request",
+        "return": "NotificationRequest",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/:id/accept",
+        "name": "AcceptRequest",
+        "method": "POST",
+        "description": "Accept a single notification request",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/:id/dismiss",
+        "name": "DismissRequest",
+        "method": "POST",
+        "description": "Dismiss a single notification request",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/accept",
+        "name": "AcceptRequests",
+        "method": "POST",
+        "description": "Accept multiple notification requests",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/dismiss",
+        "name": "DismissRequests",
+        "method": "POST",
+        "description": "Dismiss multiple notification requests",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":id",
+                "type": "Array String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v1/notifications/requests/merged",
+        "name": "GetMergedRequests",
+        "method": "GET",
+        "description": "Check if accepted notification requests have been merged",
+        "return": "Dict String,Boolean",
+        "parameters": []
     }
 ]

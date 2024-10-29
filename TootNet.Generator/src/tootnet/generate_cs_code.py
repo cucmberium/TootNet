@@ -149,13 +149,14 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
                 dict_key, dict_value = " ".join(method["return"].split(" ")[1:]).split(",")
                 dict_key = dict_key.lower()
                 if dict_value in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
-                    dict_value = dict_value.lower()
+                    dict_value = TEMPLATE_TYPE_TO_CSHARP_TYPE[dict_value]
                 elif dict_value.startswith("(") and dict_value.endswith(")"):
                     dict_value = dict_value.replace("(", "").replace(")", "")
                     if not dict_value.startswith("Array"):
                         raise ValueError()
                     if dict_value.split(' ')[-1] in TEMPLATE_TYPE_TO_CSHARP_TYPE.keys():
-                        dict_value = f"IEnumerable<{dict_value.split(' ')[-1].lower()}>"
+                        v = TEMPLATE_TYPE_TO_CSHARP_TYPE[dict_value.split(' ')[-1]]
+                        dict_value = f"IEnumerable<{v}>"
                     else:
                         dict_value = f"IEnumerable<Objects.{dict_value.split(' ')[-1]}>"
                 else:
@@ -176,7 +177,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             method_type = snake_to_pascal(method["method"])
 
             if ":" in method["path"].split("/")[-1]:
-                if method_type == "Get" and method["path"].split("/")[-1] == ":id":
+                if method_type == "Get" and (method["path"].split("/")[-1] == ":id" or method["path"].split("/")[-1] == ":group_key"):
                     method_name = snake_to_pascal(method["path"].split("/")[-1].replace(":", ""))
                 else:
                     method_name = snake_to_pascal(method["path"].split("/")[-2])
@@ -251,7 +252,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
 
 
 def main(template_dir: str, output_dir: str, logger: logging.Logger) -> None:
-    logger.info("generate template from mastodon documentation")
+    logger.info("generate cs code from generated template")
     for input_path in sorted(glob.glob(os.path.join(template_dir, "*.json"))):
         name = os.path.basename(input_path).replace(".json", "")
 

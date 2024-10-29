@@ -134,6 +134,39 @@
         ]
     },
     {
+        "path": "/api/v1/timelines/link",
+        "method": "GET",
+        "description": "View link timeline",
+        "return": "Array Status",
+        "parameters": [
+            {
+                "name": "url",
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            }
+        ]
+    },
+    {
         "path": "/api/v1/timelines/list/:list_id",
         "method": "GET",
         "description": "View list timeline",

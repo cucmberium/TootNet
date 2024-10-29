@@ -1,0 +1,132 @@
+[
+    {
+        "path": "/api/v2/notifications",
+        "method": "GET",
+        "description": "Get all grouped notifications",
+        "return": "GroupedNotificationsResults",
+        "parameters": [
+            {
+                "name": "max_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "since_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "min_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "exclude_types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "expand_accounts",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "grouped_types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "include_filtered",
+                "type": "Boolean",
+                "required": false
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/notifications/:group_key",
+        "method": "GET",
+        "description": "Get a single notification group",
+        "return": "GroupedNotificationsResults",
+        "parameters": [
+            {
+                "name": ":group_key",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/notifications/:group_key/dismiss",
+        "method": "POST",
+        "description": "Dismiss a single notification group",
+        "return": "Empty",
+        "parameters": [
+            {
+                "name": ":group_key",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/notifications/:group_key/accounts",
+        "method": "GET",
+        "description": "Get accounts of all notifications in a notification group",
+        "return": "Array Account",
+        "parameters": [
+            {
+                "name": ":group_key",
+                "type": "String",
+                "required": true
+            }
+        ]
+    },
+    {
+        "path": "/api/v2/notifications/unread_count",
+        "method": "GET",
+        "description": "Get the number of unread notifications",
+        "return": "Dict String,Integer",
+        "parameters": [
+            {
+                "name": "limit",
+                "type": "Integer",
+                "required": false
+            },
+            {
+                "name": "types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "exclude_types",
+                "type": "Array String",
+                "required": false
+            },
+            {
+                "name": "account_id",
+                "type": "String",
+                "required": false
+            },
+            {
+                "name": "grouped_types",
+                "type": "Array String",
+                "required": false
+            }
+        ]
+    }
+]

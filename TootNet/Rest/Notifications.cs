@@ -23,6 +23,7 @@ namespace TootNet.Rest
         /// <para>- <c>IEnumerable&lt;string&gt;</c> types (allowed values: "mention", "status", "reblog", "follow", "follow_request", "favourite", "poll", "update") (optional)</para>
         /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (optional)</para>
         /// <para>- <c>long</c> account_id (optional)</para>
+        /// <para>- <c>bool</c> include_filtered (optional)</para>
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <returns>
@@ -101,6 +102,226 @@ namespace TootNet.Rest
         public Task DismissAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "notifications/{id}/dismiss", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Get the number of unread notifications.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> types (optional)</para>
+        /// <para>- <c>IEnumerable&lt;string&gt;</c> exclude_types (optional)</para>
+        /// <para>- <c>long</c> account_id (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the dict string,integer object.</para>
+        /// </returns>
+        public Task<DictResponse<string, int>> UnreadCountAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, int>>(MethodType.Get, "notifications/unread_count", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="UnreadCountAsync(Expression{Func{string, object}}[])"/>
+        public Task<DictResponse<string, int>> UnreadCountAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, int>>(MethodType.Get, "notifications/unread_count", parameters);
+        }
+
+        /// <summary>
+        /// <para>Get the filtering policy for notifications.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the notificationpolicy object.</para>
+        /// </returns>
+        public Task<Objects.NotificationPolicy> PolicyAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Objects.NotificationPolicy>(MethodType.Get, "notifications/policy", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+        }
+
+        /// <inheritdoc cref="PolicyAsync(Expression{Func{string, object}}[])"/>
+        public Task<Objects.NotificationPolicy> PolicyAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Objects.NotificationPolicy>(MethodType.Get, "notifications/policy", parameters, apiVersion: "v2");
+        }
+
+        /// <summary>
+        /// <para>Update the filtering policy for notifications.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> for_not_following (optional)</para>
+        /// <para>- <c>string</c> for_not_followers (optional)</para>
+        /// <para>- <c>string</c> for_new_accounts (optional)</para>
+        /// <para>- <c>string</c> for_private_mentions (optional)</para>
+        /// <para>- <c>string</c> for_limited_accounts (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the notificationpolicy object.</para>
+        /// </returns>
+        public Task<Objects.NotificationPolicy> UpdatePolicyAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Objects.NotificationPolicy>(MethodType.Patch, "notifications/policy", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
+        }
+
+        /// <inheritdoc cref="UpdatePolicyAsync(Expression{Func{string, object}}[])"/>
+        public Task<Objects.NotificationPolicy> UpdatePolicyAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Objects.NotificationPolicy>(MethodType.Patch, "notifications/policy", parameters, apiVersion: "v2");
+        }
+
+        /// <summary>
+        /// <para>Get all notification requests.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of notificationrequest object.</para>
+        /// </returns>
+        public Task<Linked<Objects.NotificationRequest>> GetRequestsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Objects.NotificationRequest>>(MethodType.Get, "notifications/requests", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="GetRequestsAsync(Expression{Func{string, object}}[])"/>
+        public Task<Linked<Objects.NotificationRequest>> GetRequestsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Objects.NotificationRequest>>(MethodType.Get, "notifications/requests", parameters);
+        }
+
+        /// <summary>
+        /// <para>Get a single notification request.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the notificationrequest object.</para>
+        /// </returns>
+        public Task<Objects.NotificationRequest> IdRequestAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Objects.NotificationRequest>(MethodType.Get, "notifications/requests/{id}", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="IdRequestAsync(Expression{Func{string, object}}[])"/>
+        public Task<Objects.NotificationRequest> IdRequestAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync<Objects.NotificationRequest>(MethodType.Get, "notifications/requests/{id}", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Accept a single notification request.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task AcceptRequestAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "notifications/requests/{id}/accept", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="AcceptRequestAsync(Expression{Func{string, object}}[])"/>
+        public Task AcceptRequestAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "notifications/requests/{id}/accept", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Dismiss a single notification request.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>long</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task DismissRequestAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "notifications/requests/{id}/dismiss", "id", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="DismissRequestAsync(Expression{Func{string, object}}[])"/>
+        public Task DismissRequestAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessParameterReservedApiAsync(MethodType.Post, "notifications/requests/{id}/dismiss", "id", parameters);
+        }
+
+        /// <summary>
+        /// <para>Accept multiple notification requests.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>IEnumerable&lt;long&gt;</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task AcceptRequestsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Post, "notifications/requests/accept", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="AcceptRequestsAsync(Expression{Func{string, object}}[])"/>
+        public Task AcceptRequestsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Post, "notifications/requests/accept", parameters);
+        }
+
+        /// <summary>
+        /// <para>Dismiss multiple notification requests.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>IEnumerable&lt;long&gt;</c> id (required)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the empty object.</para>
+        /// </returns>
+        public Task DismissRequestsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Post, "notifications/requests/dismiss", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="DismissRequestsAsync(Expression{Func{string, object}}[])"/>
+        public Task DismissRequestsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync(MethodType.Post, "notifications/requests/dismiss", parameters);
+        }
+
+        /// <summary>
+        /// <para>Check if accepted notification requests have been merged.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- No parameters available in this method.</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the dict string,boolean object.</para>
+        /// </returns>
+        public Task<DictResponse<string, bool>> GetMergedRequestsAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, bool>>(MethodType.Get, "notifications/requests/merged", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="GetMergedRequestsAsync(Expression{Func{string, object}}[])"/>
+        public Task<DictResponse<string, bool>> GetMergedRequestsAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<DictResponse<string, bool>>(MethodType.Get, "notifications/requests/merged", parameters);
         }
     }
 }

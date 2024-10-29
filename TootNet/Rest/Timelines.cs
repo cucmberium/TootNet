@@ -96,6 +96,31 @@ namespace TootNet.Rest
         }
 
         /// <summary>
+        /// <para>View link timeline.</para>
+        /// <para>Available parameters:</para>
+        /// <para>- <c>string</c> url (required)</para>
+        /// <para>- <c>long</c> max_id (optional)</para>
+        /// <para>- <c>long</c> since_id (optional)</para>
+        /// <para>- <c>long</c> min_id (optional)</para>
+        /// <para>- <c>int</c> limit (optional)</para>
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>
+        /// <para>The task object representing the asynchronous operation.</para>
+        /// <para>The Result property on the task object returns the list of status object.</para>
+        /// </returns>
+        public Task<Linked<Objects.Status>> LinkAsync(params Expression<Func<string, object>>[] parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Objects.Status>>(MethodType.Get, "timelines/link", Utils.ExpressionToDictionary(parameters));
+        }
+
+        /// <inheritdoc cref="LinkAsync(Expression{Func{string, object}}[])"/>
+        public Task<Linked<Objects.Status>> LinkAsync(IDictionary<string, object> parameters)
+        {
+            return Tokens.AccessApiAsync<Linked<Objects.Status>>(MethodType.Get, "timelines/link", parameters);
+        }
+
+        /// <summary>
         /// <para>View list timeline.</para>
         /// <para>Available parameters:</para>
         /// <para>- <c>long</c> list_id (required)</para>
