@@ -17,7 +17,7 @@ This library uses part of the codes of the following libraries.
     <Copyright>(c) 2017-2024 cucmberium</Copyright>
     <RepositoryUrl>https://github.com/cucmberium/TootNet</RepositoryUrl>
     <PackageTags>Mastodon</PackageTags>
-    <Version>4.2.1</Version>
+    <Version>4.3.0</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
