@@ -184,7 +184,7 @@ def write_cs_code(input_path: str, output_path: str, logger: logging.Logger) -> 
             else:
                 method_name = snake_to_pascal(method["path"].split("/")[-1])
             if method_name.lower() == class_name.lower():
-                method_name = snake_to_pascal(method["method"])
+                method_name = method_type
 
             if "name" in method:
                 method_name = method["name"]

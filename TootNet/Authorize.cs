@@ -167,7 +167,7 @@ namespace TootNet
     internal class App : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("name")]
@@ -176,16 +176,19 @@ namespace TootNet
         [JsonProperty("website")]
         public string Website { get; set; }
 
+        [JsonProperty("scopes")]
+        public IEnumerable<string> Scopes { get; set; }
+
         [JsonProperty("redirect_uri")]
         public string RedirectUri { get; set; }
+
+        [JsonProperty("redirect_uris")]
+        public IEnumerable<string> RedirectUris { get; set; }
 
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
 
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
-
-        [JsonProperty("vapid_key")]
-        public string VapidKey { get; set; }
     }
 }

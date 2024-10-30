@@ -17,13 +17,13 @@ namespace TootNet.Objects
         public IEnumerable<Status> Statuses { get; set; }
 
         [JsonProperty("notification_groups")]
-        public NotificationGroup NotificationGroup { get; set; }
+        public IEnumerable<NotificationGroup> NotificationGroups { get; set; }
     }
 
     public class PartialAccountWithAvatar
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("acct")]
@@ -57,26 +57,26 @@ namespace TootNet.Objects
         public string Type { get; set; }
 
         [JsonProperty("most_recent_notification_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long MostRecentNotificationId { get; set; }
 
         [JsonProperty("page_min_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long PageMinId { get; set; }
 
         [JsonProperty("page_max_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long PageMaxId { get; set; }
 
         [JsonProperty("latest_page_notification_at")]
-        public DateTime LatestPageNotificationAt { get; set; }
+        public DateTime? LatestPageNotificationAt { get; set; }
 
         [JsonProperty("sample_account_ids")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> SampleAccountIds { get; set; }
 
         [JsonProperty("status_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long StatusId { get; set; }
 
         [JsonProperty("report")]
@@ -92,7 +92,7 @@ namespace TootNet.Objects
     public class RelationshipSeveranceEvent
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("type")]
@@ -114,7 +114,7 @@ namespace TootNet.Objects
     public class AccountWarning
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("action")]
@@ -124,7 +124,7 @@ namespace TootNet.Objects
         public string Text { get; set; }
 
         [JsonProperty("status_ids")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> StatusIds { get; set; }
 
         [JsonProperty("target_account")]

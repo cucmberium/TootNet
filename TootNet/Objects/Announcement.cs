@@ -8,7 +8,7 @@ namespace TootNet.Objects
     public class Announcement : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("content")]
@@ -54,7 +54,7 @@ namespace TootNet.Objects
     public class AnnouncementAccount
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("username")]
@@ -70,7 +70,7 @@ namespace TootNet.Objects
     public class AnnouncementStatus
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("url")]

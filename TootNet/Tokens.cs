@@ -90,7 +90,12 @@ namespace TootNet
         /// FollowRequests
         /// </summary>
         public Rest.FollowRequests FollowRequests => new Rest.FollowRequests(this);
-        
+
+        /// <summary>
+        /// GroupedNotifications
+        /// </summary>
+        public Rest.GroupedNotifications GroupedNotifications => new Rest.GroupedNotifications(this);
+
         /// <summary>
         /// Instances (alias of Instance)
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace TootNet.Tests
@@ -45,6 +46,25 @@ namespace TootNet.Tests
             var tokens = AccountInformation.GetTokens();
 
             var statuses = await tokens.Timelines.TagAsync(hashtag => "mastodon", limit => 10);
+
+            Assert.Equal(10, statuses.Count);
+            foreach (var status in statuses)
+            {
+                Assert.NotNull(status.Account.Acct);
+                Assert.NotNull(status.Account.UserName);
+                Assert.NotNull(status.Account.Url);
+                Assert.NotNull(status.Content);
+            }
+        }
+
+        [Fact]
+        public async Task LinkAsyncTest()
+        {
+            var tokens = AccountInformation.GetTokens();
+
+            var trends = await tokens.Trends.LinksAsync(limit => 1);
+
+            var statuses = await tokens.Timelines.LinkAsync(url => trends.First().Url, limit => 10);
 
             Assert.Equal(10, statuses.Count);
             foreach (var status in statuses)

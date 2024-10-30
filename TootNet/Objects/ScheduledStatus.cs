@@ -8,7 +8,7 @@ namespace TootNet.Objects
     public class ScheduledStatus : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("scheduled_at")]
@@ -30,7 +30,7 @@ namespace TootNet.Objects
         public ScheduledStatusParamsPoll Poll { get; set; }
 
         [JsonProperty("media_ids")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> MediaIds { get; set; }
 
         [JsonProperty("sensitive")]
@@ -43,14 +43,14 @@ namespace TootNet.Objects
         public string Visibility { get; set; }
 
         [JsonProperty("in_reply_to_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long? InReplyToId { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
 
         [JsonProperty("application_id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long ApplicationId { get; set; }
 
         [JsonProperty("scheduled_at")]

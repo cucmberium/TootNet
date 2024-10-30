@@ -8,7 +8,7 @@ namespace TootNet.Objects
     public class Conversation : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("unread")]

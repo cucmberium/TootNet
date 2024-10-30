@@ -32,13 +32,13 @@ namespace TootNet.Rest
         /// <para>The task object representing the asynchronous operation.</para>
         /// <para>The Result property on the task object returns the groupednotificationsresults object.</para>
         /// </returns>
-        public Task<Objects.GroupedNotificationsResults> NotificationsAsync(params Expression<Func<string, object>>[] parameters)
+        public Task<Objects.GroupedNotificationsResults> GetAsync(params Expression<Func<string, object>>[] parameters)
         {
             return Tokens.AccessApiAsync<Objects.GroupedNotificationsResults>(MethodType.Get, "notifications", Utils.ExpressionToDictionary(parameters), apiVersion: "v2");
         }
 
-        /// <inheritdoc cref="NotificationsAsync(Expression{Func{string, object}}[])"/>
-        public Task<Objects.GroupedNotificationsResults> NotificationsAsync(IDictionary<string, object> parameters)
+        /// <inheritdoc cref="GetAsync(Expression{Func{string, object}}[])"/>
+        public Task<Objects.GroupedNotificationsResults> GetAsync(IDictionary<string, object> parameters)
         {
             return Tokens.AccessApiAsync<Objects.GroupedNotificationsResults>(MethodType.Get, "notifications", parameters, apiVersion: "v2");
         }

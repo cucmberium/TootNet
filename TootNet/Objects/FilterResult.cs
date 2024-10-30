@@ -14,7 +14,7 @@ namespace TootNet.Objects
         public IEnumerable<string> KeywordMatches { get; set; }
 
         [JsonProperty("status_matches")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> StatusMatches { get; set; }
     }
 }

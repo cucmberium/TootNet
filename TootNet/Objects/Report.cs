@@ -8,7 +8,7 @@ namespace TootNet.Objects
     public class Report : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("action_taken")]
@@ -30,11 +30,11 @@ namespace TootNet.Objects
         public DateTime CreatedAt { get; set; }
 
         [JsonProperty("status_ids")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> StatusIds { get; set; }
 
         [JsonProperty("rule_ids")]
-        [JsonConverter(typeof(IdArrayConverter))]
+        [JsonConverter(typeof(StringArrayToLongArrayConverter))]
         public IEnumerable<long> RuleIds { get; set; }
 
         [JsonProperty("target_account")]

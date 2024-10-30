@@ -1,6 +1,7 @@
 [
     {
         "path": "/api/v2/notifications",
+        "name": "Get",
         "method": "GET",
         "description": "Get all grouped notifications",
         "return": "GroupedNotificationsResults",

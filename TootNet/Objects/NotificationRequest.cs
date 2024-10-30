@@ -7,7 +7,7 @@ namespace TootNet.Objects
     public class NotificationRequest : BaseObject
     {
         [JsonProperty("id")]
-        [JsonConverter(typeof(IdConverter))]
+        [JsonConverter(typeof(StringToLongConverter))]
         public long Id { get; set; }
 
         [JsonProperty("created_at")]
@@ -20,7 +20,8 @@ namespace TootNet.Objects
         public Account Account { get; set; }
 
         [JsonProperty("notifications_count")]
-        public string NotificationsCount { get; set; }
+        [JsonConverter(typeof(StringToIntConverter))]
+        public int NotificationsCount { get; set; }
 
         [JsonProperty("last_status")]
         public Status LastStatus { get; set; }
